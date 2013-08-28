@@ -1,0 +1,115 @@
+
+########################################################## 
+coseismic slip model of 2008 Wenchuan earthquake
+########################################################## 
+
+Reference:
+Coseismic Slip Model of the 2008 Wenchuan Earthquake Derived From Joint Inversion of InSAR, GPS and Field Data
+
+Xiaopeng Tong, David Sandwell,Yuri Fialko
+
+NOTE: THIS IS AN UPDATED MODEL. 
+
+Changes:
+
+2009 Dec:
+Including more ScanSAR data on the northwest side of the Longmenshan fault.
+
+########################################################## 
+
+origin of the cartesian coordinate 
+This origin is used when converting from local coordinate to the
+lat/lon coordinate from the source?.dat. 
+
+Lon: 104.2 deg
+Lat: 31.4 deg
+
+fault location and geometry:
+source1.dat (north Beichuan segment)
+
+xo: 100.37 km 
+yo: 120.91 km
+zo: 0 km 
+length: 95.73 km
+width: 30 km
+dip: 70 deg
+strike: -128 deg
+
+source2.dat (central Beichuan segment)
+
+xo: 9.91 km 
+yo: 34.70 km
+zo: 0 km 
+length: 154.82 km
+width: 35 km
+dip: 50 deg
+strike: -137 deg
+
+
+source3.dat (south Beichuan segment)
+
+xo: -77.35 km 
+yo: -48.99 km
+zo: 0 km 
+length: 87.60 km
+width: 45 km
+dip: 35 deg
+strike: -128 deg
+
+
+source4.dat (Pengguan segment)
+
+xo: -11.36 km 
+yo: -2.31 km
+zo: 0 km 
+length: 82.07 km
+width: 20 km
+dip: 25 deg
+strike: -137 deg
+
+
+xo, yo, zo is location of the center 
+of the top edge of the fault plane in 
+cartesian coordinates. 
+ 
+More descriptions:
+The xo and yo are the relative location in cartesian coordinates
+with respect to the origin of the cartesian coordinate assuming the
+positive x means the center top of the fault is to the east of the  
+origin  (Lon:104.2 deg Lat:31.4 deg.)
+postive y means the center top of the fault is to the north of the  
+origin  (Lon:104.2 deg Lat:31.4 deg.)
+
+In this case the xo 100.37 km means the center top of the fault is  
+to the east of the origin 100.37 km.
+  the yo 120.91 km means the center top of the fault is to the  
+north of the origin 120.91 km. 
+zo is zero in this case, which means that the top edge of the fault segment is at the surface of the half space. 
+The half space is assumed to be at 500m elevation.  
+
+
+########################################################## 
+
+Format of source?.dat:
+
+x1(km) x2(km) x3(km) x4(km) y1(km) y2(km) y3(km) y4(km) strike-slip(cm) dip-slip(cm)
+
+x1,x2,x3,x4 are the along-strike location of the four corners of the rectangular fault patches.
+y1,y2,y3,y4 are the along-dip location of the four corners of the rectangular fault patches.
+x1,x2,x3,x4 and y1,y2,y3,y4 are in the coordinate of the fault plane and has nothing to do with xo yo zo.
+
+
+      strike
+    1---------4---->        
+   d \         \       
+    i \    c    \      
+     p \         \
+        2---------3
+
+Each rectangular fault patches may have different length and width (see the reference).
+strike-slip is negative, corresponding to right-lateral.
+dip-slip is positive, corresponding to thrust.
+
+########################################################## 
+
+totslip.eps is plot of this slip model.
