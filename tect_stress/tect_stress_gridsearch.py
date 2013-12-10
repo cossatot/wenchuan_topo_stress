@@ -9,7 +9,7 @@ import time
 
 # Load fault slip and stress data
 lms_df = pd.read_csv('../slip_models/zhang/lms_stress_slip.csv', index_col=0)
-
+df = lms_df
 # Stress Projections
 
 # make lists of indices
@@ -45,11 +45,11 @@ search_df[search_df_cols[:5]] = ind_array
 
 # Make a function to fill in the row values
 fill_cols = ['lat', 'lon', 'depth', 'strike', 'dip', 'slip_mag', 'slip_rake']
-def fill_row_vals(row, df):
+def fill_row_vals(row):
     pt = row['pt_index']
 
     s = pd.Series( data = df[['lat_deg', 'lon_deg', 'depth_km', 'strike_deg',
-                              'dip_deg', 'slip_am_m', 'rake_deg']].iloc[pt],
+                              'dip_deg', 'slp_am_m', 'rake_deg']].iloc[pt],
                    index = ['lat', 'lon', 'depth', 'strike', 'dip',
                             'slip_mag', 'slip_rake'] )
     return s
@@ -113,7 +113,7 @@ def calc_weighted_misfit(row, tau_rake):
     return (row['slip_rake'] - tau_rake) * row['slip_mag']
 
 
-def do_tect_stresses(row, df):
+def do_tect_stresses(row):
     T = get_stress_tensor(row)
 
     tau_m, tau_rake, sig_nn = calc_total_stresses(row, T)
