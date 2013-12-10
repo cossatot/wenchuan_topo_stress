@@ -34,10 +34,9 @@ ind_array = np.array(new_index, dtype='int')
 
 # Make dataframe and fill in
 search_df_cols = ['iter', 'tect_xx', 'tect_yy', 'tect_xy', 'pt_index',
-                  'lat', 'lon', 'depth', 'strike', 'dip',
-                  'topo_xx', 'topo_yy', 'topo_xy', 'topo_zz',
-                  'topo_xz', 'topo_yz', 'slip_m', 'slip_rake',
-                  'tau_rake', 'tau_mag', 'misfit', 'weighted_misfit']
+                  'lat', 'lon', 'depth', 'strike', 'dip', 'slip_m',
+                  'slip_rake', 'tau_rake', 'tau_mag', 'sig_nn', 'misfit',
+                  'weighted_misfit']
 
 search_df = pd.DataFrame(index=np.arange(len(new_index)),
                          columns=search_df_cols)
@@ -45,45 +44,94 @@ search_df = pd.DataFrame(index=np.arange(len(new_index)),
 search_df[search_df_cols[:5]] = ind_array
 
 # Make a function to fill in the row values
-def fill_row_vals(row, lms_df=lms_df):
+fill_cols = ['lat', 'lon', 'depth', 'strike', 'dip', 'slip_mag', 'slip_rake']
+def fill_row_vals(row, df):
     pt = row['pt_index']
-    
-    ser = pd.Series(index = ['lat', 'lon', 'depth', 'strike', 'dip',
-                             'topo_xx', 'topo_yy', 'topo_xy', 'topo_zz',
-                             'topo_xz', 'topo_yz', 'slip_m', 'slip_rake'],
-                    data = lms_df[['lat_deg', 'lon_deg', 'depth_km',
-                                   'strike_deg', 'dip_deg',
-                                   'xx_stress', 'yy_stress', 'xy_stress',
-                                   'zz_stress', 'slp_am_m','xz_stress',
-                                   'yz_stress', 'rake_deg']].iloc[pt].values )
-    return ser
+
+    s = pd.Series( data = df[['lat_deg', 'lon_deg', 'depth_km', 'strike_deg',
+                              'dip_deg', 'slip_am_m', 'rake_deg']].iloc[pt],
+                   index = ['lat', 'lon', 'depth', 'strike', 'dip',
+                            'slip_mag', 'slip_rake'] )
+    return s
+
 
 print 'filling rows'
 t0 = time.time()
-search_df[['lat', 'lon', 'depth', 'strike', 'dip',
-           'topo_xx', 'topo_yy', 'topo_xy', 'topo_zz',
-           'topo_xz', 'topo_yz', 'slip_m', 'slip_rake']] = search_df.apply(
-                                                        fill_row_vals, axis=1)
-t1 = time.time()       
-print 'done in', t1 -t0, 's'
+row_chunk=1e5
+chunk_min=0
+chunk_max = row_chunk
 
-# make a function to calculate the total stresses
-# try to do one thing at a time to cut down ram usage (experiment)
-def calc_tau(row):
-    T = hsp.make_xyz_stress_tensor(sig_xx = row['topo_xx'] + row['tect_xx'],
-                                   sig_yy = row['topo_yy'] + row['tect_yy'],
-                                   sig_xy = row['topo_xy'] + row['tect_xy'],
-                                   sig_zz = row['topo_zz'],
-                                   sig_xz = row['topo_xz'],
-                                   sig_yz = row['topo_yz'] )
+search_df[fill_cols] = search_df.apply(fill_row_vals, axis=1)
+t1 = time.time()
+print 'done in', t1 - t0, 's'
 
-    tau_m, rake = hsp.max_shear_stress_from_xyz(strike=row['strike'],
-                                             dip = row['dip'],  stress_tensor=T)
+print 'saving search_df'
+search_df.to_csv('tect_search_df.csv')
 
-    return pd.Series({'tau_rake':rake, 'tau_mag':tau_m})
+print 'calculating tect stresses'
+t2 = time.time()
 
-print 'calculating tau' 
-search_df[['tau_rake', 'tau_mag']] = search_df.apply(calc_tau, axis=1)
-print 'done in', time.time() - t1, 's'
+
+lms_stress_cols = ['xx_stress', 'yy_stress', 'xy_stress',
+                   'zz_stress', 'xz_stress', 'yz_stress']
+
+def get_stress_tensor(row):
+    pt = row['pt_index']
+    (topo_xx, topo_yy, topo_xy,
+     topo_zz, topo_xz, topo_yz) = lms_df[lms_stress_cols].iloc[pt]
+
+    T = hsp.make_xyz_stress_tensor(sig_xx = topo_xx + row['tect_xx'],
+                                   sig_yy = topo_yy + row['tect_yy'],
+                                   sig_xy = topo_xy + row['tect_xy'],
+                                   sig_zz = topo_zz, sig_xz = topo_xz,
+                                   sig_yz = topo_yz)
+    return T
+
+
+def calc_total_stresses(row, T):
+    strike = row['strike']
+    dip = row['dip']
+
+    tau_m, tau_rake = hsp.max_shear_stress_from_xyz( strike, dip, T)
+    sig_nn = hsp.normal_stress_from_xyz( strike, dip, T)
+
+    return tau_m, tau_rake, sig_nn
+
+#def calc_row_stresses(row, df):
+#    T = get_stress_tensor(row, df)
+
+#    tau_m, tau_rake, 
+
+
+def calc_misfit(row, tau_rake):
+
+    return row['slip_rake'] - tau_rake
+
+
+def calc_weighted_misfit(row, tau_rake):
+    
+    return (row['slip_rake'] - tau_rake) * row['slip_mag']
+
+
+def do_tect_stresses(row, df):
+    T = get_stress_tensor(row)
+
+    tau_m, tau_rake, sig_nn = calc_total_stresses(row, T)
+
+    misfit = calc_misfit(row, df)
+    weighted_misfit = calc_weighted_misfit(row, df)
+
+    s = pd.Series({'tau_rake':tau_rake, 'tau_mag':tau_m, 'sig_nn':sig_nn,
+                   'misfit':misfit, 'weighted_misfit':weighted_misfit})
+
+    return s
+
+search_cols = ['tau_rake', 'tau_mag', 'sig_nn', 'misfit', 'weighted_misfit']
+search_df[search_cols] = search_df.apply(do_tect_stresses, axis=1)
+print 'done in', time.time() - t2, 's'
+
+print 'saving df'
+search_df.to_csv('tect_search_df.csv')
+print 'done with everything in', (time.time() - t0)/60, 'min'
 
 
