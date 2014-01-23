@@ -26,7 +26,14 @@ search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index',
 
 
 ## making index list
+iter_range = np.arange(n_trials, dtype='float')
+pt_range = np.arange(n_points, dtype='float')
 
+index_list = [[iter_range[i],t_priors[i,0],t_priors[i,1],t_priors[i,2], pi]
+             for i in iter_range for pi in pt_range]
+
+index_array = np.array(index_list)
+del index_list
 
 iter_index = np.int_(index_array[:,0].copy() )
 pt_index = np.int_(index_array[:,4].copy() )
