@@ -3,13 +3,13 @@ import pandas as pd
 import stress_comps_vectorized as scv
 import time
 
-out_name = 'new_tect_posteriors.csv'
+out_name = '../results/tect_posteriors_4.csv'
 
 t0 = time.time()
-lms = pd.read_csv('../slip_models/zhang/lms_stress_slip.csv', index_col=0)
+lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
 
 # some inital constants
-n_trials = 50000
+n_trials = 100000
 n_points = len(lms.index)
 rho = 2700
 g = 9.81
@@ -129,4 +129,5 @@ tau_posteriors.to_csv(out_name, index=False)
 
 t1 = time.time()
 t_done = t1 - t0
+print(len(txx_keep))
 print(t_done)
