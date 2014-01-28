@@ -84,3 +84,30 @@ def eff_normal_stress(strike=None, dip=None, rho=None, g=None, mxx=None,
                 )
     
     return sigma_n
+
+
+def xx_stress_from_s1_s3_theta(s1=0, s3=0, theta=0):
+    '''
+    takes horizontal principle stress magnitudes and (unit circle) angle
+    of s1 and returns xx stress component
+    '''
+
+    return (s1 * np.cos(theta)**2 + s3 * np.sin(theta)**2)
+
+
+def yy_stress_from_s1_s3_theta(s1=0, s3=0, theta=0):
+    '''
+    takes horizontal principle stress magnitudes and (unit circle) angle
+    of s1 and returns yy stress component
+    '''
+
+    return (s1 * np.sin(theta)**2 + s3 * np.cos(theta)**2)
+
+
+def xy_stress_from_s1_s3_theta(s1=0, s3=0, theta=0):
+    '''
+    takes horizontal principle stress magnitudes and (unit circle) angle
+    of s1 and returns xy stress component
+    '''
+
+    return (s1 - s3) * np.sin(theta) * np.cos(theta)
