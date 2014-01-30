@@ -3,13 +3,14 @@ import pandas as pd
 import stress_comps_vectorized as scv
 import time
 
-out_name = '../results/tect_posteriors_4.csv'
+out_name = '../results/tect_posteriors.csv'
 
 t0 = time.time()
 lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
 
 # some inital constants
-n_trials = 100000
+n_trials = 1e5
+
 n_points = len(lms.index)
 rho = 2700
 g = 9.81
@@ -17,12 +18,27 @@ g = 9.81
 # Priors for tectonic stresses (txx, tyy, txy).
 # These are functions of lithostatic pressure (rho g depth)
 # Priors for each are uniform [-2, 2).
-t_priors = np.random.uniform(-2, 2, size = [n_trials,3])
+s1s = np.random.uniform(1,2.5, n_trials)
+s3s = np.random.uniform(0, 1, n_trials) * s1s
+thetas = np.random.uniform(0, 2 * np.pi, n_trials)
+
+xxs = scv.xx_stress_from_s1_s3_theta(s1s, s3s, thetas)
+yys = scv.yy_stress_from_s1_s3_theta(s1s, s3s, thetas)
+xys = scv.xy_stress_from_s1_s3_theta(s1s, s3s, thetas)
+
+t_priors = np.concatenate((xxs, yys, xys), axis=1)
+
+del s1s, s3s, thetas
+
+xxs = xxs.reshape([n_trials, 1])
+yys = yys.reshape([n_trials, 1])
+xys = xys.reshape([n_trials, 1])
+
+
 
 # Columns for search dataframe
-search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index',
-                  'depth', 'strike', 'dip', 'slip_m',
-                  'slip_rake']
+search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index', 'depth', 'strike',
+                  'dip', 'slip_m', 'slip_rake']
 
 
 ## making index list

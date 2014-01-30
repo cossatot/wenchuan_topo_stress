@@ -111,3 +111,29 @@ def xy_stress_from_s1_s3_theta(s1=0, s3=0, theta=0):
     '''
 
     return (s1 - s3) * np.sin(theta) * np.cos(theta)
+
+
+def angle_difference(angle1, angle2):
+    if np.isscalar(angle1) and np.isscalar(angle2):
+        return angle_difference_scalar(angle1, angle2)
+    else:
+        return angle_difference_vector(angle1, angle2)
+
+
+def angle_difference_scalar(angle1, angle2):
+    difference = angle2 - angle1
+    while difference < -180:
+        difference += 360
+    while difference > 180:
+        difference -= 360
+    return np.abs(difference)
+
+
+def angle_difference_vector(angle1_vec, angle2_vec):
+    angle1_vec = np.array(angle1_vec)
+    angle2_vec = np.array(angle2_vec)
+    difference = angle2_vec - angle1_vec
+    difference[difference < -180] += 360
+    difference[difference > 180] -= 360
+    
+    return np.abs(difference)
