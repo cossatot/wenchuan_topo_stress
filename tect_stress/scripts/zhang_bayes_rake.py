@@ -3,13 +3,14 @@ import pandas as pd
 import stress_comps_vectorized as scv
 import time
 
+print('getting started')
 out_name = '../results/tect_posteriors.csv'
 
 t0 = time.time()
 lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
 
 # some inital constants
-n_trials = 1.5e5
+n_trials = 1e5
 
 n_points = len(lms.index)
 rho = 2700
@@ -26,15 +27,13 @@ xxs = scv.xx_stress_from_s1_s3_theta(s1s, s3s, thetas)
 yys = scv.yy_stress_from_s1_s3_theta(s1s, s3s, thetas)
 xys = scv.xy_stress_from_s1_s3_theta(s1s, s3s, thetas)
 
-t_priors = np.concatenate((xxs, yys, xys), axis=1)
-
 del s1s, s3s, thetas
 
 xxs = xxs.reshape([n_trials, 1])
 yys = yys.reshape([n_trials, 1])
 xys = xys.reshape([n_trials, 1])
 
-
+t_priors = np.concatenate((xxs, yys, xys), axis=1)
 
 # Columns for search dataframe
 search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index', 'depth', 'strike',
@@ -45,9 +44,10 @@ search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index', 'depth', 'strike',
 iter_range = np.arange(n_trials, dtype='float')
 pt_range = np.arange(n_points, dtype='float')
 
+print('making list of priors')
 index_list = [[iter_range[i],t_priors[i,0],t_priors[i,1],t_priors[i,2], pi]
              for i in iter_range for pi in pt_range]
-
+print('done making list.  Moving on...')
 index_array = np.array(index_list)
 del index_list
 
@@ -59,6 +59,7 @@ del index_array #save some space
 
 
 # make dataframe, start filling in
+print('filling in dataframe')
 search_df=pd.DataFrame(index=np.arange(len(iter_index)), 
                        columns=search_df_cols, dtype=float)
 
@@ -88,7 +89,8 @@ search_df.depth *= 1000
 search_df[['mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']] *= 1e6
 
 
-# OK, now let's do some calculations
+# OK, now let's do some calculationsi
+print('calculating fault stresses')
 search_df['tau_s'] = scv.strike_shear(strike = search_df.strike, 
                                       dip=search_df.dip, rho=rho, g=g,
                                       mxx=search_df.mxx, myy=search_df.myy,
@@ -112,7 +114,7 @@ search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
                                                           search_df.slip_rake,
                                                           search_df.tau_rake) )
 
-search_df.to_csv('zhang_rake_search_df.csv', index=False)
+#search_df.to_csv('zhang_rake_search_df.csv', index=False)
 
 mean_slip = lms.slp_am_m.mean()
 max_slip = lms.slp_am_m.max()
@@ -124,12 +126,13 @@ search_df['chi_sq'] = ((0.5 * (-np.cos(search_df.rake_misfit_rad) + 1) )**2
 search_df['weighted_diff'] = (0.5 * (-np.cos(search_df.rake_misfit_rad) + 1)
                               * search_df.slip_m / (rake_err * max_slip) )
 
-
+print('doing groupby')
 iters = search_df.groupby('iter')
 del search_df
 
 # now define misfit function and calculate likelihood
-iter_l2 = iters.weighed_diff.sum()
+print('calculating likelihoods')
+iter_l2 = iters.chi_sq.sum()
 iter_l2n = iter_l2 - iter_l2.min()
 
 iter_likelihood = np.exp( - 0.5 * iter_l2n**2)
@@ -151,6 +154,7 @@ tyy_keep = iters_tyy[keeps.index]
 tau_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1,
                            names=['txx', 'tyy', 'txy'])
 
+print('Done!  saving posteriors')
 tau_posteriors.to_csv(out_name, index=False)
 
 t1 = time.time()
