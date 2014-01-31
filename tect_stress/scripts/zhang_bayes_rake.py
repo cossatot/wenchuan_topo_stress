@@ -9,7 +9,7 @@ t0 = time.time()
 lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
 
 # some inital constants
-n_trials = 1e5
+n_trials = 1.5e5
 
 n_points = len(lms.index)
 rho = 2700
@@ -108,26 +108,36 @@ search_df['tau_d'] = scv.dip_shear(strike = search_df.strike,
 search_df['tau_rake'] = np.degrees( np.arctan2( search_df.tau_d, 
                                                 search_df.tau_s) )
 
-mean_slip = lms.slp_am_m.mean()
+search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
+                                                          search_df.slip_rake,
+                                                          search_df.tau_rake) )
 
-search_df['weighted_rake_misfit'] = (np.abs(search_df.slip_rake 
-                                            - search_df.tau_rake) 
-                                      * (search_df.slip_m / mean_slip) )
+search_df.to_csv('zhang_rake_search_df.csv', index=False)
+
+mean_slip = lms.slp_am_m.mean()
+max_slip = lms.slp_am_m.max()
+rake_err = np.cos( np.pi/9. )
+
+search_df['chi_sq'] = ((0.5 * (-np.cos(search_df.rake_misfit_rad) + 1) )**2 
+                        * search_df.slip_m / (rake_err**2 *  max_slip) )
+
+search_df['weighted_diff'] = (0.5 * (-np.cos(search_df.rake_misfit_rad) + 1)
+                              * search_df.slip_m / (rake_err * max_slip) )
+
 
 iters = search_df.groupby('iter')
 del search_df
 
 # now define misfit function and calculate likelihood
-def l2_norm(array):
-    return np.linalg.norm(array, 2)
+iter_l2 = iters.weighed_diff.sum()
+iter_l2n = iter_l2 - iter_l2.min()
 
-iter_misfit = iters.weighted_rake_misfit.apply(l2_norm)
+iter_likelihood = np.exp( - 0.5 * iter_l2n**2)
 
-iter_likelihood = 1 / (iter_misfit / iter_misfit.min())
 
 # filter by likelihood
 rand_filter = np.random.random(n_trials)
-keeps = iter_likelihood[iter_likelihood**3 >= rand_filter]
+keeps = iter_likelihood[iter_likelihood >= rand_filter]
 
 iters_txx = iters.txx.mean()
 iters_tyy = iters.tyy.mean()
