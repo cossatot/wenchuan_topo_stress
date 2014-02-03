@@ -4,7 +4,7 @@ import stress_comps_vectorized as scv
 import time
 
 print('getting started')
-out_name = '../results/tect_posteriors.csv'
+out_name = '../results/l{}_tect_posteriors.csv'
 
 t0 = time.time()
 lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
@@ -54,7 +54,6 @@ del index_list
 iter_index = np.int_(index_array[:,0].copy() )
 pt_index = np.int_(index_array[:,4].copy() )
 prior_array = index_array[:,1:4]
-
 del index_array #save some space
 
 
@@ -85,6 +84,7 @@ lms_col_array = lms[lms_copy_cols].values
 lms_reps = np.tile(lms_col_array, [n_trials, 1])
 search_df[lms_fill_cols] = lms_reps
 search_df.depth *= 1000
+del lms_reps
 
 search_df[['mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']] *= 1e6
 
@@ -112,19 +112,17 @@ search_df['tau_rake'] = np.degrees( np.arctan2( search_df.tau_d,
 
 search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
                                                           search_df.slip_rake,
-                                                          search_df.tau_rake) )
+                                                          search_df.tau_rake),
+                                                          return_abs=True)
 
 #search_df.to_csv('zhang_rake_search_df.csv', index=False)
 
-mean_slip = lms.slp_am_m.mean()
-max_slip = lms.slp_am_m.max()
+sum_slip = lms.slp_am_m.ssum()
 rake_err = np.cos( np.pi/9. )
 
-search_df['chi_sq'] = ((0.5 * (-np.cos(search_df.rake_misfit_rad) + 1) )**2 
-                        * search_df.slip_m / (rake_err**2 *  max_slip) )
+search_df['weighted_diff'] = search_df.rake_misfit_rad * search_df.slip_m
+search_df['w_diff_sq'] = search_df.rake_misfit_rad**2 * search_df.slip_m
 
-search_df['weighted_diff'] = (0.5 * (-np.cos(search_df.rake_misfit_rad) + 1)
-                              * search_df.slip_m / (rake_err * max_slip) )
 
 print('doing groupby')
 iters = search_df.groupby('iter')
@@ -132,30 +130,47 @@ del search_df
 
 # now define misfit function and calculate likelihood
 print('calculating likelihoods')
-iter_l2 = iters.chi_sq.sum()
-iter_l2n = iter_l2 - iter_l2.min()
 
-iter_likelihood = np.exp( - 0.5 * iter_l2n**2)
+fish_l1 = iters.weighted_diff.sum() / sum_slip
+fish_l2 = iters.w_diff_sq.sum() / sum_slip
 
+fish_l1_like = np.exp(kappa * np.cos(fish_l1) )
+fish_l2_like = np.exp(kappa * np.cos(fish_l2) )
+
+fish_l1n_like = fish_l1_like / fish_l1_like.max()
+fish_l2n_like = fish_l2_like / fish_l2_like.max()
 
 # filter by likelihood
 rand_filter = np.random.random(n_trials)
-keeps = iter_likelihood[iter_likelihood >= rand_filter]
+
+fishtrap_l1 = fish_l1n_like[fish_l1n_like >= rand_filter]
+fishtrap_l2 = fish_l2n_like[fish_l2n_like >= rand_filter]
+
 
 iters_txx = iters.txx.mean()
 iters_tyy = iters.tyy.mean()
 iters_txy = iters.txy.mean()
 
-txx_keep = iters_txx[keeps.index]
-txy_keep = iters_txy[keeps.index]
-tyy_keep = iters_tyy[keeps.index]
+txx_l1_keep = iters_txx[fishtrap_l1.index]
+txy_l1_keep = iters_txy[fishtrap_l1.index]
+tyy_l1_keep = iters_tyy[fishtrap_l1.index]
+
+txx_l2_keep = iters_txx[fishtrap_l2.index]
+txy_l2_keep = iters_txy[fishtrap_l2.index]
+tyy_l2_keep = iters_tyy[fishtrap_l2.index]
+
 
 # done! now save files.
-tau_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1,
+l1_tect_posteriors = pd.concat([txx_l1_keep, tyy_l1_keep, txy_l1_keep], axis=1,
                            names=['txx', 'tyy', 'txy'])
 
+l2_tect_posteriors = pd.concat([txx_l2_keep, tyy_l2_keep, txy_l2_keep], axis=1,
+                           names=['txx', 'tyy', 'txy'])
+
+
 print('Done!  saving posteriors')
-tau_posteriors.to_csv(out_name, index=False)
+l1_tect_posteriors.to_csv(out_name.format(1), index=False)
+l2_tect_posteriors.to_csv(out_name.format(2), index=False)
 
 t1 = time.time()
 t_done = t1 - t0
