@@ -4,11 +4,15 @@ import stress_comps_vectorized as scv
 import time
 
 t0 = time.time()
+l = 2
 
-outfile = '../results/zhang_lms_fail_posteriors.csv'
-t_poster_file = '../results/tect_rake_posteriors_4e5_runs.csv'
+outfile = '../results/zhang_l{}_fail_posteriors.csv'.format(l)
+t_poster_file = '../results/zhang_l{}_tect_posteriors.csv'.format(l)
 
 lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
+
+np.random.seed(69)
+
 t_prior_df = pd.read_csv(t_poster_file)
 t_priors = t_prior_df.values
 del t_prior_df
