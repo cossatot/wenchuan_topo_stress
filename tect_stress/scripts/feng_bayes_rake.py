@@ -1,13 +1,19 @@
 import numpy as np
 import pandas as pd
 import stress_comps_vectorized as scv
+import halfspace.projections as hsp
 import time
 
 print('getting started')
-out_name = '../results/zhang_l{}_tect_posteriors.csv'
+out_name = '../results/feng_l{}_tect_posteriors.csv'
 
 t0 = time.time()
-lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
+
+fb = pd.read_csv('../../slip_models/feng/feng_beich.csv', index_col=0)
+fp = pd.read_csv('../../slip_models/feng/feng_peng.csv', index_col=0)
+
+lms = pd.concat((fb, fp), axis=0)
+
 np.random.seed(69)
 
 # some inital constants
@@ -74,10 +80,14 @@ search_df['mxz'] = 0.
 search_df['myz'] = 0.
 search_df['mzz'] = 0.
 
+lms['slip_m'] = np.sqrt(lms.strike_m**2 + lms.dip_m**2)
+lms['slip_rake'] = hsp.get_rake_from_shear_components(lms.strike_m, lms.dip_m)
+
+
 lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m', 'slip_rake',
                        'mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']
 
-lms_copy_cols = ['depth_km', 'strike_deg','dip_deg','slp_am_m', 'rake_deg',
+lms_copy_cols = ['depth', 'strike','dip','slip_m', 'slip_rake',
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
@@ -116,9 +126,9 @@ search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
                                                           search_df.tau_rake,
                                                           return_abs=True) )
 
-#search_df.to_csv('zhang_rake_search_df.csv', index=False)
+#search_df.to_csv('feng_rake_search_df.csv', index=False)
 
-sum_slip = lms.slp_am_m.sum()
+sum_slip = lms.slip_m.sum()
 rake_err = np.cos( np.pi/9. )
 
 search_df['weighted_diff'] = search_df.rake_misfit_rad * search_df.slip_m
@@ -187,3 +197,4 @@ print('{} l2 models out of {} ({:.2f} percent)'.format(len(txx_l2_keep),
                                                         float(len(txx_l2_keep)
                                                          / n_trials) * 100) )
 print(t_done)
+
