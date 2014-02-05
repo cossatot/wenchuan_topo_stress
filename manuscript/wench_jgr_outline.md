@@ -15,7 +15,7 @@
 
 - Topographic stresses may be used to constrain tectonic stress in active fault
   environments
-    - $S = M + T + P - \lambda$
+    - S = M + T + P = $\lambda$
 
 - We want to do both
     - Wenchuan earthquake is a good candidate
@@ -38,6 +38,7 @@
 
 - Smaller scales:
     - Liu and Zoback
+	- Savage and Swolfs, etc for near-surface
     - anything else?
 
 ### Background on Wenchuan event
@@ -46,4 +47,34 @@
     - slow fault
 
 - Earthquake stuff
-    -  
+    - size, etc.
+    - variability of rake along strike
+    - previous work on stress fields
+
+### Methods
+#### Topographic stress calculations
+- Follow Liu and Zoback
+- Statement of notation
+- More coherent derivation (?) 
+- Specifics of stress calculations for Eastern Tibet
+	- make table
+		- crustal parameters (density, poisson solid, ...)
+		- Convolution parameters (grid spacing, kernel size, DEM size,
+								  depth, vertical resolution)
+	- Boussinesq details
+	- Cerruti details (use top layer of Boussinesq calc, etc.)
+	- Done with python, links to code (Halfspace module, run scripts)
+
+- Stress projections on faults
+	- Calculated at points in coseismic slip models
+	- Resolved into $\tau_s$, $\tau_d$, $\sigma_n$
+	- Compared to coseismic slip inversions (?)
+
+#### Tectonic stress calculations
+- We can use topographic stresses and the event of fault failure to constrain
+  tectonic stresses, based on Mohr-Coulomb failure criteria
+- Assumptions:
+	- $S = M + T + P - \lambda$
+    - $
+
+

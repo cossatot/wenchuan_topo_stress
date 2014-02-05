@@ -34,7 +34,6 @@ typically inferred from strain.
     - Then we constrain tectonic stresses
         - rakes, magnitudes, etc.
 
-
 ### Background on topographic stresses
 - Orogenic/range scales: 
     - Molnar and Lyon-Caen, Copley, Dalmayrac and Molnar
@@ -52,5 +51,9 @@ typically inferred from strain.
     - slow fault
 
 - Earthquake stuff
+    - size, etc.
+    - variability of rake along strike
+    - previous work on stress fields
 
+### 
 
