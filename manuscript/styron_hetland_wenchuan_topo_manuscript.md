@@ -21,7 +21,7 @@ typically inferred from strain.
 
 - Topographic stresses may be used to constrain tectonic stress in active fault
   environments
-    - $S = M + T + P - \lambda$
+    - $S = M + T + P - \phi$
 
 - We want to do both
     - Wenchuan earthquake is a good candidate
