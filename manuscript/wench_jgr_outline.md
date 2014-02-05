@@ -15,7 +15,7 @@
 
 - Topographic stresses may be used to constrain tectonic stress in active fault
   environments
-    - S = M + T + P = $\lambda$
+    - S = M + T + P = $\phi$
 
 - We want to do both
     - Wenchuan earthquake is a good candidate
@@ -51,8 +51,8 @@
     - variability of rake along strike
     - previous work on stress fields
 
-### Methods
-#### Topographic stress calculations
+## Methods
+### Topographic stress calculations
 - Follow Liu and Zoback
 - Statement of notation
 - More coherent derivation (?) 
@@ -70,11 +70,32 @@
 	- Resolved into $\tau_s$, $\tau_d$, $\sigma_n$
 	- Compared to coseismic slip inversions (?)
 
-#### Tectonic stress calculations
+### Tectonic stress calculations
 - We can use topographic stresses and the event of fault failure to constrain
-  tectonic stresses, based on Mohr-Coulomb failure criteria
+  tectonic stresses at time of failure, based on Mohr-Coulomb failure criteria
+ 
+- Then can use stress posteriors to solve for acceptable $(\phi, \mu)$
+
 - Assumptions:
-	- $S = M + T + P - \lambda$
-    - $
+	- At failure, $\tau = \mu \sigma_n^{eff} (1 - \phi)$
+	- $S = M + T + L - \phi$
+    - $T_{i,z} = 0$
+	- $T$ is a linear function of $\rho g z$
+	- $\phi$ is a constant fraction of total pressure
+	- $\mu$ does not vary along the fault
+
+- Bayesian inversion:
+	- Construct priors so that $\rho g z \le \sigma_1^T \le 2.5 \rho g z$ and 
+	  $0 \le \sigma_3^T \le \sigma_1^T$ and $0 \le \theta \le 2 \pi$ (direction
+	  of $\sigma_1^T$)
+
+	- Calculate shear rake on fault
+	- Calculate misfit on rake using directional statistics
+		- One-sided Von Mises distribution
+		- appropriate uncertainty
+	- Sample posterior through comparison with r[0,1)
+
+- $\mu, \; \phi$ analysis
+	- Sample $\phi$ from 
 
 
