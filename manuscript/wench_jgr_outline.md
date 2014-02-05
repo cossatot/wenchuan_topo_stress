@@ -73,7 +73,6 @@
 ### Tectonic stress calculations
 - We can use topographic stresses and the event of fault failure to constrain
   tectonic stresses at time of failure, based on Mohr-Coulomb failure criteria
- 
 - Then can use stress posteriors to solve for acceptable $(\phi, \mu)$
 
 - Assumptions:
@@ -88,7 +87,6 @@
 	- Construct priors so that $\rho g z \le \sigma_1^T \le 2.5 \rho g z$ and 
 	  $0 \le \sigma_3^T \le \sigma_1^T$ and $0 \le \theta \le 2 \pi$ (direction
 	  of $\sigma_1^T$)
-
 	- Calculate shear rake on fault
 	- Calculate misfit on rake using directional statistics
 		- One-sided Von Mises distribution
