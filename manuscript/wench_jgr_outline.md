@@ -94,6 +94,21 @@
 	- Sample posterior through comparison with r[0,1)
 
 - $\mu, \; \phi$ analysis
-	- Sample $\phi$ from 
+	- Sample $\phi$ from r[0,1)
+	- solve for $\mu$
+	- trim results for $\mu \le 0$ and $\mu \ge 1$
+	- profit!
 
+## Results
+### Topographic stresses
+- Topographic stresses are large, esp. on the SW Beichuan fault
+- Stresses are opposed to fault slip for most fault segments
+- normal stresses are up to ~80 MPa
+
+### Tectonic stresses
+- Magnitudes and orientations
+- $\mu, \; \lambda$ and covariance
+
+## Discussion
+ 
 
