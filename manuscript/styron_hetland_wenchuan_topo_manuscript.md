@@ -21,7 +21,7 @@ typically inferred from strain.
 
 - Topographic stresses may be used to constrain tectonic stress in active fault
   environments
-    - $S = M + T + P - \phi$
+    - S = M + T + P = $\phi$
 
 - We want to do both
     - Wenchuan earthquake is a good candidate
@@ -34,6 +34,7 @@ typically inferred from strain.
     - Then we constrain tectonic stresses
         - rakes, magnitudes, etc.
 
+
 ### Background on topographic stresses
 - Orogenic/range scales: 
     - Molnar and Lyon-Caen, Copley, Dalmayrac and Molnar
@@ -43,6 +44,7 @@ typically inferred from strain.
 
 - Smaller scales:
     - Liu and Zoback
+	- Savage and Swolfs, etc for near-surface
     - anything else?
 
 ### Background on Wenchuan event
@@ -54,6 +56,59 @@ typically inferred from strain.
     - size, etc.
     - variability of rake along strike
     - previous work on stress fields
+ 
+## Methods
+### Topographic stress calculations
+- Follow Liu and Zoback
+- Statement of notation
+- More coherent derivation (?) 
+- Specifics of stress calculations for Eastern Tibet
+	- make table
+		- crustal parameters (density, poisson solid, ...)
+		- Convolution parameters (grid spacing, kernel size, DEM size,
+								  depth, vertical resolution)
+	- Boussinesq details
+	- Cerruti details (use top layer of Boussinesq calc, etc.)
+	- Done with python, links to code (Halfspace module, run scripts)
 
-### 
+- Stress projections on faults
+	- Calculated at points in coseismic slip models
+	- Resolved into $\tau_s$, $\tau_d$, $\sigma_n$
+	- Compared to coseismic slip inversions (?)
+
+### Tectonic stress calculations
+- We can use topographic stresses and the event of fault failure to constrain
+  tectonic stresses at time of failure, based on Mohr-Coulomb failure criteria
+- Then can use stress posteriors to solve for acceptable $(\phi, \mu)$
+
+- Assumptions:
+	- At failure, $\tau = \mu \sigma_n^{eff} (1 - \phi)$
+	- $S = M + T + L - \phi$
+    - $T_{i,z} = 0$
+	- $T$ is a linear function of $\rho g z$
+	- $\phi$ is a constant fraction of total pressure
+	- $\mu$ does not vary along the fault
+
+- Bayesian inversion:
+	- Construct priors so that $\rho g z \le \sigma_1^T \le 2.5 \rho g z$ and 
+	  $0 \le \sigma_3^T \le \sigma_1^T$ and $0 \le \theta \le 2 \pi$ (direction
+	  of $\sigma_1^T$)
+	- Calculate shear rake on fault
+	- Calculate misfit on rake using directional statistics
+		- One-sided Von Mises distribution
+		- appropriate uncertainty
+	- Sample posterior through comparison with r[0,1)
+
+- $\mu, \; \phi$ analysis
+	- Sample $\phi$ from r[0,1)
+	- solve for $\mu$
+	- trim results for $\mu \le 0$ and $\mu \ge 1$
+	- profit!
+
+## Results
+### Topographic stresses
+- Topographic stresses are large, esp. on the SW Beichuan fault
+- Stresses are opposed to fault slip for most fault segments
+- normal stresses are up to ~80 MPa
+
 
