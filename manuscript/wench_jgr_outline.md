@@ -112,3 +112,18 @@
 ## Discussion
  
 
+
+
+
+
+
+
+
+
+* something about residual stresses being low compared to 2kyr accumulated
+tectonic stress *
+
+
+
+## List of figures
+- 
