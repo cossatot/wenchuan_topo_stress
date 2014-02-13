@@ -125,5 +125,13 @@ tectonic stress *
 
 
 
+
+
 ## List of figures
-- 
+1. map of eastern Tibet/ SB
+2. map of rupture zone
+  - fault traces (duh)
+  - velocities?
+  - rupture kinematics/ surface rupture offsets?
+  - anything else of relevance?
+3. 
