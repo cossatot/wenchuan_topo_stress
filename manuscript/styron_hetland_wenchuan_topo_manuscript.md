@@ -104,4 +104,7 @@ Beichuan thrust, where elevations >4 km drop to ~1200 m in as little as 6
 km map distance (Figure 2).
 
 Strain accumulation along the Longmen Shan faults is very slow; before the
-earthquake, some workers had assumed that the fault was inactive [refs]. 
+earthquake, some workers had assumed that the fault was inactive [refs], though
+GPS geodesy in the region indicated 4 ± 2 mm a${-1}$ of contraction across the
+eastern Tibetan margin. Densmore et al [2007] performed an extensive 
+neotectonic investigation of the Longmen Shan faults, and showed that 
