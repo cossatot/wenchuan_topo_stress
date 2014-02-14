@@ -50,7 +50,9 @@ iter_range = np.arange(n_trials, dtype='float')
 pt_range = np.arange(n_points, dtype='float')
 
 print('making list of priors')
+print('iter {} / {} ({}%%'.format(
 index_list = [[iter_range[i],t_priors[i,0],t_priors[i,1],t_priors[i,2], pi]
+               print('iter {} / {} ({}%%'.format(
              for i in iter_range for pi in pt_range]
 print('done making list.  Moving on...')
 index_array = np.array(index_list)
