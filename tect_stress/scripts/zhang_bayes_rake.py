@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
 import stress_comps_vectorized as scv
+import halfspace.projections as hsp
 import time
 
 print('getting started')
@@ -8,6 +9,9 @@ out_name = '../results/zhang_l{}_tect_posteriors.csv'
 
 t0 = time.time()
 lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
+
+lms.rake_deg = hsp.get_rake_from_shear_components(strike_shear=lms.slp_strk_m,
+                                                  dip_shear=lms.slp_ddip_m)
 np.random.seed(69)
 
 # some inital constants
@@ -108,8 +112,8 @@ search_df['tau_d'] = scv.dip_shear(strike = search_df.strike,
                                    txx=search_df.txx, tyy=search_df.tyy,
                                    txy=search_df.txy, depth=search_df.depth)
 
-search_df['tau_rake'] = np.degrees( np.arctan2( search_df.tau_d, 
-                                                search_df.tau_s) )
+search_df['tau_rake'] = hsp.get_rake_from_shear_components(strike_shear=tau_s,
+                                                           dip_shear=tau_d)
 
 search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
                                                           search_df.slip_rake,

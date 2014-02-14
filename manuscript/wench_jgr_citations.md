@@ -10,3 +10,4 @@ McTigue and Mei 1981
 Savage and Swolfs 1986
 Liu and Zoback 1992
 Zhang et al 2010 AREPS
+Zhang et al. 2004
