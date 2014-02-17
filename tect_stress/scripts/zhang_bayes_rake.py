@@ -5,7 +5,7 @@ import halfspace.projections as hsp
 import time
 
 print('getting started')
-out_name = '../results/zhang_l{}_tect_posteriors.csv'
+out_name = '../results/zhang_tect_posteriors.csv'
 
 t0 = time.time()
 lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
@@ -50,9 +50,7 @@ iter_range = np.arange(n_trials, dtype='float')
 pt_range = np.arange(n_points, dtype='float')
 
 print('making list of priors')
-print('iter {} / {} ({}%%'.format(
 index_list = [[iter_range[i],t_priors[i,0],t_priors[i,1],t_priors[i,2], pi]
-               print('iter {} / {} ({}%%'.format(
              for i in iter_range for pi in pt_range]
 print('done making list.  Moving on...')
 index_array = np.array(index_list)
@@ -114,8 +112,10 @@ search_df['tau_d'] = scv.dip_shear(strike = search_df.strike,
                                    txx=search_df.txx, tyy=search_df.tyy,
                                    txy=search_df.txy, depth=search_df.depth)
 
-search_df['tau_rake'] = hsp.get_rake_from_shear_components(strike_shear=tau_s,
-                                                           dip_shear=tau_d)
+search_df['tau_rake'] = hsp.get_rake_from_shear_components(strike_shear=
+                                                               search_df.tau_s,
+                                                           dip_shear=
+                                                               search_df.tau_d)
 
 search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
                                                           search_df.slip_rake,
@@ -128,7 +128,6 @@ sum_slip = lms.slp_am_m.sum()
 rake_err = np.cos( np.pi/9. )
 
 search_df['weighted_diff'] = search_df.rake_misfit_rad * search_df.slip_m
-search_df['w_diff_sq'] = search_df.rake_misfit_rad**2 * search_df.slip_m
 
 
 print('doing groupby')
@@ -141,55 +140,36 @@ kappa = 4.4272213610680531
 #calculated from sigma_rake^2 = 1 - (I_1(kappa) / (I_0(kapp)))
 
 fish_l1 = iters.weighted_diff.sum() / sum_slip
-fish_l2 = iters.w_diff_sq.sum() / sum_slip
 
-fish_l1_like = np.exp(kappa * np.cos(fish_l1) )
-fish_l2_like = np.exp(kappa * np.cos(fish_l2) )
-
-fish_l1n_like = fish_l1_like / fish_l1_like.max()
-fish_l2n_like = fish_l2_like / fish_l2_like.max()
+fish_like = np.exp(kappa * np.cos(fish_l1) )
+fish_like = fish_l1_like / fish_l1_like.max()
 
 # filter by likelihood
 rand_filter = np.random.random(n_trials)
 
-fishtrap_l1 = fish_l1n_like[fish_l1n_like >= rand_filter]
-fishtrap_l2 = fish_l2n_like[fish_l2n_like >= rand_filter]
-
+fishtrap = fish_like[fish_like >= rand_filter]
 
 iters_txx = iters.txx.mean()
 iters_tyy = iters.tyy.mean()
 iters_txy = iters.txy.mean()
 
-txx_l1_keep = iters_txx[fishtrap_l1.index]
-txy_l1_keep = iters_txy[fishtrap_l1.index]
-tyy_l1_keep = iters_tyy[fishtrap_l1.index]
-
-txx_l2_keep = iters_txx[fishtrap_l2.index]
-txy_l2_keep = iters_txy[fishtrap_l2.index]
-tyy_l2_keep = iters_tyy[fishtrap_l2.index]
+txx_keep = iters_txx[fishtrap.index]
+txy_keep = iters_txy[fishtrap.index]
+tyy_keep = iters_tyy[fishtrap.index]
 
 
 # done! now save files.
-l1_tect_posteriors = pd.concat([txx_l1_keep, tyy_l1_keep, txy_l1_keep], axis=1,
-                           names=['txx', 'tyy', 'txy'])
-
-l2_tect_posteriors = pd.concat([txx_l2_keep, tyy_l2_keep, txy_l2_keep], axis=1,
-                           names=['txx', 'tyy', 'txy'])
+tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1,
+                            names=['txx', 'tyy', 'txy'])
 
 
 print('Done!  saving posteriors')
-l1_tect_posteriors.to_csv(out_name.format(1), index=False)
-l2_tect_posteriors.to_csv(out_name.format(2), index=False)
+tect_posteriors.to_csv(out_name, index=False)
 
 t1 = time.time()
 t_done = t1 - t0
-print('{} l1 models out of {} ({:.2f} percent)'.format(len(txx_l1_keep),
-                                                        n_trials,
-                                                        float(len(txx_l1_keep)
+print('{} models out of {} ({:.2f} percent)'.format(len(txx_keep),n_trials,
+                                                        float(len(txx_keep)
                                                          / n_trials) * 100) )
 
-print('{} l2 models out of {} ({:.2f} percent)'.format(len(txx_l2_keep),
-                                                        n_trials,
-                                                        float(len(txx_l2_keep)
-                                                         / n_trials) * 100) )
 print(t_done)
