@@ -44,7 +44,7 @@ del index_list
 
 iter_index = np.int_(index_array[:,0].copy() )
 pt_index = np.int_(index_array[:,5].copy() )
-mu_lamb_prior_array = index_array[:,1]
+lamb_prior_array = index_array[:,1]
 t_prior_array = index_array[:,2:5]
 del index_array
 
@@ -113,17 +113,15 @@ search_df['weighted_tau_misfit']=search_df.tau_mag *search_df.slip_m /mean_slip
 
 iters = search_df.groupby('iter')
 
-mu_iter = iters.weighted_tau_mag.mean() / iters.sig_n_eff.mean()
+mu_iter = iters.weighted_tau_misfit.mean() / iters.sig_n_eff.mean()
 mu_real = mu_iter[(0 <= mu_iter) & (mu_iter <= 1)]
 
 lamb_iters = iters.lamb.mean()
 lamb_keep = lamb_iters[mu_real.index]
 
-
 txx_keep = iters.txx.mean()[mu_real.index]
-tyy_keep = iters.tyy[mu_real.index]
-txy_keep = iters.txy[mu_real.index]
-
+tyy_keep = iters.tyy.mean()[mu_real.index]
+txy_keep = iters.txy.mean()[mu_real.index]
 
 fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, lamb_keep],
                             names = ['txx','tyy','txy','mu','lamb'])

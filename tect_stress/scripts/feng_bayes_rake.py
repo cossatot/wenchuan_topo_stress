@@ -131,7 +131,7 @@ search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
 
 #search_df.to_csv('zhang_rake_search_df.csv', index=False)
 
-sum_slip = lms.slp_am_m.sum()
+sum_slip = lms.slip_m.sum()
 rake_err = np.cos( np.pi/9. )
 
 search_df['weighted_diff'] = search_df.rake_misfit_rad * search_df.slip_m

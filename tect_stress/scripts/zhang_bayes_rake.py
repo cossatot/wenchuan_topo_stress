@@ -142,7 +142,7 @@ kappa = 4.4272213610680531
 fish_l1 = iters.weighted_diff.sum() / sum_slip
 
 fish_like = np.exp(kappa * np.cos(fish_l1) )
-fish_like = fish_l1_like / fish_l1_like.max()
+fish_like /= fish_like.max()
 
 # filter by likelihood
 rand_filter = np.random.random(n_trials)
