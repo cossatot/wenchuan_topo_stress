@@ -31,7 +31,7 @@ lamb_priors = np.random.random(n_trials)
 
 # make dataframe
 search_df_cols = ['iter', 'txx', 'tyy', 'txy', 'mu', 'lamb', 'pt_index', 
-                  'depth', 'strike', 'dip', 'slip_m', 'slip_rake']
+                  'depth', 'strike', 'dip', 'slip_m']
 
 iter_range = np.arange(n_trials, dtype='float')
 pt_range = np.arange(n_points, dtype='float')
@@ -67,10 +67,10 @@ search_df['myy'] = 0.
 search_df['myz'] = 0.
 search_df['mzz'] = 0.
 
-lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m', 'slip_rake',
+lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m',
                  'mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']
 
-lms_copy_cols = ['depth', 'strike','dip','slip_m', 'slip_rake',
+lms_copy_cols = ['depth', 'strike','dip','slip_m',
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
@@ -112,7 +112,8 @@ search_df['sig_n_eff'] = scv.eff_normal_stress( strike=search_df.strike,
 search_df['tau_mag'] = np.sqrt(search_df.tau_s**2 + search_df.tau_d**2)
 
 # calculate weighted misfits, start filtering
-mean_slip = lms.slp_am_m.mean()
+mean_slip = lms.slip:w
+_m.mean()
 
 search_df['weighted_tau_misfit']=search_df.tau_mag *search_df.slip_m /mean_slip
 
@@ -120,7 +121,7 @@ print('doing groupby')
 iters = search_df.groupby('iter')
 
 print('filtering mu')
-mu_iter = iters.weighted_tau_mag.mean() / iters.sig_n_eff.mean()
+mu_iter = iters.weighted_tau_misfit.mean() / iters.sig_n_eff.mean()
 mu_real = mu_iter[(0 <= mu_iter) & (mu_iter <= 1)]
 
 lamb_iters = iters.lamb.mean()

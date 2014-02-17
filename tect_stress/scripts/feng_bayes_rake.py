@@ -143,8 +143,7 @@ del search_df
 
 # now define misfit function and calculate likelihood
 print('calculating likelihoods')
-kappa = 4.4272213610680531 
-#calculated from sigma_rake^2 = 1 - (I_1(kappa) / (I_0(kapp)))
+kappa = 8.529 #calculated so that 68.2% of von mises is within pi/9 of mean
 
 fish_l1 = iters.weighted_diff.sum() / sum_slip
 
