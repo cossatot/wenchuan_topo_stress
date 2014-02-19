@@ -48,7 +48,9 @@ accumulated tectonic stresses. This allows us to use the Mohr-Coulomb failure
 criterion to bracket the tectonic stress field, pore fluid pressure, and
 friction on the fault at failure.
 
-## Previous work on topographic stresses
+*Need more here*
+
+### Previous work on topographic stresses
 Aspects of the topographic stresses and their relevance to tectonics have been
 studied for some time. Jeffreys [1924] noted that the presence of high
 mountains is evidence that the Earth's crust can support significant
@@ -87,7 +89,20 @@ component) stress tensor field from arbitrary topography based on elastic
 halfspace techniques, where previous solutions were limited to two dimensions
 and required topography to be mathematically-defined (e.g., sinusoidal).
 
-## The 2008 Wenchuan, China earthquake
+*Luttrell?
+comparison: 
+- we do not incorporate Moho topography (deep, small compared to change at 
+  Andean plate boundary
+- Topographic calculations are similar, though we do Cerruti correction
+- We solve for tectonic stress diffferently: we explicitly calculate whole
+  stress tensor at each point (M + L + T) and use rake as constraint on
+  allowable stresses.  We also use a Bayesian search instead of a minimization,
+  yielding a PDF of the stress results.  We consider T1, T3, and rake instead
+  of just T1 and rake.
+- We use both normal and shear stresses to constrain pore fluid pressure
+  and friction.
+
+### The 2008 Wenchuan, China earthquake
 The 2008 *M*7.9 Wenchuan, China earthquake is one of the most devastating
 earthquakes in recent history. It is also extremely well-studied, and as such
 only relevant information will be summarized here. For an in-depth review and
@@ -105,6 +120,57 @@ km map distance (Figure 2).
 
 Strain accumulation along the Longmen Shan faults is very slow; before the
 earthquake, some workers had assumed that the fault was inactive [refs], though
-GPS geodesy in the region indicated 4 ± 2 mm a${-1}$ of contraction across the
-eastern Tibetan margin. Densmore et al [2007] performed an extensive 
-neotectonic investigation of the Longmen Shan faults, and showed that 
+GPS geodesy in the region indicated 4 ± 2 mm a$^{-1}$ of contraction across the
+eastern Tibetan margin [Zhang et al., 2004]. Densmore et al [2007] performed an
+extensive neotectonic investigation of the Longmen Shan faults, and showed that
+...
+
+
+## Topographic stresses on the Longmen Shan faults
+*need an intro paragraph*
+
+We calculate the stress tensor field induced by topography throughout eastern
+Tibet using methods based on elastic halfspace techniques developed by Liu and
+Zoback [1992]. They show that the topographic stress tensor field can be
+determined by a convolution of a topographic loading function with Green's
+functions describing the stresses in an elastic halfspace due to a point load
+at the surface (in our notation):
+
+$M(x, y, z) = G(x, y, z) * F(x, y)$
+
+where $M(x,y,z)$ is the topographic stress tensor field, $G(x,y,z)$ is the set
+of Green's functions for the six stress independent stress tensor elements, and 
+$F(x,y)$ is the field of forces on the halfspace surface due to topographic
+loading. Computation of $M$ is performed in two steps: First, the stress field
+from the vertical component of the topographic load is calculated using the
+vertical loading function $F_v(x,y)$ and Green's functions $G^B(x,y,z)$ derived
+from Boussinesq's solutions for stresses in a halfspace due to a vertical point
+load on the halfspace surface
+
+$M^B(x, y, z) = G^B(x,y,z) * F_v(x, y)$,
+
+where $F_v(x,y) = \rho g h(x,y)$ and $h(x,y)$ is the negative elevation at
+point $(x,y)$. Second, a correction is applied for shear and spreading forces
+in the rock above the halfspace and the irregular surface boundary condition
+through a convolution of Green's functions $G^C(x,y,z)$ constructed from Cerruti's
+solutions for a horizontal point source load on the halfspace surface and
+a horizontal loading function $F_{hor}(x,y)$. The horizontal loading function
+is decomposed into two orthogonal components, $F_{hor, \, xz}(x,y)$ and 
+$F_{hor, \, xz}(x,y)$, which are
+
+$F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B + T_{xx} ) \frac{\partial h}{ \partial x}  + (\sigma_{xy}^{B} + T_{xy}) \frac{\partial h}{ \partial y} $
+
+$F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B + T_{yy} ) \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B} + T_{xy}) \frac{\partial h}{ \partial x}$ .
+
+$\sigma_{ij}^B$ is the stress component *ij* from the vertical (Boussinesq)
+load, and $T_{ij}$ is the tectonic stress component *ij*, which is considered
+to be zero for the topographic stress calculation.
+
+which are convolved with the Green's functions
+independently and then summed:
+
+$M^C(x, y, z) = G^C(x,y,z) * F_{hor, xz}(x, y) + G^C(x,y,z) * F_{hor, yz}(x, y)$
+
+The horizontal loading functions 
+ 
+
