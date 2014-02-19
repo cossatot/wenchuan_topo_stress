@@ -10,4 +10,9 @@ McTigue and Mei 1981
 Savage and Swolfs 1986
 Liu and Zoback 1992
 Zhang et al 2010 AREPS
+Clark and Royden, 2000
 Zhang et al. 2004
+Luttrell et al 2011
+[srtm ref]
+[cgiar]
+
