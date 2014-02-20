@@ -70,7 +70,7 @@ search_df['mzz'] = 0.
 lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m',
                  'mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']
 
-lms_copy_cols = ['depth', 'strike','dip','slip_m',
+lms_copy_cols = ['z_center', 'strike','dip','slip_m',
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
@@ -120,7 +120,7 @@ print('doing groupby')
 iters = search_df.groupby('iter')
 
 print('filtering mu')
-mu_iter = iters.weighted_tau_mag.mean() / iters.sig_n_eff.mean()
+mu_iter = iters.weighted_tau_misfit.mean() / iters.sig_n_eff.mean()
 mu_real = mu_iter[(0 <= mu_iter) & (mu_iter <= 1)]
 
 lamb_iters = iters.lamb.mean()
