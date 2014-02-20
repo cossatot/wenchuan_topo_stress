@@ -26,21 +26,21 @@ g = 9.81
 # Priors for tectonic stresses (txx, tyy, txy).
 # These are functions of lithostatic pressure (rho g depth)
 # Priors for each are uniform [-2, 2).
-s1s = np.random.uniform(1,2.5, n_trials)
-s3s = np.random.uniform(0, 1, n_trials) * s1s
-thetas = np.random.uniform(0, 2 * np.pi, n_trials)
+#s1s = np.random.uniform(1,2.5, n_trials)
+#s3s = np.random.uniform(0, 1, n_trials) * s1s
+#thetas = np.random.uniform(0, 2 * np.pi, n_trials)
 
-xxs = scv.xx_stress_from_s1_s3_theta(s1s, s3s, thetas)
-yys = scv.yy_stress_from_s1_s3_theta(s1s, s3s, thetas)
-xys = scv.xy_stress_from_s1_s3_theta(s1s, s3s, thetas)
+#xxs = scv.xx_stress_from_s1_s3_theta(s1s, s3s, thetas)
+#yys = scv.yy_stress_from_s1_s3_theta(s1s, s3s, thetas)
+#xys = scv.xy_stress_from_s1_s3_theta(s1s, s3s, thetas)
 
-del s1s, s3s, thetas
+#del s1s, s3s, thetas
 
-xxs = xxs.reshape([n_trials, 1])
-yys = yys.reshape([n_trials, 1])
-xys = xys.reshape([n_trials, 1])
+#xxs = xxs.reshape([n_trials, 1])
+#yys = yys.reshape([n_trials, 1])
+#xys = xys.reshape([n_trials, 1])
 
-t_priors = np.concatenate((xxs, yys, xys), axis=1)
+#t_priors = np.concatenate((xxs, yys, xys), axis=1)
 
 # Columns for search dataframe
 search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index', 'depth', 'strike',
@@ -48,15 +48,17 @@ search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index', 'depth', 'strike',
 
 
 ## making index list
-iter_range = np.arange(n_trials, dtype='float')
-pt_range = np.arange(n_points, dtype='float')
+#iter_range = np.arange(n_trials, dtype='float')
+#pt_range = np.arange(n_points, dtype='float')
 
-print('making list of priors')
-index_list = [[iter_range[i],t_priors[i,0],t_priors[i,1],t_priors[i,2], pi]
-             for i in iter_range for pi in pt_range]
-print('done making list.  Moving on...')
-index_array = np.array(index_list)
-del index_list
+#print('making list of priors')
+#index_list = [[iter_range[i],t_priors[i,0],t_priors[i,1],t_priors[i,2], pi]
+#             for i in iter_range for pi in pt_range]
+#print('done making list.  Moving on...')
+#index_array = np.array(index_list)
+#del index_list
+index_array = np.load('qi_index_array_1e5.npy')
+print('index_array = {:.2f} MB'.format(index_array.nbytes / 1048576.))
 
 iter_index = np.int_(index_array[:,0].copy() )
 pt_index = np.int_(index_array[:,4].copy() )
@@ -72,6 +74,11 @@ search_df=pd.DataFrame(index=np.arange(len(iter_index)),
 search_df['iter'] = iter_index
 search_df[search_df_cols[1:4]]=prior_array
 search_df['pt_index'] = pt_index
+
+print('deleting iter_index, prior_array, pt_index')
+del iter_index
+del prior_array
+del pt_index
 
 search_df['mxx'] = 0.
 search_df['myy'] = 0.
@@ -91,6 +98,7 @@ lms_copy_cols = ['z_center', 'strike','dip','slip_m', 'slip_rake',
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
+print('tiling lms')
 lms_col_array = lms[lms_copy_cols].values
 lms_reps = np.tile(lms_col_array, [n_trials, 1])
 search_df[lms_fill_cols] = lms_reps
@@ -100,7 +108,6 @@ del lms_reps
 search_df[['mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']] *= 1e6
 
 
-# OK, now let's do some calculationsi
 print('calculating fault stresses')
 search_df['tau_s'] = scv.strike_shear(strike = search_df.strike, 
                                       dip=search_df.dip, rho=rho, g=g,
