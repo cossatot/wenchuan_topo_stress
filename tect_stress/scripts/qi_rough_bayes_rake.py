@@ -1,4 +1,5 @@
-from __future__ import print_function
+#from __future__ import print_function
+import sys
 import numpy as np
 import pandas as pd
 import stress_comps_vectorized as scv
@@ -125,21 +126,12 @@ lms_reps = qi_arrays['qi_r_lms_tile']
 
 print('filling in search_df with lms reps')
 
-ind_size = len(search_df.index)
-chunk_size = int(2e2)
-n_chunks = int(ind_size / chunk_size)
-
-chunk_start = 0
-chunk_stop = chunk_size
-
-for i in range( n_chunks):
-    lms_data = lms_reps[chunk_start:chunk_stop, :]
-    print('iter {} / {} ({:.2f} percent)'.format(i, n_chunks, (i / n_chunks)))#,
-          #end='\r')
-    search_df.loc[chunk_start:chunk_stop-1, lms_fill_cols] = lms_data
-    del lms_data
-    chunk_start += chunk_size
-    chunk_stop += chunk_size
+for i, col in enumerate(lms_fill_cols):
+    sys.stdout.write('filling in {}\r'.format(col) )
+    sys.stdout.flush()
+    lms_col =  lms_reps[:,i]
+    search_df[col] = lms_col
+    del lms_col
 
 
 print('closing qi_arrays')
