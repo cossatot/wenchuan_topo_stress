@@ -127,7 +127,7 @@ lms_reps = qi_arrays['qi_r_lms_tile']
 print('filling in search_df with lms reps')
 
 for i, col in enumerate(lms_fill_cols):
-    sys.stdout.write('filling in {}\r'.format(col) )
+    sys.stdout.write('filling in {}          \r'.format(col) )
     sys.stdout.flush()
     lms_col =  lms_reps[:,i]
     search_df[col] = lms_col
@@ -162,6 +162,13 @@ search_df['tau_d'] = scv.dip_shear(strike = search_df.strike,
                                    txx=search_df.txx, tyy=search_df.tyy,
                                    txy=search_df.txy, depth=search_df.depth)
 
+print("dropping columns that won't be used more")
+search_df.drop(labels=['mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz', 'depth',
+                       'strike', 'dip'], axis=1, inplace=True)
+
+
+
+
 search_df['tau_rake'] = hsp.get_rake_from_shear_components(strike_shear=
                                                                search_df.tau_s,
                                                            dip_shear=
@@ -177,6 +184,11 @@ rake_err = np.cos( np.pi/9. )
 
 search_df['weighted_diff'] = search_df.rake_misfit_rad * search_df.slip_m
 
+#sdf_store = pd.HDFStore('/cmld/data7/styron/wenchuan_eq/tect_stress/'
+#                        + 'qi_rough_search_df.h5')
+
+#print('saving search_df to pytables')
+#sdf_store.append('qi_r_search_df', search_df)
 
 print('doing groupby')
 iters = search_df.groupby('iter')
