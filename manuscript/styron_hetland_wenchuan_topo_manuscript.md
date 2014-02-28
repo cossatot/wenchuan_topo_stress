@@ -89,18 +89,16 @@ component) stress tensor field from arbitrary topography based on elastic
 halfspace techniques, where previous solutions were limited to two dimensions
 and required topography to be mathematically-defined (e.g., sinusoidal).
 
-*Luttrell?
-comparison: 
-- we do not incorporate Moho topography (deep, small compared to change at 
-  Andean plate boundary
+*Luttrell?*
+
+comparison:
+
+- we do not incorporate Moho topography (deep, small compared to change at  Andean plate boundary
+
 - Topographic calculations are similar, though we do Cerruti correction
-- We solve for tectonic stress diffferently: we explicitly calculate whole
-  stress tensor at each point (M + L + T) and use rake as constraint on
-  allowable stresses.  We also use a Bayesian search instead of a minimization,
-  yielding a PDF of the stress results.  We consider T1, T3, and rake instead
-  of just T1 and rake.
-- We use both normal and shear stresses to constrain pore fluid pressure
-  and friction.
+
+- We solve for tectonic stress differently: we explicitly calculate whole stress tensor at each point (M + L + T) and use rake as constraint on allowable stresses.  We also use a Bayesian search instead of a minimization, yielding a PDF of the stress results.  We consider T1, T3, and rake instead of just T1 and rake.
+- We use both normal and shear stresses to constrain pore fluid pressure and friction.
 
 ### The 2008 Wenchuan, China earthquake
 The 2008 *M*7.9 Wenchuan, China earthquake is one of the most devastating
@@ -158,9 +156,11 @@ a horizontal loading function $F_{hor}(x,y)$. The horizontal loading function
 is decomposed into two orthogonal components, $F_{hor, \, xz}(x,y)$ and 
 $F_{hor, \, xz}(x,y)$, which are
 
-$F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B + T_{xx} ) \frac{\partial h}{ \partial x}  + (\sigma_{xy}^{B} + T_{xy}) \frac{\partial h}{ \partial y} $
+$F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B + T_{xx} )\,  \frac{\partial h}{ \partial x}  + (\sigma_{xy}^{B} + T_{xy}) \frac{\partial h}{ \partial y} $
 
-$F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B + T_{yy} ) \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B} + T_{xy}) \frac{\partial h}{ \partial x}$ .
+and
+
+$F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B + T_{yy} )\,  \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B} + T_{xy}) \frac{\partial h}{ \partial x}$ .
 
 $\sigma_{ij}^B$ is the stress component *ij* from the vertical (Boussinesq)
 load, and $T_{ij}$ is the tectonic stress component *ij*, which is considered
