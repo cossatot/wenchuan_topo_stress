@@ -127,6 +127,9 @@ extensive neotectonic investigation of the Longmen Shan faults, and showed that
 ## Topographic stresses on the Longmen Shan faults
 *need an intro paragraph*
 
+### Topographic stress tensor field calculations
+
+#### Analytical description
 We calculate the stress tensor field induced by topography throughout eastern
 Tibet using methods based on elastic halfspace techniques developed by Liu and
 Zoback [1992]. They show that the topographic stress tensor field can be
@@ -150,27 +153,97 @@ $M^B(x, y, z) = G^B(x,y,z) * F_v(x, y)$,
 where $F_v(x,y) = \rho g h(x,y)$ and $h(x,y)$ is the negative elevation at
 point $(x,y)$. Second, a correction is applied for shear and spreading forces
 in the rock above the halfspace and the irregular surface boundary condition
-through a convolution of Green's functions $G^C(x,y,z)$ constructed from Cerruti's
-solutions for a horizontal point source load on the halfspace surface and
-a horizontal loading function $F_{hor}(x,y)$. The horizontal loading function
-is decomposed into two orthogonal components, $F_{hor, \, xz}(x,y)$ and 
-$F_{hor, \, xz}(x,y)$, which are
+through a convolution of Green's functions $G^C(x,y,z)$ constructed from
+Cerruti's solutions for a horizontal point source load on the halfspace surface
+and a horizontal loading function $F_{hor}(x,y)$. The horizontal loading
+function is decomposed into two orthogonal components, $F_{hor, \, xz}(x,y)$
+and $F_{hor, \, yz}(x,y)$, which are
 
-$F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B + T_{xx} )\,  \frac{\partial h}{ \partial x}  + (\sigma_{xy}^{B} + T_{xy}) \frac{\partial h}{ \partial y} $
+$F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B(x,y,z=0) + T_{xx} )\,  \frac{\partial h}{ \partial x}  + (\sigma_{xy}^{B}(x,y,z=0) + T_{xy}) \frac{\partial h}{ \partial y} $
 
 and
 
-$F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B + T_{yy} )\,  \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B} + T_{xy}) \frac{\partial h}{ \partial x}$ .
+$F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B(x,y,z=0) + T_{yy} )\,  \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B}(x,y,z=0) + T_{xy}) \frac{\partial h}{ \partial x}$ .
 
 $\sigma_{ij}^B$ is the stress component *ij* from the vertical (Boussinesq)
 load, and $T_{ij}$ is the tectonic stress component *ij*, which is considered
-to be zero for the topographic stress calculation.
-
-which are convolved with the Green's functions
-independently and then summed:
+to be zero for the topographic stress calculation. The horizontal loading
+functions are convolved with the Green's functions independently and then
+summed:
 
 $M^C(x, y, z) = G^C(x,y,z) * F_{hor, xz}(x, y) + G^C(x,y,z) * F_{hor, yz}(x, y)$
 
-The horizontal loading functions 
- 
+The total topographic stress field is then calculated as 
+$M(x,y,z) = M^B(x,y,z) + M^C(x,y,z)$.
 
+#### Numerical implementation
+
+These calculations were implemented in Python (v. 2.7.3) using NumPy (v. 1.7)
+and Pandas (v. 12). We have created an open-source Python package called
+'halfspace' to perform topographic loading calculations in a reasonably
+automated way; it is available at https://github.com/cossatot/halfspace and is
+being expanded to encompass a wide range of elastic stress and strain solutions
+as time permits. All data and scripts for this particular project are available
+at https://github.com/cossatot/wenchuan_topo_stress. 
+
+Topography was taken from the CGIAR-CSI v.3 release of the Shuttle Radar
+Topographic Mission Digital Elevation Model (DEM) at 1 km nominal resolution.
+The DEM was projected from native WGS84 geographic coordinates to UTM zone 48N,
+decreasing the nominal horizontal resolution to 851 m. Green's functions for
+the Boussinesq and Cerruti point-source solutions were calculated in large
+square 2-D arrays at a constant depth (see Table 1 for model parameters).
+A mask was applied to each Green's function array such that values outside the
+kernel radius (i.e. the 'corners' of the array) were zero. Because of
+singularities in the Green's functions at depth $z=0$, we use
+$\sigma^B(x,y,z=851 \, m)$ in construction of the horizontal loading functions.
+Convolutions were performed as multiplications in the time domain, and were
+done separately for each depth.
+
+Parameter	          					Value       Unit
+---------            					------      ----
+horizontal spacing	 				 	851         m
+vertical spacing     				 	1000        m
+minimum depth							851			m (below sea level)
+maximum depth							35851		m (below sea level)
+density ($\rho$)     				 	2700        kg m$^{-3}$
+g                    				 	9.81        m s$^{-2}$
+Green's function kernel radius        	9e5         m
+Lame's param (1)						1			-
+Lame's param (2)						1			-
+
+
+Table: Parameters for numerical calculations of topographic stresses.
+
+### Topographic fault stress calculations
+
+Topographic stresses on the Wenchuan faults are calculated on point sets
+representing the faults taken from coseismic slip models. We use the coseismic
+slip models of Shen et al. [2009], Feng et al. [2010], Qi et al. [2011], Zhang
+et al. [2012], and Fielding et al. [2013], and discard points above 851 m
+below sea level, as this is above the top of our halfspace model. The six
+directional stress tensor component are calculated at each point in the fault
+models through linear interpolation. Because the fault points are completely
+surrounded by the grid nodes at which topographic stresses were calculated and
+those nodes are spaced <1 km apart, the fault points cannot be more than a few
+hundred meters from the nearest grid node, so more sophisticated interpolation
+techniques (e.g., based on splines) are not necessary. We then resolve the 
+topographic fault normal stress $\sigma_n^M$, down-dip shear stress $\tau_d^M$
+and strike-slip shear stress $\tau_s^M$ at each point in the coseismic slip
+models.
+
+## Calculations of tectonic stress, fault friction and pore fluid pressure
+
+Faults fail in earthquakes when the shear stresses on the fault overcome the
+frictional stresses resisting slip on the fault. At the point of failure, the
+shear stress and normal stress are equal, as in the familiar Coulomb failure
+criterion $\tau = \mu \sigma_n (1 - \phi)$ where $\mu$ is the coefficient
+of static friction on the fault and $\phi$ is the fluid pressure (in terms of
+the normal stress on the fault).
+
+Quantifying the stress, friction and pore fluid pressure involved in faulting
+is a major challenge in fault mechanics, and advances in this quantification
+may facilitate significant breakthroughs in a wide range of problems in tectonics
+and seismology, from orogenic dynamics through the earthquake cycle. Previous
+workers have demonstrated that by quantifying topographic stress, other
+components in the Coulomb stress balance may be bracketed [e.g., Cattin et
+al.,1997; Lamb, 2006; Lutrell et al., 2011]. Alt

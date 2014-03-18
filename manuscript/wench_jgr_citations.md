@@ -15,4 +15,7 @@ Zhang et al. 2004
 Luttrell et al 2011
 [srtm ref]
 [cgiar]
+zhang et al., 2012
+cattin et al 1997
+lamb 2006
 
