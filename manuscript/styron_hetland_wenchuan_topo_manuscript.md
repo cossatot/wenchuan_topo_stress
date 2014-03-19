@@ -130,6 +130,7 @@ extensive neotectonic investigation of the Longmen Shan faults, and showed that
 ### Topographic stress tensor field calculations
 
 #### Analytical description
+
 We calculate the stress tensor field induced by topography throughout eastern
 Tibet using methods based on elastic halfspace techniques developed by Liu and
 Zoback [1992]. They show that the topographic stress tensor field can be
@@ -137,18 +138,20 @@ determined by a convolution of a topographic loading function with Green's
 functions describing the stresses in an elastic halfspace due to a point load
 at the surface (in our notation):
 
-$M(x, y, z) = G(x, y, z) * F(x, y)$
+$$M(x, y, z) = G(x, y, z) * F(x, y)$$
 
 where $M(x,y,z)$ is the topographic stress tensor field, $G(x,y,z)$ is the set
-of Green's functions for the six stress independent stress tensor elements, and 
+of Green's functions for the six stress independent stress tensor elements, and
 $F(x,y)$ is the field of forces on the halfspace surface due to topographic
-loading. Computation of $M$ is performed in two steps: First, the stress field
+loading. In our notation and calculations, $x$ is east-west (positive is east),
+$y$ is north-south (positive is north), and $z$ is up-down (positive is
+down). Computation of $M$ is performed in two steps: First, the stress field
 from the vertical component of the topographic load is calculated using the
 vertical loading function $F_v(x,y)$ and Green's functions $G^B(x,y,z)$ derived
 from Boussinesq's solutions for stresses in a halfspace due to a vertical point
 load on the halfspace surface
 
-$M^B(x, y, z) = G^B(x,y,z) * F_v(x, y)$,
+$$M^B(x, y, z) = G^B(x,y,z) * F_v(x, y) \; ,$$
 
 where $F_v(x,y) = \rho g h(x,y)$ and $h(x,y)$ is the negative elevation at
 point $(x,y)$. Second, a correction is applied for shear and spreading forces
@@ -159,24 +162,32 @@ and a horizontal loading function $F_{hor}(x,y)$. The horizontal loading
 function is decomposed into two orthogonal components, $F_{hor, \, xz}(x,y)$
 and $F_{hor, \, yz}(x,y)$, which are
 
-$F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B(x,y,z=0) + T_{xx} )\,  \frac{\partial h}{ \partial x}  + (\sigma_{xy}^{B}(x,y,z=0) + T_{xy}) \frac{\partial h}{ \partial y} $
+\begin{equation}
+F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B(x,y,z) + T_{xx} )\,  \frac{\partial h}{ \partial x}  + (\sigma_{xy}^{B}(x,y,z) + T_{xy}) \frac{\partial h}{ \partial y}
+\label{eqn:f_hor_xz}
+\end{equation}
 
 and
 
-$F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B(x,y,z=0) + T_{yy} )\,  \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B}(x,y,z=0) + T_{xy}) \frac{\partial h}{ \partial x}$ .
+\begin{equation}
+F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B(x,y,z) + T_{yy} )\,  \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B}(x,y,z) + T_{xy}) \frac{\partial h}{ \partial x}\; . 
+\label{eq:f_hor_yz}
+\end{equation}
 
 $\sigma_{ij}^B$ is the stress component *ij* from the vertical (Boussinesq)
-load, and $T_{ij}$ is the tectonic stress component *ij*, which is considered
+load evaluated at $z=0$, and $T_{ij}$ is the tectonic stress component *ij*, which is considered
 to be zero for the topographic stress calculation. The horizontal loading
 functions are convolved with the Green's functions independently and then
 summed:
 
-$M^C(x, y, z) = G^C(x,y,z) * F_{hor, xz}(x, y) + G^C(x,y,z) * F_{hor, yz}(x, y)$
+$$M^C(x, y, z) = G^C(x,y,z) * F_{hor, xz}(x, y) + G^C(x,y,z) * F_{hor, yz}(x, y)$$
 
 The total topographic stress field is then calculated as 
-$M(x,y,z) = M^B(x,y,z) + M^C(x,y,z)$.
+
+$$M(x,y,z) = M^B(x,y,z) + M^C(x,y,z) \; .$$
 
 #### Numerical implementation
+
 
 These calculations were implemented in Python (v. 2.7.3) using NumPy (v. 1.7)
 and Pandas (v. 12). We have created an open-source Python package called
@@ -194,10 +205,10 @@ the Boussinesq and Cerruti point-source solutions were calculated in large
 square 2-D arrays at a constant depth (see Table 1 for model parameters).
 A mask was applied to each Green's function array such that values outside the
 kernel radius (i.e. the 'corners' of the array) were zero. Because of
-singularities in the Green's functions at depth $z=0$, we use
-$\sigma^B(x,y,z=851 \, m)$ in construction of the horizontal loading functions.
-Convolutions were performed as multiplications in the time domain, and were
-done separately for each depth.
+singularities in the Green's functions at depth $z=0$, we use $\sigma^B(x,y,z)$
+with $z=851 \, m)$, the shallowest level of our calculations, in construction
+of the horizontal loading functions in Equations~\ref{{eqn:f_hor_xz}. Convolutions were performed as
+multiplications in the time domain, and were done separately for each depth.
 
 Parameter	          					Value       Unit
 ---------            					------      ----
@@ -242,8 +253,24 @@ the normal stress on the fault).
 
 Quantifying the stress, friction and pore fluid pressure involved in faulting
 is a major challenge in fault mechanics, and advances in this quantification
-may facilitate significant breakthroughs in a wide range of problems in tectonics
-and seismology, from orogenic dynamics through the earthquake cycle. Previous
-workers have demonstrated that by quantifying topographic stress, other
-components in the Coulomb stress balance may be bracketed [e.g., Cattin et
-al.,1997; Lamb, 2006; Lutrell et al., 2011]. Alt
+may facilitate significant breakthroughs in a wide range of problems in
+tectonics and seismology, from orogenic dynamics through the earthquake cycle.
+Previous workers have demonstrated that by quantifying topographic stress,
+other components in the Coulomb stress balance may be bracketed [e.g., Cattin
+et al.,1997; Lamb, 2006; Luttrell et al., 2011]. Each of these studies uses
+somewhat different approaches and scales; ours are most similar to those of
+Luttrell [2011], although unlike that study, we consider lithostatic and fluid
+pressure, fault friction, and normal stress in our analysis, and do not
+consider forces acting on the Moho. Additionally, because of the obliquity of
+slip during the Wenchuan earthquake, we consider the full three dimensional
+stress field.
+
+We consider the complete stress tensor $S$ at a point in the crust to be
+$S = M + T + L$, where $M$ is the topographic stress tensor as described above,
+$T$ is the tectonic stress tensor, and $L$ is the lithostatic pressure tensor.
+In our analysis, $M$ is a full stress tensor with independent and non-zero
+values for each element; $L$ has only the principal stresses $L_{xx}$, $L_{yy}$
+and $L_{zz}$, which all equal $\rho g z$ and off-diagonal (shear) stresses are
+zero; and $T$ has only horizontal stresses $T_{xx}$, $T_{yy}$ and $T_{xy}$,
+which are assumed to increase linearly with depth so that the entire upper
+crust is near the critical failure envelope [e.g., Zoback and Townend].
