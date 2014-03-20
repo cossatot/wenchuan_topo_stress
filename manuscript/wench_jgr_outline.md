@@ -133,4 +133,6 @@ tectonic stress *
   - velocities?
   - rupture kinematics/ surface rupture offsets?
   - anything else of relevance?
-3. 
+3. something, surely!  Schematic maybe?
+4. tectonic stress priors
+5. schematic/ workflow for bayesian/mu rake inversion

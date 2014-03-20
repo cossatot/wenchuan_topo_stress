@@ -249,8 +249,7 @@ Faults fail in earthquakes when the shear stresses on the fault overcome the
 frictional stresses resisting slip on the fault. At the point of failure, the
 shear stress and normal stress are equal, as in the familiar Coulomb failure
 criterion $\tau = \mu \sigma_n (1 - \phi)$ where $\mu$ is the coefficient
-of static friction on the fault and $\phi$ is the fluid pressure (in terms of
-the normal stress on the fault).
+of static friction on the fault and $\phi$ is the fluid pressure.
 
 Quantifying the stress, friction and pore fluid pressure involved in faulting
 is a major challenge in studies of faulting and orogenic dynamics [e.g. refs].
@@ -258,13 +257,20 @@ Previous workers have demonstrated that by quantifying topographic stress,
 other components in the Coulomb stress balance may be bracketed [e.g., Cattin
 et al.,1997; Lamb, 2006; Luttrell et al., 2011]. Each of these studies uses
 somewhat different approaches and scales; ours are most similar to those of
-Luttrell [2011], although there are significant differences, as discussed
-below.
+Luttrell [2011], although there are significant differences[, as discussed
+below].
 
-We estimate the tectonic stresses, fault friction and pore fluid pressure on
-the Wenchuan faults at the time of fault failure through a Bayesian inversion
+We estimate the tectonic stresses $T$, fault friction $\mu$ and pore fluid
+pressure $\phi$ on the Wenchuan faults at the time of fault failure through
+a Bayesian inversion to estimate tectonic stresses consistent with published
+coseismic slip models, and then a second analysis [need a better description]
+to estimate fault friction and pore fluid pressures consistent with the
+posterior stresses. Our methods yield joint probability distributions for the
+parameters we estimate, illustrating both the likelihood of values for each
+parameter and the tradeoffs between them. 
 
 
+### Description of the stress state
 
 We consider the complete stress tensor $S$ at a point in the crust to be
 $S = M + T + L$, where $M$ is the topographic stress tensor as described above,
@@ -275,6 +281,51 @@ and $L_{zz}$, which all equal $\rho g z$ and off-diagonal (shear) stresses are
 zero; and $T$ has only horizontal stresses $T_{xx}$, $T_{yy}$ and $T_{xy}$,
 which are assumed to increase linearly with depth so that the entire upper
 crust is near the critical failure envelope [e.g., Zoback and Townend], and
-are therefore parameterized as functions of depth.
+are therefore parameterized as scalars multiplied by lithostatic pressure. 
+
+Therefore, the full stress tensor at a point is
+\begin{equation}
+S = \begin{pmatrix}
+    M_{xx} + T_{xx} + L{xx} & M_{xy} + T_{xy}  &   M_{xz}  \\
+	M_{xy} + T_{xy}  &   M_{yy} + T_{yy} + L{yy} & M_{yz}  \\
+	M_{xz}          &   M_{yz}              M_{zz} + T_{yy} + L{yy}
+	\end{pmatrix} \; .
+\label{eqn:stress_tensor}
+\end{equation}
+
+$\phi$ is considered to be a scalar between zero and one that expresses pore
+fluid pressure as a fraction of total pressure (the mean of the eigenvalues
+of $S$) at each point on the fault. $\mu$ is the coefficient of static friction
+and is considered constant along the fault.
 
 
+### Bayesian inversion of tectonic stresses
+
+We invert topographic stresses and coseismic slip models for tectonics stresses 
+through a Bayesian process in which we do stuff.
+
+We choose priors for the magnitudes and orientation of the maximum and minimum
+principal tectonic stresses. The maximum principal stress is sampled from a
+uniform distribution between [?] $\rho g z$ and 2.5 $\rho g z$. The minumum
+principal stress is sampled from a uniform distribution between 0 and the value
+for maximum stress. Because the Wenchuan event was an oblique reverse faulting
+earthquake, both the maximum and minimum (horizontal) stress directions have to
+be positive as they are greater than the vertical stress. The stress
+orientations are taken as the azimuth of maximum tectonic stress and are sampled
+uniformly from 0 to 360$^{circ}$. The minimum tectonic stress direction is
+orthogonal to the maximum.
+
+For each of 100,000 iterations, unique samples for each of the priors are drawn.
+Then, the complete stress tensor $S$ is constructed for each fault point in
+a coseismic slip model. The rake of the maximum shear stress on the fault is
+then calculated, and compared with the coseismic slip rake at each point.
+Finally, the likelihood of each model/iteration is taken as
+
+[likelihood function]
+
+where 
+
+[fisher distribution].
+$\kappa$ is taken as 8.529, which is calculated so that 68.2% of the Von Mises
+distribution is within $\pi$/9, the estimated 1$\sigma$ uncertainty of the
+coseismic slip models based on comparisons between them [uuggh sentence].
