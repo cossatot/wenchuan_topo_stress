@@ -207,8 +207,9 @@ A mask was applied to each Green's function array such that values outside the
 kernel radius (i.e. the 'corners' of the array) were zero. Because of
 singularities in the Green's functions at depth $z=0$, we use $\sigma^B(x,y,z)$
 with $z=851 \, m)$, the shallowest level of our calculations, in construction
-of the horizontal loading functions in Equations~\ref{{eqn:f_hor_xz}. Convolutions were performed as
-multiplications in the time domain, and were done separately for each depth.
+of the horizontal loading functions in Equations \ref{eqn:f_hor_xz} and
+\ref{eqn:f_hor_yz}. Convolutions were performed as multiplications in the time
+domain, and were done separately for each depth.
 
 Parameter	          					Value       Unit
 ---------            					------      ----
@@ -252,18 +253,18 @@ of static friction on the fault and $\phi$ is the fluid pressure (in terms of
 the normal stress on the fault).
 
 Quantifying the stress, friction and pore fluid pressure involved in faulting
-is a major challenge in fault mechanics, and advances in this quantification
-may facilitate significant breakthroughs in a wide range of problems in
-tectonics and seismology, from orogenic dynamics through the earthquake cycle.
+is a major challenge in studies of faulting and orogenic dynamics [e.g. refs].
 Previous workers have demonstrated that by quantifying topographic stress,
 other components in the Coulomb stress balance may be bracketed [e.g., Cattin
 et al.,1997; Lamb, 2006; Luttrell et al., 2011]. Each of these studies uses
 somewhat different approaches and scales; ours are most similar to those of
-Luttrell [2011], although unlike that study, we consider lithostatic and fluid
-pressure, fault friction, and normal stress in our analysis, and do not
-consider forces acting on the Moho. Additionally, because of the obliquity of
-slip during the Wenchuan earthquake, we consider the full three dimensional
-stress field.
+Luttrell [2011], although there are significant differences, as discussed
+below.
+
+We estimate the tectonic stresses, fault friction and pore fluid pressure on
+the Wenchuan faults at the time of fault failure through a Bayesian inversion
+
+
 
 We consider the complete stress tensor $S$ at a point in the crust to be
 $S = M + T + L$, where $M$ is the topographic stress tensor as described above,
@@ -273,4 +274,7 @@ values for each element; $L$ has only the principal stresses $L_{xx}$, $L_{yy}$
 and $L_{zz}$, which all equal $\rho g z$ and off-diagonal (shear) stresses are
 zero; and $T$ has only horizontal stresses $T_{xx}$, $T_{yy}$ and $T_{xy}$,
 which are assumed to increase linearly with depth so that the entire upper
-crust is near the critical failure envelope [e.g., Zoback and Townend].
+crust is near the critical failure envelope [e.g., Zoback and Townend], and
+are therefore parameterized as functions of depth.
+
+
