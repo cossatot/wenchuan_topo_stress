@@ -1,8 +1,12 @@
+#from __future__ import print_function
+import sys
 import numpy as np
 import pandas as pd
 import stress_comps_vectorized as scv
 import halfspace.projections as hsp
 import time
+import h5py
+
 
 print('getting started')
 out_name = '../results/qi_smooth_tect_posteriors.csv'
@@ -13,6 +17,9 @@ fb = pd.read_csv('../../slip_models/qi/qi_bei_smooth_stress.csv', index_col=0)
 fp = pd.read_csv('../../slip_models/qi/qi_peng_smooth_stress.csv', index_col=0)
 
 lms = pd.concat((fb, fp), axis=0)
+lms['slip_rake'] =hsp.get_rake_from_shear_components(strike_shear=lms.s_slip_m,
+                                                     dip_shear=lms.d_slip_m)
+lms = lms[lms.slip_m>=0.001]
 
 np.random.seed(69)
 
@@ -29,17 +36,17 @@ g = 9.81
 #s1s = np.random.uniform(1,2.5, n_trials)
 #s3s = np.random.uniform(0, 1, n_trials) * s1s
 #thetas = np.random.uniform(0, 2 * np.pi, n_trials)
-
+#
 #xxs = scv.xx_stress_from_s1_s3_theta(s1s, s3s, thetas)
 #yys = scv.yy_stress_from_s1_s3_theta(s1s, s3s, thetas)
 #xys = scv.xy_stress_from_s1_s3_theta(s1s, s3s, thetas)
-
+#
 #del s1s, s3s, thetas
-
+#
 #xxs = xxs.reshape([n_trials, 1])
 #yys = yys.reshape([n_trials, 1])
 #xys = xys.reshape([n_trials, 1])
-
+#
 #t_priors = np.concatenate((xxs, yys, xys), axis=1)
 
 # Columns for search dataframe
@@ -57,14 +64,22 @@ search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index', 'depth', 'strike',
 #print('done making list.  Moving on...')
 #index_array = np.array(index_list)
 #del index_list
-index_array = np.load('qi_index_array_1e5.npy')
-print('index_array = {:.2f} MB'.format(index_array.nbytes / 1048576.))
 
-iter_index = np.int_(index_array[:,0].copy() )
-pt_index = np.int_(index_array[:,4].copy() )
+#print('index_array = {:.2f} MB'.format(index_array.nbytes / 1048576.))
+
+#iter_index = np.int_(index_array[:,0].copy() )
+#pt_index = np.int_(index_array[:,4].copy() )
+#prior_array = index_array[:,1:4]
+#del index_array #save some space
+
+print('loading hdf file and filling arrays')
+
+qi_arrays = h5py.File('qi_MC_arrays.hdf5', 'r')
+index_array = qi_arrays['qi_s_index_array']
+
+iter_index = np.int_(index_array[:,0] )
+pt_index = np.int_(index_array[:,4] )
 prior_array = index_array[:,1:4]
-del index_array #save some space
-
 
 # make dataframe, start filling in
 print('filling in dataframe')
@@ -87,8 +102,8 @@ search_df['mxz'] = 0.
 search_df['myz'] = 0.
 search_df['mzz'] = 0.
 
-lms['slip_rake'] =hsp.get_rake_from_shear_components(strike_shear=lms.s_slip_m,
-                                                     dip_shear=lms.d_slip_m)
+#lms['slip_rake'] =hsp.get_rake_from_shear_components(strike_shear=lms.s_slip_m,
+#                                                     dip_shear=lms.d_slip_m)
 
 
 lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m', 'slip_rake',
@@ -98,12 +113,34 @@ lms_copy_cols = ['z_center', 'strike','dip','slip_m', 'slip_rake',
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
-print('tiling lms')
-lms_col_array = lms[lms_copy_cols].values
-lms_reps = np.tile(lms_col_array, [n_trials, 1])
-search_df[lms_fill_cols] = lms_reps
+#print('tiling lms')
+#lms_col_array = lms[lms_copy_cols].values
+#lms_reps = np.tile(lms_col_array, [n_trials, 1])
+
+#print('reading in lms tiles')
+#lms_reps = qi_arrays['qi_s_lms_tile']
+#qi_arrays.close()
+
+print('loading lms reps')
+lms_reps = qi_arrays['qi_s_lms_tile']
+
+print('filling in search_df with lms reps')
+
+for i, col in enumerate(lms_fill_cols):
+    sys.stdout.write('filling in {}          \r'.format(col) )
+    sys.stdout.flush()
+    lms_col =  lms_reps[:,i]
+    search_df[col] = lms_col
+    del lms_col
+
+
+print('closing qi_arrays')
+qi_arrays.close()
+
+#search_df[lms_fill_cols] = lms_reps
+
 search_df.depth *= 1000
-del lms_reps
+#del lms_reps
 
 search_df[['mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']] *= 1e6
 
@@ -125,6 +162,13 @@ search_df['tau_d'] = scv.dip_shear(strike = search_df.strike,
                                    txx=search_df.txx, tyy=search_df.tyy,
                                    txy=search_df.txy, depth=search_df.depth)
 
+print("dropping columns that won't be used more")
+search_df.drop(labels=['mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz', 'depth',
+                       'strike', 'dip'], axis=1, inplace=True)
+
+
+
+
 search_df['tau_rake'] = hsp.get_rake_from_shear_components(strike_shear=
                                                                search_df.tau_s,
                                                            dip_shear=
@@ -140,6 +184,11 @@ rake_err = np.cos( np.pi/9. )
 
 search_df['weighted_diff'] = search_df.rake_misfit_rad * search_df.slip_m
 
+#sdf_store = pd.HDFStore('/cmld/data7/styron/wenchuan_eq/tect_stress/'
+#                        + 'qi_smooth_search_df.h5')
+
+#print('saving search_df to pytables')
+#sdf_store.append('qi_r_search_df', search_df)
 
 print('doing groupby')
 iters = search_df.groupby('iter')
@@ -174,7 +223,7 @@ tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1,
 
 
 print('Done!  saving posteriors')
-tect_posteriors.to_csv(out_name, index=False)
+tect_posteriors.to_csv(out_name)
 
 t1 = time.time()
 t_done = t1 - t0
