@@ -1,7 +1,3 @@
-repo_dir = '/cmld/data2/styron/fault_elev_stress/'
-import sys
-sys.path.append(repo_dir)
-
 import numpy as np
 import halfspace.load as hs
 import halfspace.sandbox as hbx
@@ -36,8 +32,7 @@ print 'horiz. kernel len', kernel_len
 
 print 'loading and transforming topo...'
 t0 = time.time()
-topo_file = (repo_dir + 'data/asia_clip_utm48_upright.npy')
-#topo_fft_file = repo_dir + 'data/e_asia_utm48_851m_up_fft.npy'
+topo_file = ('../data/asia_clip_utm48_upright.npy')
 topo = np.load(topo_file)
 topo_shape = np.array(topo.shape)
 

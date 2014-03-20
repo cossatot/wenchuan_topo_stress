@@ -1,11 +1,5 @@
-repo_dir = '/cmld/data2/styron/fault_elev_stress/'
-import sys
-sys.path.append(repo_dir)
-
 import numpy as np
 import halfspace.load as hs
-#import halfspace.sandbox as hbx
-#import scipy.fftpack as sf
 import time
 import h5py
 
@@ -48,7 +42,7 @@ b_yy_top = b_db['b_yy_MPa'][:,:,0] * 1e6
 b_shape = b_xx_top.shape
 
 print 'loading and transforming topo...'
-topo_file = (repo_dir + 'data/asia_clip_utm48_upright.npy')
+topo_file = ('../data/asia_clip_utm48_upright.npy')
 topo = np.load(topo_file)
 topo = hs._centered(topo, b_shape) * -1 # topo needs to be negative
 
