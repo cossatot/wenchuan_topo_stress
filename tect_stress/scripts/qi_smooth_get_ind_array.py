@@ -17,7 +17,7 @@ n_trials = 1e5
 np.random.seed(69)
 
 n_points = len(lms.index)
-s1s = np.random.uniform(1,2.5, n_trials)
+s1s = np.random.uniform(0,2.5, n_trials)
 s3s = np.random.uniform(0, 1, n_trials) * s1s
 thetas = np.random.uniform(0, 2 * np.pi, n_trials)
 
