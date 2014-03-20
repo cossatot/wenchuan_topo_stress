@@ -51,8 +51,7 @@
     - variability of rake along strike
     - previous work on stress fields
 
-## Methods
-### Topographic stress calculations
+## Topographic stress calculations
 - Follow Liu and Zoback
 - Statement of notation
 - More coherent derivation (?) 
@@ -70,13 +69,13 @@
 	- Resolved into $\tau_s$, $\tau_d$, $\sigma_n$
 	- Compared to coseismic slip inversions (?)
 
-### Tectonic stress calculations
+## Tectonic stress calculations
 - We can use topographic stresses and the event of fault failure to constrain
   tectonic stresses at time of failure, based on Mohr-Coulomb failure criteria
 - Then can use stress posteriors to solve for acceptable $(\phi, \mu)$
 
 - Assumptions:
-	- At failure, $\tau = \mu \sigma_n^{eff} (1 - \phi)$
+	- At failure, $\tau = \mu \sigma_n (1 - \phi)$
 	- $S = M + T + L - \phi$
     - $T_{i,z} = 0$
 	- $T$ is a linear function of $\rho g z$
