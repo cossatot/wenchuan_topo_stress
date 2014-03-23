@@ -312,20 +312,26 @@ for maximum stress. Because the Wenchuan event was an oblique reverse faulting
 earthquake, both the maximum and minimum (horizontal) stress directions have to
 be positive as they are greater than the vertical stress. The stress
 orientations are taken as the azimuth of maximum tectonic stress and are sampled
-uniformly from 0 to 360$^{circ}$. The minimum tectonic stress direction is
-orthogonal to the maximum.
+uniformly from 0 to 360$^{circ}$.
 
-For each of 100,000 iterations, unique samples for each of the priors are drawn.
-Then, the complete stress tensor $S$ is constructed for each fault point in
-a coseismic slip model. The rake of the maximum shear stress on the fault is
-then calculated, and compared with the coseismic slip rake at each point.
-Finally, the likelihood of each model/iteration is taken as
+For each of 100,000 iterations, unique samples for each of the priors are
+drawn. Then, the complete stress tensor $S$ is constructed for each fault point
+in a coseismic slip model. The rake of the maximum shear stress $\lambda^S$ on
+each point on the fault is then calculated, and compared with the coseismic
+slip rake $\lambda^D$ at that point. Then, a weighted mean misfit is
+determined:
 
-[likelihood function]
+\begin{equation}
+\bar{\lambda}^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) * D_i} {\bar{ D}}\label{eqn:rake_misfit}
+\end{equation}
 
-where 
+Finally, the relative likelihood of each model is taken as 
+\begin{equation}
+p (D | T) = \frac{ \exp ( \kappa \cos \bar{\lambda}^m )} {\exp (\kappa \cos \bar{\lambda}^m_{\min})}
+\label{eqn:rel_likelihood}
+\end{equation}
 
-[fisher distribution].
-$\kappa$ is taken as 8.529, which is calculated so that 68.2% of the Von Mises
+$\kappa$ = 8.529, which is calculated so that 68.2% of the Von Mises
 distribution is within $\pi$/9, the estimated 1$\sigma$ uncertainty of the
-coseismic slip models based on comparisons between them [uuggh sentence].
+coseismic slip models based on comparisons between rakes of high-slip fault
+patches.
