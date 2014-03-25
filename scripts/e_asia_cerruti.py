@@ -85,10 +85,10 @@ for comp in comp_list:
                                        conv_mode = conv_mode) * 1e-6
 
     print 'saving {} data'.format(comp)
-    cf.create_dataset('{}_x_surf_cerruti_MPa'.format(comp), 
+    c_db.create_dataset('{}_x_surf_cerruti_MPa'.format(comp), 
                       data = cerr_x[comp], chunks=True, compression = 'gzip')
 
-    cf.create_dataset('{}_y_surf_cerruti_MPa'.format(comp), 
+    c_db.create_dataset('{}_y_surf_cerruti_MPa'.format(comp), 
                       data = cerr_y[comp], chunks=True, compression = 'gzip')
 
 

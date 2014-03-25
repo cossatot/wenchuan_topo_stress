@@ -38,12 +38,12 @@ topo_shape = np.array(topo.shape)
 
 topo = hs._centered(topo, topo_shape - 2000) * -1 # elevs need to be negative
 topo_shape = np.array(topo.shape)
-#topo_shape = np.array([8458, 9817])
 size = kernel_shape + topo_shape -1
-fsize = 2 **(np.ceil( np.log2( size) ) )
 
-topo_fft = sf.fftn(topo, fsize)
-del topo
+# stuff for different convolution style
+#fsize = 2 **(np.ceil( np.log2( size) ) )
+#topo_fft = sf.fftn(topo, fsize)
+#del topo
 
 t1 = time.time()
 print 'done in', t1 - t0, 's'
@@ -59,8 +59,7 @@ print 'done in', t2 - t1, 's'
 
 d = h5py.File(stress_file)
 b_dict = {}
-comp_list = ['zz', 'xy', 'xz', 'yz'] #'xx', 'yy'] 
-
+comp_list = ['xx', 'yy', 'zz', 'xy', 'xz', 'yz']
 
 for comp in comp_list:
     print 'working on {} stresses'.format(comp)
@@ -68,13 +67,14 @@ for comp in comp_list:
 
     for i, z in enumerate(z_vec):
        b_dict[comp][:,:,i] = hs.do_b_convo( component = comp,  z = z, Fv = Fv,
-                                        load = topo_fft, load_mode = 'fft',
-                                        conv_mode = b_conv_mode, size = size,
+                                        load = topo, load_mode = 'topo',
+                                        conv_mode = b_conv_mode,
                                         kernel_radius = kernel_rad,
                                         kernel_res = study_res)
-
+    
     b_dict[comp] *= 1e-6  # scale results to MPa
     
+    print 'saving {} data'.format(comp)
     d.create_dataset('b_{}_MPa'.format(comp), data = b_dict[comp],
                      chunks = True, compression = 'gzip')
 
