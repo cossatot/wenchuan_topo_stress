@@ -408,11 +408,11 @@ print 'done in', t4-t3, 's'
 
 print 'saving dataframes'
 
-df1 = stress_f_dir + 's1_stress_4km.csv'
-df2 = stress_f_dir + 's2_stress_4km.csv'
-df3 = stress_f_dir + 's3_stress_4km.csv'
-df4 = stress_f_dir + 's4_stress_4km.csv'
-df5 = stress_f_dir + 's5_stress_4km.csv'
+df1 = wench_slip_dir + 's1_stress_4km.csv'
+df2 = wench_slip_dir + 's2_stress_4km.csv'
+df3 = wench_slip_dir + 's3_stress_4km.csv'
+df4 = wench_slip_dir + 's4_stress_4km.csv'
+df5 = wench_slip_dir + 's5_stress_4km.csv'
 
 s1.to_csv(df1)
 s2.to_csv(df2)
