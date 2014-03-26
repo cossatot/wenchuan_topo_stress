@@ -7,7 +7,7 @@
 
 - Topography creates substantial stress fields in high-relief areas
     - Both weight of topography ($\rho g z$) and shear stresses from slope
-    
+ 
 - Topographic stresses may influence fault activity
     - put faults nearer to or farther from failure
     - reorient shear stresses on faults

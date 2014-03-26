@@ -322,7 +322,8 @@ slip rake $\lambda^D$ at that point. Then, a weighted mean misfit is
 determined:
 
 \begin{equation}
-\bar{\lambda}^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) * D_i} {\bar{ D}}\label{eqn:rake_misfit}
+\bar{\lambda}_i^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) D_i} {\bar{ D}}
+\label{eqn:rake_misfit}
 \end{equation}
 
 Finally, the relative likelihood of each model is taken as 
@@ -335,3 +336,5 @@ $\kappa$ = 8.529, which is calculated so that 68.2% of the Von Mises
 distribution is within $\pi$/9, the estimated 1$\sigma$ uncertainty of the
 coseismic slip models based on comparisons between rakes of high-slip fault
 patches.
+
+
