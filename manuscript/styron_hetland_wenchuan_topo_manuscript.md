@@ -3,6 +3,12 @@
 ## Abstract
 
 ## Introduction
+
+> "And He has set up on the earth mountains standing firm, lest it should shake
+> with you"  
+>
+> *The Holy Qur'an*, 15:16
+
 Stress is of fundamental importance to many processes in the earth. During
 deformation, both the isotropic (pressure) and anisotropic (shear) components
 of stress exert control on the deformation state of the earth at any point in
@@ -20,10 +26,11 @@ mountainous regions, the stresses produced by topography are heterogeneous as
 well, and may play a prominent role in local or regional deformation,
 particularly if the region is tectonically active. For example, shear and
 normal stresses on a fault from topographic loading may push a particular fault
-closer to or farther from failure, or reorient the net shear stress direction
-on a fault. These effects may affect the localization or deformational style in
-a region.  Furthermore, heterogeneous topographic stresses on a particular
-fault may affect the way earthquake ruptures propagate across the fault plane.
+closer to or (as suggested by the Qur'an) farther from failure, or reorient the
+net shear stress direction on a fault. These effects may affect the
+localization or deformational style in a region.  Furthermore, heterogeneous
+topographic stresses on a particular fault may affect the way earthquake
+ruptures propagate across the fault plane.
 
 Though topographic stresses may be very heterogeneous, they may also be
 precisely estimated, because topography and material parameters (such as
@@ -175,10 +182,10 @@ F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B(x,y,z) + T_{yy} )\,  \frac
 \end{equation}
 
 $\sigma_{ij}^B$ is the stress component *ij* from the vertical (Boussinesq)
-load evaluated at $z=0$, and $T_{ij}$ is the tectonic stress component *ij*, which is considered
-to be zero for the topographic stress calculation. The horizontal loading
-functions are convolved with the Green's functions independently and then
-summed:
+load evaluated at $z=0$, and $T_{ij}$ is the tectonic stress component *ij*,
+which is considered to be zero for the topographic stress calculation. The
+horizontal loading functions are convolved with the Green's functions
+independently and then summed:
 
 $$M^C(x, y, z) = G^C(x,y,z) * F_{hor, xz}(x, y) + G^C(x,y,z) * F_{hor, yz}(x, y)$$
 
@@ -211,17 +218,17 @@ of the horizontal loading functions in Equations \ref{eqn:f_hor_xz} and
 \ref{eqn:f_hor_yz}. Convolutions were performed as multiplications in the time
 domain, and were done separately for each depth.
 
-Parameter	          					Value       Unit
----------            					------      ----
-horizontal spacing	 				 	851         m
-vertical spacing     				 	1000        m
-minimum depth							851			m (below sea level)
-maximum depth							35851		m (below sea level)
-density ($\rho$)     				 	2700        kg m$^{-3}$
-g                    				 	9.81        m s$^{-2}$
-Green's function kernel radius        	9e5         m
-Lame's param (1)						1			-
-Lame's param (2)						1			-
+Parameter	          				|Value      |Unit
+------------------------------------|-----------|---------------
+horizontal spacing	 			 	|851        |m
+vertical spacing     			 	|1000       |m
+minimum depth						|851		|m (below sea level)
+maximum depth						|35851		|m (below sea level)
+density ($\rho$)     			 	|2700       |kg m$^{-3}$
+g                    			 	|9.81       |m s$^{-2}$
+Green's function kernel radius    	|9e5        |m
+Lame's param (1)					|1			|-
+Lame's param (2)					|1			|-
 
 
 Table: Parameters for numerical calculations of topographic stresses.
@@ -285,11 +292,11 @@ are therefore parameterized as scalars multiplied by lithostatic pressure.
 
 Therefore, the full stress tensor at a point is
 \begin{equation}
-S = \begin{pmatrix}
-    M_{xx} + T_{xx} + L{xx} & M_{xy} + T_{xy}  &   M_{xz}  \\
-	M_{xy} + T_{xy}  &   M_{yy} + T_{yy} + L{yy} & M_{yz}  \\
-	M_{xz}          &   M_{yz}              M_{zz} + T_{yy} + L{yy}
-	\end{pmatrix} \; .
+S = \begin{bmatrix}
+    M_{xx} + T_{xx} + L_{xx} & M_{xy} + T_{xy}  &   M_{xz}  \\
+	M_{xy} + T_{xy}  &   M_{yy} + T_{yy} + L_{yy} & M_{yz}  \\
+	M_{xz}          &   M_{yz}   &   M_{zz} + L_{zz}
+	\end{bmatrix} \; .
 \label{eqn:stress_tensor}
 \end{equation}
 
@@ -332,9 +339,16 @@ p (D | T) = \frac{ \exp ( \kappa \cos \bar{\lambda}^m )} {\exp (\kappa \cos \bar
 \label{eqn:rel_likelihood}
 \end{equation}
 
-$\kappa$ = 8.529, which is calculated so that 68.2% of the Von Mises
-distribution is within $\pi$/9, the estimated 1$\sigma$ uncertainty of the
-coseismic slip models based on comparisons between rakes of high-slip fault
-patches.
+where $\kappa$ = 8.529, which is calculated so that 68.2% of the Von Mises
+distribution is within $\pi$/9 radians (20°), the estimated 1$\sigma$ uncertainty of
+the coseismic slip models based on comparisons between rakes of high-slip fault
+patches. Then, the posterior distribution $p(T | D)$ is estimated *sampled?* by
+comparing each model likelihood to a random number selected from the uniform
+distribution [0, 1).
 
+### Analysis of friction and pore fluid pressure
 
+Once the tectonic stress distributions consistent with the coseismic slip data
+have been determined, we analyze the distributions of $\mu$ and $\phi$ required
+for critical failure conditions on the faults. First, we randomly sample $\phi$
+from the interval [0,1), 
