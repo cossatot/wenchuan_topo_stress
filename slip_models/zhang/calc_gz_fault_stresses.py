@@ -420,6 +420,14 @@ s3.to_csv(df3)
 s4.to_csv(df4)
 s5.to_csv(df5)
 
+lms = pd.concat( [s1, s2, s3, s4, s5], axis=0, ignore_index=True)
+
+lms_slip = pd.read_csv('lms_slip.csv', index_col=0)
+
+lms = pd.concat([lms, lms_slip], axis=1)
+
+lms.to_csv('lms_stress_slip.csv')
+
 t5 = time.time()
 print 'done with everything in', t5-t0,'s'
 
