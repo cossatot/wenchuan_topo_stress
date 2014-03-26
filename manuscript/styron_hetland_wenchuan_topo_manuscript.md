@@ -178,7 +178,7 @@ and
 
 \begin{equation}
 F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B(x,y,z) + T_{yy} )\,  \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B}(x,y,z) + T_{xy}) \frac{\partial h}{ \partial x}\; . 
-\label{eq:f_hor_yz}
+\label{eqn:f_hor_yz}
 \end{equation}
 
 $\sigma_{ij}^B$ is the stress component *ij* from the vertical (Boussinesq)
@@ -218,17 +218,17 @@ of the horizontal loading functions in Equations \ref{eqn:f_hor_xz} and
 \ref{eqn:f_hor_yz}. Convolutions were performed as multiplications in the time
 domain, and were done separately for each depth.
 
-Parameter	          				|Value      |Unit
-------------------------------------|-----------|---------------
-horizontal spacing	 			 	|851        |m
-vertical spacing     			 	|1000       |m
-minimum depth						|851		|m (below sea level)
-maximum depth						|35851		|m (below sea level)
-density ($\rho$)     			 	|2700       |kg m$^{-3}$
-g                    			 	|9.81       |m s$^{-2}$
-Green's function kernel radius    	|9e5        |m
-Lame's param (1)					|1			|-
-Lame's param (2)					|1			|-
+Parameter	          				| Value      | Unit
+------------------------------------|------------|----------------
+horizontal spacing	 			 	| 851        | m
+vertical spacing     			 	| 1000       | m
+minimum depth						| 851		 | m (below sea level)
+maximum depth						| 35851		 | m (below sea level)
+density ($\rho$)     			 	| 2700       | kg m$^{-3}$
+g                    			 	| 9.81       | m s$^{-2}$
+Green's function kernel radius    	| 9e5        | m
+Lame's param (1)					| 1			 | -
+Lame's param (2)					| 1			 | -
 
 
 Table: Parameters for numerical calculations of topographic stresses.
@@ -250,12 +250,21 @@ topographic fault normal stress $\sigma_n^M$, down-dip shear stress $\tau_d^M$
 and strike-slip shear stress $\tau_s^M$ at each point in the coseismic slip
 models.
 
+## Results of topographic stresses on the LMS
+
 ## Calculations of tectonic stress, fault friction and pore fluid pressure
 
 Faults fail in earthquakes when the shear stresses on the fault overcome the
 frictional stresses resisting slip on the fault. At the point of failure, the
 shear stress and normal stress are equal, as in the familiar Coulomb failure
-criterion $\tau = \mu \sigma_n (1 - \phi)$ where $\mu$ is the coefficient
+criterion 
+
+\begin{equation}
+\tau = \mu \sigma_n - \phi
+\label{eqn:coulomb_failure}
+\end{equation}
+
+where $\mu$ is the coefficient
 of static friction on the fault and $\phi$ is the fluid pressure.
 
 Quantifying the stress, friction and pore fluid pressure involved in faulting
@@ -301,7 +310,7 @@ S = \begin{bmatrix}
 \end{equation}
 
 $\phi$ is considered to be a scalar between zero and one that expresses pore
-fluid pressure as a fraction of total pressure (the mean of the eigenvalues
+fluid pressure as a fraction of total pressure (the mean of the main diagonal
 of $S$) at each point on the fault. $\mu$ is the coefficient of static friction
 and is considered constant along the fault.
 
@@ -319,7 +328,7 @@ for maximum stress. Because the Wenchuan event was an oblique reverse faulting
 earthquake, both the maximum and minimum (horizontal) stress directions have to
 be positive as they are greater than the vertical stress. The stress
 orientations are taken as the azimuth of maximum tectonic stress and are sampled
-uniformly from 0 to 360$^{circ}$.
+uniformly from 0 to 360$^{\circ}$.
 
 For each of 100,000 iterations, unique samples for each of the priors are
 drawn. Then, the complete stress tensor $S$ is constructed for each fault point
@@ -340,15 +349,21 @@ p (D | T) = \frac{ \exp ( \kappa \cos \bar{\lambda}^m )} {\exp (\kappa \cos \bar
 \end{equation}
 
 where $\kappa$ = 8.529, which is calculated so that 68.2% of the Von Mises
-distribution is within $\pi$/9 radians (20°), the estimated 1$\sigma$ uncertainty of
-the coseismic slip models based on comparisons between rakes of high-slip fault
-patches. Then, the posterior distribution $p(T | D)$ is estimated *sampled?* by
-comparing each model likelihood to a random number selected from the uniform
-distribution [0, 1).
+distribution is within $\pi$/9 radians (20°), the estimated 1$\sigma$
+uncertainty of the coseismic slip models based on comparisons between rakes of
+high-slip fault patches. Then, the posterior distribution $p(T | D)$ is
+estimated *(sampled?)* by comparing each model likelihood to a random number
+selected from the uniform distribution [0, 1).
 
 ### Analysis of friction and pore fluid pressure
 
 Once the tectonic stress distributions consistent with the coseismic slip data
 have been determined, we analyze the distributions of $\mu$ and $\phi$ required
-for critical failure conditions on the faults. First, we randomly sample $\phi$
-from the interval [0,1), 
+for critical failure conditions on the faults. First, we take each model
+retained in $p(T|D)$, and for each model draw a random $\phi$ from the uniform
+distribution $p(\phi)= [0,1)$. Next, we calculate $\tau^S$ and
+$\sigma_n^S-\phi$ for each point on the fault. Then, we solve Equation
+\ref{eqn:coulomb_failure} for $\mu$. Finally, we filter the results so that
+only models with $0 \ge \tau \ge 1$ are retained.
+
+## T, $\mu$, $\phi$ results 
