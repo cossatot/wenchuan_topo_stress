@@ -12,7 +12,7 @@ t_poster_file = '../results/zhang_tect_posteriors.csv'
 lms = pd.read_csv('../../slip_models/zhang/lms_stress_slip.csv', index_col=0)
 lms.rake_deg = hsp.get_rake_from_shear_components(strike_shear=lms.slp_strk_m,
                                                   dip_shear=lms.slp_ddip_m)
-np.random.seed(69)
+np.random.seed(70)
 
 t_prior_df = pd.read_csv(t_poster_file)
 t_priors = t_prior_df.values

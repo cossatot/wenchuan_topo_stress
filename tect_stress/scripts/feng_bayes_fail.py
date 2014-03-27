@@ -13,8 +13,10 @@ fb = pd.read_csv('../../slip_models/feng/feng_beich.csv', index_col=0)
 fp = pd.read_csv('../../slip_models/feng/feng_peng.csv', index_col=0)
 
 lms = pd.concat((fb, fp), axis=0)
+# calculate net slip at points
+lms['slip_m'] = np.sqrt(lms.dip_m**2 + lms.strike_m**2)
 
-np.random.seed(69)
+np.random.seed(70)
 
 t_prior_df = pd.read_csv(t_poster_file)
 t_priors = t_prior_df.values
@@ -112,8 +114,7 @@ search_df['sig_n_eff'] = scv.eff_normal_stress( strike=search_df.strike,
 search_df['tau_mag'] = np.sqrt(search_df.tau_s**2 + search_df.tau_d**2)
 
 # calculate weighted misfits, start filtering
-mean_slip = lms.slip:w
-_m.mean()
+mean_slip = lms.slip_m.mean()
 
 search_df['weighted_tau_misfit']=search_df.tau_mag *search_df.slip_m /mean_slip
 
