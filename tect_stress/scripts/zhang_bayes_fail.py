@@ -14,7 +14,7 @@ lms.rake_deg = hsp.get_rake_from_shear_components(strike_shear=lms.slp_strk_m,
                                                   dip_shear=lms.slp_ddip_m)
 np.random.seed(70)
 
-t_prior_df = pd.read_csv(t_poster_file)
+t_prior_df = pd.read_csv(t_poster_file, index_col=0)
 t_priors = t_prior_df.values
 del t_prior_df
 
@@ -126,7 +126,7 @@ txy_keep = iters.txy.mean()[mu_real.index]
 fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, lamb_keep],
                             names = ['txx','tyy','txy','mu','lamb'])
 
-fail_posteriors.to_csv(outfile, index=False)
+fail_posteriors.to_csv(outfile, index=True)
 
 t1 = time.time()
 t_done = (t1 - t0) // 60
