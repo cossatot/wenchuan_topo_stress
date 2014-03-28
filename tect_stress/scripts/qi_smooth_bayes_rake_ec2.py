@@ -7,12 +7,12 @@ import time
 
 
 print('getting started')
-out_name = '../results/qi_rough_tect_posteriors.csv'
+out_name = '../results/qi_smooth_tect_posteriors.csv'
 
 t0 = time.time()
 
-fb = pd.read_csv('../../slip_models/qi/qi_bei_rough_stress.csv', index_col=0)
-fp = pd.read_csv('../../slip_models/qi/qi_peng_rough_stress.csv', index_col=0)
+fb = pd.read_csv('../../slip_models/qi/qi_bei_smooth_stress.csv', index_col=0)
+fp = pd.read_csv('../../slip_models/qi/qi_peng_smooth_stress.csv', index_col=0)
 
 lms = pd.concat((fb, fp), axis=0)
 lms['slip_rake'] =hsp.get_rake_from_shear_components(strike_shear=lms.s_slip_m,

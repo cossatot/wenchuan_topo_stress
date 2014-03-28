@@ -16,7 +16,7 @@ np.random.seed(70)
 
 t_prior_df = pd.read_csv(t_poster_file, index_col=0)
 t_priors = t_prior_df.values
-del t_prior_df
+#del t_prior_df
 
 # some initial constants
 n_trials = t_priors.shape[0]
@@ -31,13 +31,14 @@ lamb_priors = np.random.random(n_trials)
 search_df_cols = ['iter', 'txx', 'tyy', 'txy', 'mu', 'lamb', 'pt_index', 
                   'depth', 'strike', 'dip', 'slip_m', 'slip_rake']
 
-iter_range = np.arange(n_trials, dtype='float')
+#iter_range = np.arange(n_trials, dtype='float')
+iter_range = np.float_(t_prior_df.index.values)
 pt_range = np.arange(n_points, dtype='float')
 
 # make list/array of sets of prior values for each fault point
-index_list = [[iter_range[i], lamb_priors[i], t_priors[i,0], 
+index_list = [[iter_ind, lamb_priors[i], t_priors[i,0], 
                t_priors[i,1], t_priors[i,2], pi]
-              for i in iter_range for pi in pt_range]
+               for i, iter_ind in enumerate(iter_range) for pi in pt_range]
 
 index_array = np.array(index_list)
 del index_list
@@ -124,7 +125,7 @@ tyy_keep = iters.tyy.mean()[mu_real.index]
 txy_keep = iters.txy.mean()[mu_real.index]
 
 fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, lamb_keep],
-                            names = ['txx','tyy','txy','mu','lamb'])
+                            names = ['txx','tyy','txy','mu','lamb'], axis=1)
 
 fail_posteriors.to_csv(outfile, index=True)
 
