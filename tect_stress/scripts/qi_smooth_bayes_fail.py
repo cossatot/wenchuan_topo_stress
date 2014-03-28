@@ -14,7 +14,7 @@ qp = pd.read_csv('../../slip_models/qi/qi_peng_smooth_stress.csv', index_col=0)
 
 lms = pd.concat((qb, qp), axis=0)
 
-np.random.seed(69)
+np.random.seed(70)
 
 t_prior_df = pd.read_csv(t_poster_file)
 t_priors = t_prior_df.values

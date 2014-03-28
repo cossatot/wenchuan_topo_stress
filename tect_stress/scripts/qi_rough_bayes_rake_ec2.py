@@ -3,16 +3,21 @@ import pandas as pd
 import stress_comps_vectorized as scv
 import halfspace.projections as hsp
 import time
+import h5py
+
 
 print('getting started')
-out_name = '../results/feng_tect_posteriors.csv'
+out_name = '../results/qi_rough_tect_posteriors.csv'
 
 t0 = time.time()
 
-fb = pd.read_csv('../../slip_models/feng/feng_beich.csv', index_col=0)
-fp = pd.read_csv('../../slip_models/feng/feng_peng.csv', index_col=0)
+fb = pd.read_csv('../../slip_models/qi/qi_bei_rough_stress.csv', index_col=0)
+fp = pd.read_csv('../../slip_models/qi/qi_peng_rough_stress.csv', index_col=0)
 
 lms = pd.concat((fb, fp), axis=0)
+lms['slip_rake'] =hsp.get_rake_from_shear_components(strike_shear=lms.s_slip_m,
+                                                     dip_shear=lms.d_slip_m)
+lms = lms[lms.slip_m>=0.001]
 
 np.random.seed(69)
 
@@ -80,15 +85,14 @@ search_df['mxz'] = 0.
 search_df['myz'] = 0.
 search_df['mzz'] = 0.
 
-lms['slip_m'] = np.sqrt(lms.strike_m**2 + lms.dip_m**2)
-lms['slip_rake'] =hsp.get_rake_from_shear_components(strike_shear=lms.strike_m,
-                                                     dip_shear=lms.dip_m)
+lms['slip_rake'] =hsp.get_rake_from_shear_components(strike_shear=lms.s_slip_m,
+                                                     dip_shear=lms.d_slip_m)
 
 
 lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m', 'slip_rake',
-                       'mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']
+                 'mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']
 
-lms_copy_cols = ['depth', 'strike','dip','slip_m', 'slip_rake',
+lms_copy_cols = ['z_center', 'strike','dip','slip_m', 'slip_rake',
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
@@ -119,6 +123,11 @@ search_df['tau_d'] = scv.dip_shear(strike = search_df.strike,
                                    txx=search_df.txx, tyy=search_df.tyy,
                                    txy=search_df.txy, depth=search_df.depth)
 
+print("dropping columns that won't be used more")
+search_df.drop(labels=['mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz', 'depth',
+                       'strike', 'dip'], axis=1, inplace=True)
+
+
 search_df['tau_rake'] = hsp.get_rake_from_shear_components(strike_shear=
                                                                search_df.tau_s,
                                                            dip_shear=
@@ -129,13 +138,10 @@ search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
                                                           search_df.tau_rake,
                                                           return_abs=True) )
 
-#search_df.to_csv('zhang_rake_search_df.csv', index=False)
-
 sum_slip = lms.slip_m.sum()
 rake_err = np.cos( np.pi/9. )
 
 search_df['weighted_diff'] = search_df.rake_misfit_rad * search_df.slip_m
-
 
 print('doing groupby')
 iters = search_df.groupby('iter')
@@ -170,7 +176,7 @@ tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1,
 
 
 print('Done!  saving posteriors')
-tect_posteriors.to_csv(out_name, index=False)
+tect_posteriors.to_csv(out_name)
 
 t1 = time.time()
 t_done = t1 - t0
@@ -179,3 +185,4 @@ print('{} models out of {} ({:.2f} percent)'.format(len(txx_keep),n_trials,
                                                          / n_trials) * 100) )
 
 print(t_done)
+
