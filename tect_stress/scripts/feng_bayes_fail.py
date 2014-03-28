@@ -18,7 +18,7 @@ lms['slip_m'] = np.sqrt(lms.dip_m**2 + lms.strike_m**2)
 
 np.random.seed(70)
 
-t_prior_df = pd.read_csv(t_poster_file)
+t_prior_df = pd.read_csv(t_poster_file, index_col=0)
 t_priors = t_prior_df.values
 del t_prior_df
 
@@ -138,7 +138,7 @@ fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, lamb_keep],
                             names = ['txx','tyy','txy','mu','lamb'])
 
 print('Done!  saving posteriors')
-fail_posteriors.to_csv(outfile, index=False)
+fail_posteriors.to_csv(outfile, index=True)
 
 t1 = time.time()
 t_done = (t1 - t0) // 60
