@@ -9,7 +9,7 @@ import time
 t0 = time.time()
 print 'setting up and scaling stress arrays...'
 
-stress_f_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
+stress_f_dir = '/Volumes/cmld/data7/styron/wenchuan_eq/wench_output/'
 
 stress_file = stress_f_dir + 'e_asia_topo_stress.h5'
 
@@ -19,7 +19,7 @@ fp = pd.read_csv('field_peng.csv', index_col=0)
 fb['segment'] = 'beichuan'
 fp['segment'] = 'pengguan'
 
-lms = pd.concat([fb, fp], axis=0)
+lms = pd.concat([fb, fp], axis=0, ignore_index=True)
 
 # get coordinate data info (manually input)
 topo_x0 = -1919052.3800296092
@@ -34,13 +34,17 @@ clip_len = 1500
 clip_dist = clip_len * 2
 
 
-lms_xyz = hbx.coord_map_inverse_3d([lms['easting_utm48'], lms['northing_utm48'], lms['depth_km']],
+lms_xyz = hbx.coord_map_inverse_3d([lms['easting_utm48'].values, 
+                                    lms['northing_utm48'].values, 
+                                    lms['depth_km'].values],
                                    x_step = x_res_deg, x_shift = x0_conv,
                                    y_step = y_res_deg, y_shift = y0_conv,
                                    z_step = 1, z_shift = 1.851)
 lms_xyz = np.array(lms_xyz)
 lms_xyz[0:2,:] = lms_xyz[0:2,:] - clip_len
 lms_yxz = np.array([ lms_xyz[1,:], lms_xyz[0,:], lms_xyz[2,:] ])
+
+lms[['strike', 'dip']] = lms[['strike', 'dip']].astype(float)
 
 print 'loading stress arrays'
 fs = h5py.File(stress_file, 'r')
@@ -56,6 +60,7 @@ fs.close()
 
 print 'calculating stresses at points'
 lms_d = {}
+interp_order = 1
 
 for cc in comp_list:
     print 'doing', cc
