@@ -35,11 +35,13 @@ search_df_cols = ['iter', 'txx', 'tyy', 'txy', 'mu', 'lamb', 'pt_index',
 iter_range = np.float_(t_prior_df.index.values)
 pt_range = np.arange(n_points, dtype='float')
 
+print("making index list")
 # make list/array of sets of prior values for each fault point
 index_list = [[iter_ind, lamb_priors[i], t_priors[i,0], 
                t_priors[i,1], t_priors[i,2], pi]
                for i, iter_ind in enumerate(iter_range) for pi in pt_range]
 
+print("making index array")
 index_array = np.array(index_list)
 del index_list
 
@@ -49,6 +51,7 @@ lamb_prior_array = index_array[:,1]
 t_prior_array = index_array[:,2:5]
 del index_array
 
+print("filling in dataframe")
 search_df = pd.DataFrame(index=np.arange(len(iter_index)),
                          columns=search_df_cols, dtype=float)
 
@@ -78,7 +81,7 @@ search_df[lms_fill_cols] = lms_reps
 search_df.depth *= 1000
 search_df[['mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']] *= 1e6
 
-
+print("doing stress calcs")
 # do the stress calculations
 search_df['tau_s'] = scv.strike_shear( strike=search_df.strike,
                                       dip=search_df.dip, rho=rho, g=g,
@@ -107,6 +110,7 @@ search_df['sig_n_eff'] = scv.eff_normal_stress( strike=search_df.strike,
 
 search_df['tau_mag'] = np.sqrt(search_df.tau_s**2 + search_df.tau_d**2)
 
+print("calculating misfits, etc.")
 # calculate weighted misfits, start filtering
 mean_slip = lms.slp_am_m.mean()
 
