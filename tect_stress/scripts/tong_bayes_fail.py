@@ -6,15 +6,10 @@ import time
 
 t0 = time.time()
 
-outfile = '../results/feng_fail_posteriors.csv'
-t_poster_file = '../results/feng_tect_posteriors.csv'
+outfile = '../results/tong_fail_posteriors.csv'
+t_poster_file = '../results/tong_tect_posteriors.csv'
 
-fb = pd.read_csv('../../slip_models/feng/feng_beich.csv', index_col=0)
-fp = pd.read_csv('../../slip_models/feng/feng_peng.csv', index_col=0)
-
-lms = pd.concat((fb, fp), axis=0)
-# calculate net slip at points
-lms['slip_m'] = np.sqrt(lms.dip_m**2 + lms.strike_m**2)
+lms = pd.read_csv('../../slip_models/tong/tong_topo_stress.csv')
 
 np.random.seed(70)
 
@@ -73,7 +68,7 @@ search_df['mzz'] = 0.
 lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m',
                  'mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']
 
-lms_copy_cols = ['depth', 'strike','dip','slip_m',
+lms_copy_cols = ['z', 'strike','dip','net_slip', 
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
@@ -115,7 +110,7 @@ search_df['sig_n_eff'] = scv.eff_normal_stress( strike=search_df.strike,
 search_df['tau_mag'] = np.sqrt(search_df.tau_s**2 + search_df.tau_d**2)
 
 # calculate weighted misfits, start filtering
-mean_slip = lms.slip_m.mean()
+mean_slip = lms.net_slip.mean()
 
 search_df['weighted_tau_misfit']=search_df.tau_mag *search_df.slip_m /mean_slip
 
@@ -136,7 +131,7 @@ txy_keep = iters.txy.mean()[mu_real.index]
 
 
 fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, lamb_keep],
-                            axis=1)
+                            names = ['txx','tyy','txy','mu','lamb'], axis=1)
 
 fail_posteriors.columns = ['txx','tyy','txy','mu','lamb']
 

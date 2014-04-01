@@ -6,15 +6,13 @@ import time
 
 t0 = time.time()
 
-outfile = '../results/feng_fail_posteriors.csv'
-t_poster_file = '../results/feng_tect_posteriors.csv'
+outfile = '../results/shen_fail_posteriors.csv'
+t_poster_file = '../results/shen_tect_posteriors.csv'
 
-fb = pd.read_csv('../../slip_models/feng/feng_beich.csv', index_col=0)
-fp = pd.read_csv('../../slip_models/feng/feng_peng.csv', index_col=0)
+lms = pd.read_csv('../../slip_models/shen/shen_topo_stress.csv')
 
-lms = pd.concat((fb, fp), axis=0)
 # calculate net slip at points
-lms['slip_m'] = np.sqrt(lms.dip_m**2 + lms.strike_m**2)
+lms['slip_m'] = np.sqrt(lms.s_slip_m**2 + lms.d_slip_m**2)
 
 np.random.seed(70)
 
@@ -73,7 +71,7 @@ search_df['mzz'] = 0.
 lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m',
                  'mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']
 
-lms_copy_cols = ['depth', 'strike','dip','slip_m',
+lms_copy_cols = ['depth_km', 'strike','dip','slip_m',
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
@@ -136,10 +134,9 @@ txy_keep = iters.txy.mean()[mu_real.index]
 
 
 fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, lamb_keep],
-                            axis=1)
+                             axis=1)
 
 fail_posteriors.columns = ['txx','tyy','txy','mu','lamb']
-
 print('Done!  saving posteriors')
 fail_posteriors.to_csv(outfile, index=True)
 

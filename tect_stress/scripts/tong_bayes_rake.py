@@ -5,11 +5,11 @@ import halfspace.projections as hsp
 import time
 
 print('getting started')
-out_name = '../results/feng_tect_posteriors.csv'
+out_name = '../results/tong_tect_posteriors.csv'
 
 t0 = time.time()
 
-lms = pd.read_csv('../../slip_models/tong_topo_stress.csv', index_col=0)
+lms = pd.read_csv('../../slip_models/tong/tong_topo_stress.csv', index_col=0)
 
 
 np.random.seed(69)
@@ -129,7 +129,7 @@ search_df['rake_misfit_rad'] = np.radians(scv.angle_difference(
 
 #search_df.to_csv('zhang_rake_search_df.csv', index=False)
 
-sum_slip = lms.slip_m.sum()
+sum_slip = lms.net_slip.sum()
 rake_err = np.cos( np.pi/9. )
 
 search_df['weighted_diff'] = search_df.rake_misfit_rad * search_df.slip_m
@@ -163,12 +163,11 @@ tyy_keep = iters_tyy[fishtrap.index]
 
 
 # done! now save files.
-tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1,
-                            names=['txx', 'tyy', 'txy'])
+tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1)
 
 
 print('Done!  saving posteriors')
-tect_posteriors.to_csv(out_name, index=False)
+tect_posteriors.to_csv(out_name, index=True)
 
 t1 = time.time()
 t_done = t1 - t0

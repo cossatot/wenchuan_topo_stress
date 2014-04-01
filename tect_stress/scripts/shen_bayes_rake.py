@@ -9,7 +9,7 @@ out_name = '../results/shen_tect_posteriors.csv'
 
 t0 = time.time()
 
-lms = pd.read_csv('../../slip_models/shen_topo_stress.csv')
+lms = pd.read_csv('../../slip_models/shen/shen_topo_stress.csv')
 
 np.random.seed(69)
 
@@ -83,7 +83,7 @@ lms['slip_m'] = np.sqrt(lms.s_slip_m**2 + lms.d_slip_m**2)
 lms_fill_cols = ['depth', 'strike', 'dip', 'slip_m', 'slip_rake',
                        'mxx', 'myy', 'mxy', 'mzz', 'mxz', 'myz']
 
-lms_copy_cols = ['depth', 'strike','dip','slip_m', 'slip_rake',
+lms_copy_cols = ['depth_km', 'strike','dip','slip_m', 'slip_rake',
                 'xx_stress', 'yy_stress', 'xy_stress', 'zz_stress',
                 'xz_stress', 'yz_stress']
 
@@ -160,12 +160,10 @@ tyy_keep = iters_tyy[fishtrap.index]
 
 
 # done! now save files.
-tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1,
-                            names=['txx', 'tyy', 'txy'])
-
-
+tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1)
+                           
 print('Done!  saving posteriors')
-tect_posteriors.to_csv(out_name, index=False)
+tect_posteriors.to_csv(out_name, index=True)
 
 t1 = time.time()
 t_done = t1 - t0
