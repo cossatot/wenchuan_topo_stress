@@ -199,10 +199,10 @@ $$M(x,y,z) = M^B(x,y,z) + M^C(x,y,z) \; .$$
 These calculations were implemented in Python (v. 2.7.3) using NumPy (v. 1.7)
 and Pandas (v. 12). We have created an open-source Python package called
 'halfspace' to perform topographic loading calculations in a reasonably
-automated way; it is available at https://github.com/cossatot/halfspace and is
-being expanded to encompass a wide range of elastic stress and strain solutions
-as time permits. All data and scripts for this particular project are available
-at https://github.com/cossatot/wenchuan_topo_stress. 
+automated way; it is available at \url{https://github.com/cossatot/halfspace}
+and is being expanded to encompass a wide range of elastic stress and strain
+solutions as time permits. All data and scripts for this particular project are
+available at \url{https://github.com/cossatot/wenchuan_topo_stress}. 
 
 Topography was taken from the CGIAR-CSI v.3 release of the Shuttle Radar
 Topographic Mission Digital Elevation Model (DEM) at 1 km nominal resolution.
@@ -394,14 +394,14 @@ All slip models show $p(\phi | D)$ to be uniformly high from $\phi$ = 0 to
 0.4--0.6 and to decrease linearly to $p(\phi)$ = 0 at $\phi$ = 1 (Figure 8).
 $p(\mu | D)$ for all slip models has a mode at $\mu$ = 0.1--0.4 and $p(\mu)$
 decreases at higher values. $T_{max}$, $\phi$ and $\mu$ are highly correlated,
-where higher values of $\T_{max}$ are associated with higher $\mu$ and lower
+where higher values of $T_{max}$ are associated with higher $\mu$ and lower
 $\phi$. Combinations of high $\phi$ and low $\mu$ would require much higher
 $T_{max}$ to overcome fault friction and cause slip, and so are not represented
 in the posteriors. Since our maximum $T_{max}$ of 2.5 $\rho g z$ is quite high
-(\approx 660 MPa at 10 km), we view high $\mu$ and low $\phi$ combinations as
+($\approx 660$ MPa at 10 km), we view high $\mu$ and low $\phi$ combinations as
 extremely unlikely for the Wenchuan faults. Similarly, combinations of very low
 $\mu$ and very high $\phi$ are associated with very low $T_{max}$, and have a
-low probability density, as it is unlikely that very low $T_{max} values can
+low probability density, as it is unlikely that very low $T_{max}$ values can
 overcome sinistral and normal-sense topographic shear stresses to cause the
 observed coseismic slip kinematics.
 
