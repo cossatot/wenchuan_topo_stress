@@ -106,7 +106,15 @@
 
 ### Tectonic stresses
 - Magnitudes and orientations
-- $\mu, \; \lambda$ and covariance
+    - Consistent across all slip models
+    - mode ~100°--110° (check)
+
+
+
+
+- $\mu, \; \lambda$ 
+- numbers retained.
+- $\tau$ and $\sigma_n^{eff}$.
 
 ## Discussion
  
@@ -136,3 +144,6 @@ tectonic stress *
 3. something, surely!  Schematic maybe?
 4. tectonic stress priors
 5. schematic/ workflow for bayesian/mu rake inversion
+6. T-circle posteriors
+7. T marginals (all figs?)
+8. $\mu$, $\phi$ scatters w/ marginals 

@@ -322,7 +322,7 @@ through a Bayesian process in which we do stuff.
 
 We choose priors for the magnitudes and orientation of the maximum and minimum
 principal tectonic stresses. The maximum principal stress is sampled from a
-uniform distribution between [?] $\rho g z$ and 2.5 $\rho g z$. The minumum
+uniform distribution between $\rho g z$ and 2.5 $\rho g z$. The minumum
 principal stress is sampled from a uniform distribution between 0 and the value
 for maximum stress. Because the Wenchuan event was an oblique reverse faulting
 earthquake, both the maximum and minimum (horizontal) stress directions have to
@@ -330,12 +330,13 @@ be positive as they are greater than the vertical stress. The stress
 orientations are taken as the azimuth of maximum tectonic stress and are sampled
 uniformly from 0 to 360$^{\circ}$.
 
-For each of 100,000 iterations, unique samples for each of the priors are
-drawn. Then, the complete stress tensor $S$ is constructed for each fault point
-in a coseismic slip model. The rake of the maximum shear stress $\lambda^S$ on
-each point on the fault is then calculated, and compared with the coseismic
-slip rake $\lambda^D$ at that point. Then, a weighted mean misfit is
-determined:
+For each of 100,000 iterations, unique samples for each of the priors are drawn
+using a seeded pseudorandom number generator (so that the same priors are drawn
+for each coseismic slip model). Then, the complete stress tensor $S$ is
+constructed for each fault point in a coseismic slip model. The rake of the
+maximum shear stress $\lambda^S$ on each point on the fault is then calculated,
+and compared with the coseismic slip rake $\lambda^D$ at that point. Then,
+a weighted mean misfit is determined:
 
 \begin{equation}
 \bar{\lambda}_i^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) D_i} {\bar{ D}}
@@ -361,9 +362,54 @@ Once the tectonic stress distributions consistent with the coseismic slip data
 have been determined, we analyze the distributions of $\mu$ and $\phi$ required
 for critical failure conditions on the faults. First, we take each model
 retained in $p(T|D)$, and for each model draw a random $\phi$ from the uniform
-distribution $p(\phi)= [0,1)$. Next, we calculate $\tau^S$ and
-$\sigma_n^S-\phi$ for each point on the fault. Then, we solve Equation
-\ref{eqn:coulomb_failure} for $\mu$. Finally, we filter the results so that
-only models with $0 \ge \tau \ge 1$ are retained.
+distribution $p(\phi)= [0,1)$ (again using a seeded pseudorandom number
+generator for consistent priors across all coseismic slip models). Next, we
+calculate $\tau^S$ and $\sigma_n^S-\phi$ for each point on the fault. Then, we
+solve Equation \ref{eqn:coulomb_failure} for $\mu$. Finally, we filter the
+results so that only models with $0 \ge \tau \ge 1$ are retained.
 
-## T, $\mu$, $\phi$ results 
+After this analysis has been done for all slip models, we find the set of
+posteriors that are common to all models, which we call the "joint" [?]
+posteriors, or $p(P^{joint} | D)$ where $P$ is the parameter of interest.
+
+
+## T, $\mu$, $\phi$ results
+
+### Individual slip models
+Results for $T$, $\mu$ and $\phi$ are quite consistent across all coseismic
+slip models. Maximum compressive stress $T_{max}$ is broadly east-west for all
+models, with a mode trending at ~110° [*check this for realz*] (Figure 7).
+$p(T_{max} | D)$ for each slip model increases from $T$ =0 to 0.5 or 1 before
+essentially leveling off, though some slip models, particularly the Qi models,
+show a slight decrease in [count? probability?] past the initial mode at
+$T$ = 0.5--1 (all values for $T$ are relative to $\rho g z$). The low
+[probability? density?] below 0.5 indicates that lower tectonic stresses are
+unlikely to overcome fault friction and topographic shear stresses resisting
+reverse- dextral slip on the Wenchuan faults. $p(T_{min} | D)$ for each slip
+model has a mode close to 0 and decreases rapidly, though all slip models show
+values for $T_{min}$ up to 2.5. $T_{max}$ and $T_{min}$ do not display any
+particular relationship aside from the requirement that $T_max \ge T_{min}$.
+
+All slip models show $p(\phi | D)$ to be uniformly high from $\phi$ = 0 to
+0.4--0.6 and to decrease linearly to $p(\phi)$ = 0 at $\phi$ = 1 (Figure 8).
+$p(\mu | D)$ for all slip models has a mode at $\mu$ = 0.1--0.4 and $p(\mu)$
+decreases at higher values. $T_{max}$, $\phi$ and $\mu$ are highly correlated,
+where higher values of $\T_{max}$ are associated with higher $\mu$ and lower
+$\phi$. Combinations of high $\phi$ and low $\mu$ would require much higher
+$T_{max}$ to overcome fault friction and cause slip, and so are not represented
+in the posteriors. Since our maximum $T_{max}$ of 2.5 $\rho g z$ is quite high
+(\approx 660 MPa at 10 km), we view high $\mu$ and low $\phi$ combinations as
+extremely unlikely for the Wenchuan faults. Similarly, combinations of very low
+$\mu$ and very high $\phi$ are associated with very low $T_{max}$, and have a
+low probability density, as it is unlikely that very low $T_{max} values can
+overcome sinistral and normal-sense topographic shear stresses to cause the
+observed coseismic slip kinematics.
+
+### Joint posteriors
+$p(T^{joint}_{max} | D)$ is significantly different than the distributions from
+any of the individual slip models. It has a well-defined mode at 0.5, and
+tapers off at higher values, though the tail extends to 2.5, the maximum of the
+priors. 
+
+
+ 
