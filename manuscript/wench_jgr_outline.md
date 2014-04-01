@@ -112,9 +112,10 @@
 
 
 
-- $\mu, \; \lambda$ 
+- $\mu, \; \phi$ 
 - numbers retained.
 - $\tau$ and $\sigma_n^{eff}$.
+- $\lambda$
 
 ## Discussion
  
