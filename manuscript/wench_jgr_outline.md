@@ -142,9 +142,8 @@ tectonic stress *
   - velocities?
   - rupture kinematics/ surface rupture offsets?
   - anything else of relevance?
-3. something, surely!  Schematic maybe?
-4. tectonic stress priors
-5. schematic/ workflow for bayesian/mu rake inversion
-6. T-circle posteriors
-7. T marginals (all figs?)
-8. $\mu$, $\phi$ scatters w/ marginals 
+3. Example topo stress on fault
+4. other figure illustrating topo stresses on faults
+5. T-circle posteriors
+6. T marginals (all figs?)
+7. $\mu$, $\phi$ scatters w/ marginals 
