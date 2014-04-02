@@ -134,6 +134,13 @@ extensive neotectonic investigation of the Longmen Shan faults, and showed that
 ## Topographic stresses on the Longmen Shan faults
 *need an intro paragraph*
 
+![Workflow of topographic stress calculations and tectonic stress estimation
+in this study \label{fig:work_schematic}](./figures/model_schematic.pdf)
+
+The workflow for our calculations for topographic stress and subsequent
+estimates of tectonic stress is shown schematically in Figure
+\ref{fig:work_schematic}.  
+
 ### Topographic stress tensor field calculations
 
 #### Analytical description
