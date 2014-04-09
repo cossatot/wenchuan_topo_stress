@@ -69,6 +69,11 @@
 	- Resolved into $\tau_s$, $\tau_d$, $\sigma_n$
 	- Compared to coseismic slip inversions (?)
 
+### Topographic stress results
+- Topographic stresses are large, esp. on the SW Beichuan fault
+- Stresses are opposed to fault slip for most fault segments
+- normal stresses are up to ~80 MPa
+
 ## Tectonic stress calculations
 - We can use topographic stresses and the event of fault failure to constrain
   tectonic stresses at time of failure, based on Mohr-Coulomb failure criteria
@@ -97,12 +102,6 @@
 	- solve for $\mu$
 	- trim results for $\mu \le 0$ and $\mu \ge 1$
 	- profit!
-
-## Results
-### Topographic stresses
-- Topographic stresses are large, esp. on the SW Beichuan fault
-- Stresses are opposed to fault slip for most fault segments
-- normal stresses are up to ~80 MPa
 
 ### Tectonic stresses
 - Magnitudes and orientations

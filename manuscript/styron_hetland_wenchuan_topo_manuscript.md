@@ -202,7 +202,6 @@ $$M(x,y,z) = M^B(x,y,z) + M^C(x,y,z) \; .$$
 
 #### Numerical implementation
 
-
 These calculations were implemented in Python (v. 2.7.3) using NumPy (v. 1.7)
 and Pandas (v. 12). We have created an open-source Python package called
 'halfspace' to perform topographic loading calculations in a reasonably
@@ -257,7 +256,9 @@ topographic fault normal stress $\sigma_n^M$, down-dip shear stress $\tau_d^M$
 and strike-slip shear stress $\tau_s^M$ at each point in the coseismic slip
 models.
 
-## Results of topographic stresses on the LMS
+## Results of topographic stress calculations on the Wenchuan faults
+
+Topographic stresses on the Wenchuan faults are significant, on the order of 
 
 ## Calculations of tectonic stress, fault friction and pore fluid pressure
 
@@ -385,17 +386,17 @@ posteriors, or $p(P^{joint} | D)$ where $P$ is the parameter of interest.
 ### Individual slip models
 Results for $T$, $\mu$ and $\phi$ are quite consistent across all coseismic
 slip models. Maximum compressive stress $T_{max}$ is broadly east-west for all
-models, with a mode trending at ~110° [*check this for realz*] (Figure 7).
-$p(T_{max} | D)$ for each slip model increases from $T$ =0 to 0.5 or 1 before
-essentially leveling off, though some slip models, particularly the Qi models,
-show a slight decrease in [count? probability?] past the initial mode at
-$T$ = 0.5--1 (all values for $T$ are relative to $\rho g z$). The low
-[probability? density?] below 0.5 indicates that lower tectonic stresses are
-unlikely to overcome fault friction and topographic shear stresses resisting
-reverse- dextral slip on the Wenchuan faults. $p(T_{min} | D)$ for each slip
-model has a mode close to 0 and decreases rapidly, though all slip models show
-values for $T_{min}$ up to 2.5. $T_{max}$ and $T_{min}$ do not display any
-particular relationship aside from the requirement that $T_max \ge T_{min}$.
+models, with a mode trending at ~105° (Figure 7).  $p(T_{max} | D)$ for each
+slip model increases from $T$ =0 to 0.5 or 1 before essentially leveling off,
+though some slip models, particularly the Qi models, show a slight decrease in
+[count? probability?] past the initial mode at $T$ = 0.5--1 (all values for $T$
+are relative to $\rho g z$). The low [probability? density?] below 0.5
+indicates that lower tectonic stresses are unlikely to overcome fault friction
+and topographic shear stresses resisting reverse- dextral slip on the Wenchuan
+faults. $p(T_{min} | D)$ for each slip model has a mode close to 0 and
+decreases rapidly, though all slip models show values for $T_{min}$ up to 2.5.
+$T_{max}$ and $T_{min}$ do not display any particular relationship aside from
+the requirement that $T_max \ge T_{min}$.
 
 All slip models show $p(\phi | D)$ to be uniformly high from $\phi$ = 0 to
 0.4--0.6 and to decrease linearly to $p(\phi)$ = 0 at $\phi$ = 1 (Figure 8).
@@ -413,10 +414,7 @@ overcome sinistral and normal-sense topographic shear stresses to cause the
 observed coseismic slip kinematics.
 
 ### Joint posteriors
-$p(T^{joint}_{max} | D)$ is significantly different than the distributions from
-any of the individual slip models. It has a well-defined mode at 0.5, and
-tapers off at higher values, though the tail extends to 2.5, the maximum of the
-priors. 
+$p(T^{joint}_{max} | D)$ is not substantively different from any of the  
 
 
  
