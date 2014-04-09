@@ -1,3 +1,5 @@
 *.html
 *.pyc
 *.swp
+
+.ipynb_checkpoints/
