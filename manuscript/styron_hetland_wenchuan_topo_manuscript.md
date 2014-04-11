@@ -99,11 +99,8 @@ and required topography to be mathematically-defined (e.g., sinusoidal).
 *Luttrell?*
 
 comparison:
-
 - we do not incorporate Moho topography (deep, small compared to change at  Andean plate boundary
-
 - Topographic calculations are similar, though we do Cerruti correction
-
 - We solve for tectonic stress differently: we explicitly calculate whole stress tensor at each point (M + L + T) and use rake as constraint on allowable stresses.  We also use a Bayesian search instead of a minimization, yielding a PDF of the stress results.  We consider T1, T3, and rake instead of just T1 and rake.
 - We use both normal and shear stresses to constrain pore fluid pressure and friction.
 
@@ -111,28 +108,63 @@ comparison:
 The 2008 *M*7.9 Wenchuan, China earthquake is one of the most devastating
 earthquakes in recent history. It is also extremely well-studied, and as such
 only relevant information will be summarized here. For an in-depth review and
-discussion of the earthquake, see Zhang et al. [2010]. The earthquake occurred
-on the Beichuan and Pengguan faults at the base of the central and northeastern
-Longmen Shan, a mountain range that forms the eastern margin of the Tibetan
-plateau. Total relief across the central Longmen Shan is around 4 km, though
-relief subsides somewhat to the northeast. The central and southwestern Longmen
-Shan is the steepest margin of the Tibetan plateau [Clark and Royden, 2000] and
-one of the highest and steepest escarpments on earth. This is most apparent in
-the southwestern portion of the earthquake rupture, where the extremely steep
-Pengguan massif, a Precambrian crystalline massif in the hanging wall of the
-Beichuan thrust, where elevations >4 km drop to ~1200 m in as little as 6
-km map distance (Figure 2).
+discussion of the earthquake, see Zhang et al. [2010]. Surface rupture occurred
+along a 240 km segment of the Beichuan fault and a parallel 72 km segment
+of the Pengguan fault [Xu et al., 2009]. These faults lie at the base of the
+central and northeastern Longmen Shan, a mountain range that forms the eastern
+margin of the Tibetan plateau. Total relief across the central Longmen Shan is
+around 4 km, though relief subsides somewhat to the northeast. The central and
+southwestern Longmen Shan is the steepest margin of the Tibetan plateau [Clark
+and Royden, 2000] and one of the highest and steepest escarpments on earth.
+This is most apparent in the southwestern portion of the earthquake rupture,
+where the extremely steep Pengguan massif, a Precambrian crystalline massif in
+the hanging wall of the Beichuan thrust, where elevations >4 km drop to ~1200
+m in as little as 6 km map distance (Figure 2).
 
+Coseismic slip on the fault is spatially variable. Surface ruptures on the 
+Beichuan fault show vertical (reverse-sense) displacements up to 6.5 m and
+horizontal (right-lateral sense) displacements up to 4.9 m. In general,
+vertical displacements are highest in the southwestern to central portions of
+the Beichuan rupture and decrease in the northeast, whereas horizontal offset
+is negligible in the southwest but high in the central to northeast. The rake
+of coseismic slip is consequently variable as well, from close to pure reverse
+faulting in the southwest to dominantly right-lateral in the northeast. Shorter
+wavelength variations in slip rake and magnitude are apparent, as well.
+Coseismic slip models estimating slip at depth, derived from geodetic and
+seismic data [e.g. Shen et al., 2009; Tong et al., 2010, Feng et al., 2010;
+Zhang et al., 2011; Qi et al., 2011; Fielding et al., 2013] reproduce the 
+surface offsets, but typically show even greater displacements at depth.
+Additionally, these coseismic slip models show that slip at depth is
+concentrated into a small number of high-slip patches that dominate the seismic
+moment release [e.g., Zhang et al., 2011]. 
+
+Coseismic slip models also clearly show that the broad along-strike shift in
+rake from reverse slip in the southwest to right-lateral slip in the northeast
+is persistent at depth. This change in rake is associated with a change in
+fault dip. Sections of the fault with mostly reverse slip have shallow to
+moderate dips, where sections with mostly right-lateral slip have steeper dips.
+Medina Luna and Hetland [2013] concluded that this relationship is consistent
+with a uniform stress tensor that produces maximum shear stresses in the
+direction of coseismic slip on the variably-oriented fault segments. However,
+the horizontal component of coseismic slip also generally points away from the
+high topography of the central Longmen Shan, particularly the Pengguan massif
+in the hanging wall of the Beichuan fault. This suggests that the very high
+and steep mountains may be spreading outward.
+
+*need to write something about flats at 20 km in some models*
+
+[ *is this paragraph necessary?*
 Strain accumulation along the Longmen Shan faults is very slow; before the
 earthquake, some workers had assumed that the fault was inactive [refs], though
 GPS geodesy in the region indicated 4 ± 2 mm a$^{-1}$ of contraction across the
 eastern Tibetan margin [Zhang et al., 2004]. Densmore et al [2007] performed an
 extensive neotectonic investigation of the Longmen Shan faults, and showed that
-...
+...]
 
 
 ## Topographic stresses on the Longmen Shan faults
-*need an intro paragraph*
+
+We calculate topographic stresses 
 
 ![Workflow of topographic stress calculations and tectonic stress estimation
 in this study \label{fig:work_schematic}](./figures/model_schematic.pdf)
@@ -243,22 +275,31 @@ Table: Parameters for numerical calculations of topographic stresses.
 
 Topographic stresses on the Wenchuan faults are calculated on point sets
 representing the faults taken from coseismic slip models. We use the coseismic
-slip models of Shen et al. [2009], Feng et al. [2010], Qi et al. [2011], Zhang
-et al. [2012], and Fielding et al. [2013], and discard points above 851 m
-below sea level, as this is above the top of our halfspace model. The six
-directional stress tensor component are calculated at each point in the fault
-models through linear interpolation. Because the fault points are completely
-surrounded by the grid nodes at which topographic stresses were calculated and
-those nodes are spaced <1 km apart, the fault points cannot be more than a few
-hundred meters from the nearest grid node, so more sophisticated interpolation
-techniques (e.g., based on splines) are not necessary. We then resolve the 
-topographic fault normal stress $\sigma_n^M$, down-dip shear stress $\tau_d^M$
-and strike-slip shear stress $\tau_s^M$ at each point in the coseismic slip
-models.
+slip models of Shen et al. [2009], Feng et al. [2010], Tong et al. [2011], Qi
+et al. [2011], Zhang et al. [2011], and Fielding et al. [2013], and discard
+points above 851 m below sea level, as this is above the top of our halfspace
+model. The six directional stress tensor component are calculated at each point
+in the fault models through linear interpolation. Because the fault points are
+completely surrounded by the grid nodes at which topographic stresses were
+calculated and those nodes are spaced <1 km apart, the fault points cannot be
+more than a few hundred meters from the nearest grid node, so more
+sophisticated interpolation techniques (e.g., based on splines) are not
+necessary. We then resolve the topographic fault normal stress $\sigma_n^M$,
+down-dip shear stress $\tau_d^M$ and strike-slip shear stress $\tau_s^M$ at
+each point in the coseismic slip models.
 
 ## Results of topographic stress calculations on the Wenchuan faults
 
-Topographic stresses on the Wenchuan faults are significant, on the order of 
+Topographic stresses on the Wenchuan faults are in the 1--10s of MPa range.
+$\sigma_{zz}^M$ is the typically the largest of the 'cardinal' compressive
+stresses, though 
+
+![Topographic normal stress $\sigma_n^M$ (colors), slip magnitude (contours,
+1 m interval) and hanging-wall topography on the Feng et al. [2010] model of
+the Beichuan fault. Note the suppression of fault slip where normal stress is
+highest, such as below the Pengguan massif (P). \label{fig:feng_slip_sing_n}
+](../figures/feng_slip_sig_n.png)
+
 
 ## Calculations of tectonic stress, fault friction and pore fluid pressure
 

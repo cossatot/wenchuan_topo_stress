@@ -72,6 +72,7 @@
 ### Topographic stress results
 - Topographic stresses are large, esp. on the SW Beichuan fault
 - Stresses are opposed to fault slip for most fault segments
+    - flats at depth are loaded in slip sense
 - normal stresses are up to ~80 MPa
 
 ## Tectonic stress calculations
@@ -117,8 +118,26 @@
 - $\lambda$
 
 ## Discussion
- 
 
+- Magnitude, directions of topographic stresses
+    - magnitudes
+        - cardinal directions (M diagonals)
+        - principal stress directions--trends
+        - $\sigma_n^M$ high
+    - directions of $\tau^M$
+    - coulomb stresses (fault mostly pushed away from failure)
+    - 
+    - correlations with slip
+
+
+- Comparison of stresses w/ those derived from other studies:
+    - Luo and Liu 2010 Tectonophysics ($\tau$)
+    - Zoback and Townend 2001
+    - etc
+
+- Comparison of friction, fluid pressure w/ other studies:
+    - results from fault drilling
+    - other model estimates
 
 
 
