@@ -134,7 +134,7 @@ phi_keep = phi_iters[mu_real.index]
 txx_keep = iters.txx.mean()[mu_real.index]
 tyy_keep = iters.tyy.mean()[mu_real.index]
 txy_keep = iters.txy.mean()[mu_real.index]
-likelihood_keep = t_prior_df[mu_real.index].likelihood
+likelihood_keep = t_prior_df.loc[mu_real.index, 'likelihood']
 
 fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, phi_keep,
                              likelihood_keep], axis=1)
