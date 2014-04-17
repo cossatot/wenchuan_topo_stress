@@ -13,13 +13,7 @@ stress_f_dir = '/Volumes/cmld/data7/styron/wenchuan_eq/wench_output/'
 
 stress_file = stress_f_dir + 'e_asia_topo_stress.h5'
 
-fb = pd.read_csv('field_beich.csv', index_col=0)
-fp = pd.read_csv('field_peng.csv', index_col=0)
-
-fb['segment'] = 'beichuan'
-fp['segment'] = 'pengguan'
-
-lms = pd.concat([fb, fp], axis=0, ignore_index=True)
+lms = pd.read_csv('tong_lms.csv', index_col=0)
 
 # get coordinate data info (manually input)
 topo_x0 = -1919052.3800296092
@@ -33,11 +27,9 @@ y0_conv = topo_y0 - (4343 * y_res_deg) #upper to lower edge
 clip_len = 1500
 clip_dist = clip_len * 2
 
-lms['depth_km'] = (lms.depth - 500) / 1000.
-
 lms_xyz = hbx.coord_map_inverse_3d([lms['east_utm48'].values, 
                                     lms['north_utm48'].values, 
-                                    lms['depth_km'].values],
+                                    lms['z'].values],
                                    x_step = x_res_deg, x_shift = x0_conv,
                                    y_step = y_res_deg, y_shift = y0_conv,
                                    z_step = 1, z_shift = 0.851)
@@ -46,6 +38,7 @@ lms_xyz[0:2,:] = lms_xyz[0:2,:] - clip_len
 lms_yxz = np.array([ lms_xyz[1,:], lms_xyz[0,:], lms_xyz[2,:] ])
 
 lms[['strike', 'dip']] = lms[['strike', 'dip']].astype(float)
+lms.strike += 360
 
 print 'loading stress arrays'
 fs = h5py.File(stress_file, 'r')
@@ -103,10 +96,5 @@ for i in lms.index:
 
 print 'done!  now making new dataframes.'
 
-lms.to_csv('field_topo_stess.csv')
-lms[lms.segment == 'beichuan'].to_csv('field_beich_topo_stress.csv')
-lms[lms.segment == 'pengguan'].to_csv('field_peng_topo_stress.csv')
-
-
-
+lms.to_csv('tong_topo_stress.csv')
 
