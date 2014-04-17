@@ -15,7 +15,7 @@ lms.rake_deg = hsp.get_rake_from_shear_components(strike_shear=lms.slp_strk_m,
 np.random.seed(70)
 
 t_prior_df = pd.read_csv(t_poster_file, index_col=0)
-t_priors = t_prior_df.values
+t_priors = t_prior_df[['txx', 'tyy', 'txy']].values
 #del t_prior_df
 
 # some initial constants
@@ -128,10 +128,14 @@ phi_keep = phi_iters[mu_real.index]
 txx_keep = iters.txx.mean()[mu_real.index]
 tyy_keep = iters.tyy.mean()[mu_real.index]
 txy_keep = iters.txy.mean()[mu_real.index]
+likelihood_keep = t_prior_df.loc[mu_real.index, 'likelihood']
 
-fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, phi_keep],
-                            names = ['txx','tyy','txy','mu','phi'], axis=1)
+fail_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, mu_real, phi_keep,
+                             likelihood_keep], axis=1)
 
+fail_posteriors.columns = ['txx','tyy','txy','mu','phi', 'likelihood']
+
+print('Done!  saving posteriors')
 fail_posteriors.to_csv(outfile, index=True)
 
 t1 = time.time()
