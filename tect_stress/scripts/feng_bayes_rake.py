@@ -165,8 +165,8 @@ tyy_keep = iters_tyy[fishtrap.index]
 
 
 # done! now save files.
-tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep], axis=1,
-                            names=['txx', 'tyy', 'txy'])
+tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, fishtrap], axis=1)
+tect_posteriors.columns = ['txx', 'tyy', 'txy', 'likelihood']
 
 
 print('Done!  saving posteriors')
