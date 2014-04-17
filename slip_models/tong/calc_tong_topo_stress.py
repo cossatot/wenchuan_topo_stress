@@ -13,7 +13,7 @@ stress_f_dir = '/Volumes/cmld/data7/styron/wenchuan_eq/wench_output/'
 
 stress_file = stress_f_dir + 'e_asia_topo_stress.h5'
 
-lms = pd.concat([fb, fp], axis=0, ignore_index=True)
+lms = pd.read_csv('tong_lms.csv', index_col=0)
 
 # get coordinate data info (manually input)
 topo_x0 = -1919052.3800296092
@@ -26,8 +26,6 @@ y0_conv = topo_y0 - (4343 * y_res_deg) #upper to lower edge
 
 clip_len = 1500
 clip_dist = clip_len * 2
-
-lms['z'] = (lms.depth - 500) / 1000.
 
 lms_xyz = hbx.coord_map_inverse_3d([lms['east_utm48'].values, 
                                     lms['north_utm48'].values, 
@@ -98,10 +96,5 @@ for i in lms.index:
 
 print 'done!  now making new dataframes.'
 
-lms.to_csv('field_topo_stess.csv')
-lms[lms.segment == 'beichuan'].to_csv('field_beich_topo_stress.csv')
-lms[lms.segment == 'pengguan'].to_csv('field_peng_topo_stress.csv')
-
-
-
+lms.to_csv('tong_topo_stress.csv')
 
