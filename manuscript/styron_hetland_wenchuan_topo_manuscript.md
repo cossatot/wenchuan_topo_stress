@@ -167,7 +167,7 @@ extensive neotectonic investigation of the Longmen Shan faults, and showed that
 We calculate topographic stresses 
 
 ![Workflow of topographic stress calculations and tectonic stress estimation
-in this study \label{fig:work_schematic}](./figures/model_schematic.pdf)
+in this study \label{fig:work_schematic}](../figures/model_schematic_85.pdf)
 
 The workflow for our calculations for topographic stress and subsequent
 estimates of tectonic stress is shown schematically in Figure
@@ -290,15 +290,63 @@ each point in the coseismic slip models.
 
 ## Results of topographic stress calculations on the Wenchuan faults
 
-Topographic stresses on the Wenchuan faults are in the 1--10s of MPa range.
+Topographic stresses on the Wenchuan faults are in the 1--10s of MPa range (
+Figure \ref{fig:feng_slip_sig_n_beich}.
+Stresses are highest in the southwest, beneath the Pengguan massif (the highest
+topography of the Longmen Shan front), and decrease to the northeast.
 $\sigma_{zz}^M$ is the typically the largest of the 'cardinal' compressive
-stresses, though 
+stresses ($\sigma^M_{i=j}$), though it is not substantially larger than the
+other cardinal components. Maximum horizontal stress is not typically aligned
+with either cardinal horizontal component, and is typically larger than
+$\sigma^M_{zz}$ above 10 km. Maximum $\sigma^m_{zz}$ is near 80 MPa, on the
+southwestern Beichuan fault below the high peaks of the Pengguan massif, except
+for slip models with thrust flats at the base of the southwestern Beichuan
+fault, where $\sigma^M_{zz}$ reaches 100 MPa. Vertical shear stresses
+($\sigma^M_{xz, yz}$) are on the order of 1 MPa, and horizontal shear stress
+($\sigma^M_{xy}$) is on the order of 0.1 MPa.
+
+Because the compressive stresses are near equal, $M$ contains a large
+isotropic, or pressure, component and a smaller shear component. Consequently,
+$M$ resolves on the Wenchuan faults with a large $\sigma^M_n$ (median of about
+40-60 MPa for each slip model) and much smaller shear stresses. $\tau^M_d$
+median of about -3 to -6 MPa, where values less than zero indicate normal-sense
+shear; and $\sigma^M_s$ median values range from about -2 to 1, where values
+less than zero indicate sinistral shear. Thus, topographic shear stresses are
+typically resolved as normal-sinistral, as opposed to the dominant mode of
+coseismic slip, which is reverse-dextral. Both $\sigma^M_n$ and $\tau^M$
+increase the overall resistance to tectonic slip in the 2008 Wenchuan event,
+and had to be overcome by tectonic compression in order for the earthquake to
+occur.
+
+However, much of the shallowly-dipping fault segments (the Pengguan fault and
+flats at the base of the Beichuan fault, where present) have $\tau^M$ in the
+direction of coseismic slip. The full stress tensor $M$ is not significantly
+different in these locations, but because of the low dip angle, $\sigma^M_{zz}$
+contributes more significantly to $\sigma^M_n$ than to $\tau^M_d$, which is
+then dominated by horizontal compression, leading to reverse-sense shear.
+Additionally, the stresses caused by the Pengguan massif locally resolve as
+right-lateral on these segments as well.
 
 ![Topographic normal stress $\sigma_n^M$ (colors), slip magnitude (contours,
 1 m interval) and hanging-wall topography on the Feng et al. [2010] model of
 the Beichuan fault. Note the suppression of fault slip where normal stress is
-highest, such as below the Pengguan massif (P). \label{fig:feng_slip_sing_n}
-](../figures/feng_slip_sig_n.png)
+highest, such as below the Pengguan massif (P).
+\label{fig:feng_slip_sig_n_beich} ](../figures/feng_slip_sig_n_beich.png)
+
+Compellingly, similar patterns exist in the spatial distributions of
+$\sigma^M_n$ and coseismic slip. Most compelling is the coincidence of locally
+high $\sigma^M_n$ and locally low slip magnitude on the southwestern Beichuan
+fault below the culmination of the Pengguan massif, in an area of otherwise
+high slip (Figure \ref{fig:feng_slip_sig_n_beich}).  These correlations exist
+for other fault patches, but they are not as clear (Figure
+\ref{fig:feng_slip_sig_n_scatter}).  This raises the possibility that
+$\sigma^M_n$ is capable of limiting slip once failure has occurred.
+
+![Coseismic slip magnitude and $\sigma^M_n$ on the four segments of the Feng
+(2010) coseismic slip model. Trendlines are L1 regressions and do not include
+points with no slip.
+\label{fig:feng_slip_sig_n_scatter}](../figures/feng_slip_sig_n_scatter.png)
+
 
 
 ## Calculations of tectonic stress, fault friction and pore fluid pressure
@@ -427,20 +475,21 @@ posteriors, or $p(P^{joint} | D)$ where $P$ is the parameter of interest.
 ### Individual slip models
 Results for $T$, $\mu$ and $\phi$ are quite consistent across all coseismic
 slip models. Maximum compressive stress $T_{max}$ is broadly east-west for all
-models, with a mode trending at ~105° (Figure 7).  $p(T_{max} | D)$ for each
-slip model increases from $T$ =0 to 0.5 or 1 before essentially leveling off,
-though some slip models, particularly the Qi models, show a slight decrease in
-[count? probability?] past the initial mode at $T$ = 0.5--1 (all values for $T$
-are relative to $\rho g z$). The low [probability? density?] below 0.5
-indicates that lower tectonic stresses are unlikely to overcome fault friction
-and topographic shear stresses resisting reverse- dextral slip on the Wenchuan
-faults. $p(T_{min} | D)$ for each slip model has a mode close to 0 and
-decreases rapidly, though all slip models show values for $T_{min}$ up to 2.5.
-$T_{max}$ and $T_{min}$ do not display any particular relationship aside from
-the requirement that $T_max \ge T_{min}$.
+models, with a mode trending at ~105° (Figure \ref{fig:T_rose}).
+$p(T_{max}|D)$ for each slip model increases from $T$ =0 to 0.5 or 1 before
+essentially leveling off, though some slip models, particularly the Qi models,
+show a slight decrease in [count? probability?] past the initial mode at $T$
+= 0.5--1 (all values for $T$ are relative to $\rho g z$). The low [probability?
+density?] below 0.5 indicates that lower tectonic stresses are unlikely to
+overcome fault friction and topographic shear stresses resisting reverse-
+dextral slip on the Wenchuan faults. $p(T_{min} | D)$ for each slip model has
+a mode close to 0 and decreases rapidly, though all slip models show values for
+$T_{min}$ up to 2.5.  $T_{max}$ and $T_{min}$ do not display any particular
+relationship aside from the requirement that $T_max \ge T_{min}$.
 
 All slip models show $p(\phi | D)$ to be uniformly high from $\phi$ = 0 to
-0.4--0.6 and to decrease linearly to $p(\phi)$ = 0 at $\phi$ = 1 (Figure 8).
+0.4--0.6 and to decrease linearly to $p(\phi)$ = 0 at $\phi$ = 1 (Figure 
+\ref{fig:mu_phi_w_marginals}).
 $p(\mu | D)$ for all slip models has a mode at $\mu$ = 0.1--0.4 and $p(\mu)$
 decreases at higher values. $T_{max}$, $\phi$ and $\mu$ are highly correlated,
 where higher values of $T_{max}$ are associated with higher $\mu$ and lower

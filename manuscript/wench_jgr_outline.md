@@ -70,6 +70,15 @@
 	- Compared to coseismic slip inversions (?)
 
 ### Topographic stress results
+
+- Magnitude, directions of topographic stresses
+    - magnitudes
+        - cardinal directions (M diagonals)
+        - principal stress directions--trends
+        - $\sigma_n^M$ high
+    - directions of $\tau^M$
+    - coulomb stresses (fault mostly pushed away from failure)
+    - 
 - Topographic stresses are large, esp. on the SW Beichuan fault
 - Stresses are opposed to fault slip for most fault segments
     - flats at depth are loaded in slip sense
@@ -146,10 +155,10 @@
 
 
 
-* something about residual stresses being low compared to 2kyr accumulated
+*something about residual stresses being low compared to 2kyr accumulated
 tectonic stress *
 
-
+*slip weighting means that we are not too influenced by deep fault geometry*
 
 
 
@@ -160,8 +169,9 @@ tectonic stress *
   - velocities?
   - rupture kinematics/ surface rupture offsets?
   - anything else of relevance?
-3. Example topo stress on fault
-4. other figure illustrating topo stresses on faults
+3. Feng $\sigma^M_n$, slip contours, topo, Beich.
+4. Qi oblique figure showing ramp ($\tau^M_d$ (?), slip contours).
+4. Feng $\sigma^M_n$, slip mag scatter
 5. T-circle posteriors
 6. T marginals (all figs?)
 7. $\mu$, $\phi$ scatters w/ marginals 
