@@ -171,7 +171,7 @@ tectonic stress *
   - anything else of relevance?
 3. Feng $\sigma^M_n$, slip contours, topo, Beich.
 4. Qi oblique figure showing ramp ($\tau^M_d$ (?), slip contours).
-4. Feng $\sigma^M_n$, slip mag scatter
-5. T-circle posteriors
-6. T marginals (all figs?)
-7. $\mu$, $\phi$ scatters w/ marginals 
+5. Feng $\sigma^M_n$, slip mag scatter
+6. T-circle posteriors/ rose diagrams (fig:T_rose)
+7. T marginals (all figs?)
+8. $\mu$, $\phi$ scatters w/ marginals (fig:mu_phi_w_marginals) 

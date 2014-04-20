@@ -19,11 +19,12 @@ qi et al, 2011
 fielding et al, 2013
 Medina Luna and Hetland, 2013
 Clark and Royden, 2000
-Zhang et al. 2004
+Zhang et al. 2004*
+Densmore et al 2007*
 Luttrell et al 2011
 [srtm ref]
 [cgiar]
 zhang et al., 2012
 cattin et al 1997
 lamb 2006
-
+Zoback and Townend, 2001

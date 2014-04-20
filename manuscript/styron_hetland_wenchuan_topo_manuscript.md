@@ -451,7 +451,8 @@ distribution is within $\pi$/9 radians (20°), the estimated 1$\sigma$
 uncertainty of the coseismic slip models based on comparisons between rakes of
 high-slip fault patches. Then, the posterior distribution $p(T | D)$ is
 estimated *(sampled?)* by comparing each model likelihood to a random number
-selected from the uniform distribution [0, 1).
+selected from the uniform distribution [0, 1), and retaining those models with
+a higher likelihood than the random value.
 
 ### Analysis of friction and pore fluid pressure
 
