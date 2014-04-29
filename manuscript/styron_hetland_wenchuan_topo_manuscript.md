@@ -357,7 +357,7 @@ shear stress and normal stress are equal, as in the familiar Coulomb failure
 criterion 
 
 \begin{equation}
-\tau = \mu \sigma_n - \phi
+\tau = \mu ( \sigma_n - \phi )
 \label{eqn:coulomb_failure}
 \end{equation}
 
@@ -436,7 +436,7 @@ and compared with the coseismic slip rake $\lambda^D$ at that point. Then,
 a weighted mean misfit is determined:
 
 \begin{equation}
-\bar{\lambda}_i^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) D_i} {\bar{ D}}
+\bar{\lambda}^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) D_i} {\bar{ D}}
 \label{eqn:rake_misfit}
 \end{equation}
 
