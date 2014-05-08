@@ -1,8 +1,20 @@
-# Topographic stresses and the Wenchuan earthquake
+---
+title: 'Topographic stresses and the Wenchuan earthquake'
+authhead: 'STYRON AND HETLAND'
+titlehead: 'WENCHUAN TOPOGRAPHIC STRESS'
+authoraddr: 'Corresponding author: Richard H. Styron, Department of Earth and Environmental Sciences, University of Michigan, 2534 CC Little Bldg., 1100 N. University Ave., Ann Arbor, MI 48104, USA (richard.h.styron@gmail.com)'
+authors: 'Richard H. Styron \altaffilmark{1} and Eric A. Hetland \altaffilmark{1}'
+altaffilnum: 1
+altaffiltext: 'Department of Earth and Environmental Sciences, University of Michigan, Ann Arbor, Michigan, USA.'
 
-## Abstract
 
-## Introduction
+
+
+abstract:
+	Topographic stresses are big and stuff. 
+...
+
+# Introduction
 
 > "And He has set up on the earth mountains standing firm, lest it should shake
 > with you"  
@@ -57,7 +69,7 @@ friction on the fault at failure.
 
 *Need more here*
 
-### Previous work on topographic stresses
+## Previous work on topographic stresses
 Aspects of the topographic stresses and their relevance to tectonics have been
 studied for some time. Jeffreys [1924] noted that the presence of high
 mountains is evidence that the Earth's crust can support significant
@@ -104,7 +116,7 @@ comparison:
 - We solve for tectonic stress differently: we explicitly calculate whole stress tensor at each point (M + L + T) and use rake as constraint on allowable stresses.  We also use a Bayesian search instead of a minimization, yielding a PDF of the stress results.  We consider T1, T3, and rake instead of just T1 and rake.
 - We use both normal and shear stresses to constrain pore fluid pressure and friction.
 
-### The 2008 Wenchuan, China earthquake
+## The 2008 Wenchuan, China earthquake
 The 2008 *M*7.9 Wenchuan, China earthquake is one of the most devastating
 earthquakes in recent history. It is also extremely well-studied, and as such
 only relevant information will be summarized here. For an in-depth review and
@@ -162,7 +174,7 @@ extensive neotectonic investigation of the Longmen Shan faults, and showed that
 ...]
 
 
-## Topographic stresses on the Longmen Shan faults
+# Topographic stresses on the Longmen Shan faults
 
 We calculate topographic stresses 
 
@@ -173,9 +185,9 @@ The workflow for our calculations for topographic stress and subsequent
 estimates of tectonic stress is shown schematically in Figure
 \ref{fig:work_schematic}.  
 
-### Topographic stress tensor field calculations
+## Topographic stress tensor field calculations
 
-#### Analytical description
+## Analytical description
 
 We calculate the stress tensor field induced by topography throughout eastern
 Tibet using methods based on elastic halfspace techniques developed by Liu and
@@ -209,14 +221,18 @@ function is decomposed into two orthogonal components, $F_{hor, \, xz}(x,y)$
 and $F_{hor, \, yz}(x,y)$, which are
 
 \begin{equation}
-F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B(x,y,z) + T_{xx} )\,  \frac{\partial h}{ \partial x}  + (\sigma_{xy}^{B}(x,y,z) + T_{xy}) \frac{\partial h}{ \partial y}
+\begin{split}
+F_{hor, \, xz}(x,y) = ( \rho g h(x,y) + \sigma_{xx}^B(x,y,z) + T_{xx} )\,  \frac{\partial h}{ \partial x}  \\
+&\quad + (\sigma_{xy}^{B}(x,y,z) + T_{xy}) \frac{\partial h}{ \partial y}
+\end{split}
 \label{eqn:f_hor_xz}
 \end{equation}
 
 and
 
 \begin{equation}
-F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B(x,y,z) + T_{yy} )\,  \frac{\partial h}{ \partial y}  + (\sigma_{xy}^{B}(x,y,z) + T_{xy}) \frac{\partial h}{ \partial x}\; . 
+F_{hor, \, yz}(x,y) = ( \rho g h(x,y) + \sigma_{yy}^B(x,y,z) + T_{yy} )\,  \frac{\partial h}{ \partial y}  \\
+&\quad + (\sigma_{xy}^{B}(x,y,z) + T_{xy}) \frac{\partial h}{ \partial x}\; . 
 \label{eqn:f_hor_yz}
 \end{equation}
 
@@ -232,7 +248,7 @@ The total topographic stress field is then calculated as
 
 $$M(x,y,z) = M^B(x,y,z) + M^C(x,y,z) \; .$$
 
-#### Numerical implementation
+## Numerical implementation
 
 These calculations were implemented in Python (v. 2.7.3) using NumPy (v. 1.7)
 and Pandas (v. 12). We have created an open-source Python package called
@@ -271,7 +287,7 @@ Lame's param (2)					| 1			 | -
 
 Table: Parameters for numerical calculations of topographic stresses.
 
-### Topographic fault stress calculations
+## Topographic fault stress calculations
 
 Topographic stresses on the Wenchuan faults are calculated on point sets
 representing the faults taken from coseismic slip models. We use the coseismic
@@ -288,7 +304,7 @@ necessary. We then resolve the topographic fault normal stress $\sigma_n^M$,
 down-dip shear stress $\tau_d^M$ and strike-slip shear stress $\tau_s^M$ at
 each point in the coseismic slip models.
 
-## Results of topographic stress calculations on the Wenchuan faults
+# Results of topographic stress calculations on the Wenchuan faults
 
 Topographic stresses on the Wenchuan faults are in the 1--10s of MPa range (
 Figure \ref{fig:feng_slip_sig_n_beich}.
@@ -305,18 +321,24 @@ fault, where $\sigma^M_{zz}$ reaches 100 MPa. Vertical shear stresses
 ($\sigma^M_{xz, yz}$) are on the order of 1 MPa, and horizontal shear stress
 ($\sigma^M_{xy}$) is on the order of 0.1 MPa.
 
+![Topographic normal stress $\sigma_n^M$ (colors), slip magnitude (contours,
+1 m interval) and hanging-wall topography on the Feng et al. [2010] model of
+the Beichuan fault. Note the suppression of fault slip where normal stress is
+highest, such as below the Pengguan massif (P).
+\label{fig:feng_slip_sig_n_beich} ](../figures/feng_slip_sig_n_beich.png)
+
 Because the compressive stresses are near equal, $M$ contains a large
 isotropic, or pressure, component and a smaller shear component. Consequently,
 $M$ resolves on the Wenchuan faults with a large $\sigma^M_n$ (median of about
 40-60 MPa for each slip model) and much smaller shear stresses. $\tau^M_d$
 median of about -3 to -6 MPa, where values less than zero indicate normal-sense
-shear; and $\sigma^M_s$ median values range from about -2 to 1, where values
-less than zero indicate sinistral shear. Thus, topographic shear stresses are
-typically resolved as normal-sinistral, as opposed to the dominant mode of
-coseismic slip, which is reverse-dextral. Both $\sigma^M_n$ and $\tau^M$
-increase the overall resistance to tectonic slip in the 2008 Wenchuan event,
-and had to be overcome by tectonic compression in order for the earthquake to
-occur.
+shear; and $\sigma^M_s$ median values range from about -2 to 1 MPa, where
+values less than zero indicate sinistral shear. Thus, topographic shear
+stresses are typically resolved as normal-sinistral, as opposed to the dominant
+mode of coseismic slip, which is reverse-dextral. Both $\sigma^M_n$ and
+$\tau^M$ increase the overall resistance to tectonic slip in the 2008 Wenchuan
+event, and had to be overcome by tectonic compression in order for the
+earthquake to occur.
 
 However, much of the shallowly-dipping fault segments (the Pengguan fault and
 flats at the base of the Beichuan fault, where present) have $\tau^M$ in the
@@ -325,22 +347,21 @@ different in these locations, but because of the low dip angle, $\sigma^M_{zz}$
 contributes more significantly to $\sigma^M_n$ than to $\tau^M_d$, which is
 then dominated by horizontal compression, leading to reverse-sense shear.
 Additionally, the stresses caused by the Pengguan massif locally resolve as
-right-lateral on these segments as well.
-
-![Topographic normal stress $\sigma_n^M$ (colors), slip magnitude (contours,
-1 m interval) and hanging-wall topography on the Feng et al. [2010] model of
-the Beichuan fault. Note the suppression of fault slip where normal stress is
-highest, such as below the Pengguan massif (P).
-\label{fig:feng_slip_sig_n_beich} ](../figures/feng_slip_sig_n_beich.png)
+right-lateral on these segments as well. Coseismic slip on these fault patches
+is much lower than on the steeper Beichuan fault, where the majority of slip
+occurred and which is loaded in the opposite shear sense.
 
 Compellingly, similar patterns exist in the spatial distributions of
-$\sigma^M_n$ and coseismic slip. Most compelling is the coincidence of locally
+$\sigma^M_n$ and coseismic slip. Most obvious is the coincidence of locally
 high $\sigma^M_n$ and locally low slip magnitude on the southwestern Beichuan
 fault below the culmination of the Pengguan massif, in an area of otherwise
 high slip (Figure \ref{fig:feng_slip_sig_n_beich}).  These correlations exist
 for other fault patches, but they are not as clear (Figure
-\ref{fig:feng_slip_sig_n_scatter}).  This raises the possibility that
-$\sigma^M_n$ is capable of limiting slip once failure has occurred.
+\ref{fig:feng_slip_sig_n_scatter}). This raises the possibility that
+$\sigma^M_n$ is capable of limiting slip once failure has occurred, and may
+have implications for estimations of dynamic friction and the completeness of
+stress drop during the earthquake. Preliminary analysis of this is currently
+being performed, and will be described in a forthcoming manuscript.
 
 ![Coseismic slip magnitude and $\sigma^M_n$ on the four segments of the Feng
 (2010) coseismic slip model. Trendlines are L1 regressions and do not include
@@ -349,7 +370,7 @@ points with no slip.
 
 
 
-## Calculations of tectonic stress, fault friction and pore fluid pressure
+# Calculations of tectonic stress, fault friction and pore fluid pressure
 
 Faults fail in earthquakes when the shear stresses on the fault overcome the
 frictional stresses resisting slip on the fault. At the point of failure, the
@@ -383,7 +404,7 @@ parameters we estimate, illustrating both the likelihood of values for each
 parameter and the tradeoffs between them. 
 
 
-### Description of the stress state
+## Description of the stress state
 
 We consider the complete stress tensor $S$ at a point in the crust to be
 $S = M + T + L$, where $M$ is the topographic stress tensor as described above,
@@ -412,20 +433,20 @@ of $S$) at each point on the fault. $\mu$ is the coefficient of static friction
 and is considered constant along the fault.
 
 
-### Bayesian inversion of tectonic stresses
+## Bayesian inversion of tectonic stresses
 
 We invert topographic stresses and coseismic slip models for tectonics stresses 
-through a Bayesian process in which we do stuff.
+using Bayesian methods. 
 
-We choose priors for the magnitudes and orientation of the maximum and minimum
-principal tectonic stresses. The maximum principal stress is sampled from a
-uniform distribution between $\rho g z$ and 2.5 $\rho g z$. The minumum
-principal stress is sampled from a uniform distribution between 0 and the value
-for maximum stress. Because the Wenchuan event was an oblique reverse faulting
-earthquake, both the maximum and minimum (horizontal) stress directions have to
-be positive as they are greater than the vertical stress. The stress
-orientations are taken as the azimuth of maximum tectonic stress and are sampled
-uniformly from 0 to 360$^{\circ}$.
+We choose priors for the magnitudes and orientation of
+the maximum and minimum principal tectonic stresses. The maximum principal
+stress is sampled from a uniform distribution between $\rho g z$ and 2.5 $\rho
+g z$. The minumum principal stress is sampled from a uniform distribution
+between 0 and the value for maximum stress. Because the Wenchuan event was an
+oblique reverse faulting earthquake, both the maximum and minimum (horizontal)
+stress directions have to be positive as they are greater than the vertical
+stress. The stress orientations are taken as the azimuth of maximum tectonic
+stress and are sampled uniformly from 0 to 360$^{\circ}$.
 
 For each of 100,000 iterations, unique samples for each of the priors are drawn
 using a seeded pseudorandom number generator (so that the same priors are drawn
@@ -447,14 +468,14 @@ p (D | T) = \frac{ \exp ( \kappa \cos \bar{\lambda}^m )} {\exp (\kappa \cos \bar
 \end{equation}
 
 where $\kappa$ = 8.529, which is calculated so that 68.2% of the Von Mises
-distribution is within $\pi$/9 radians (20°), the estimated 1$\sigma$
+distribution is within $\pi$/9 radians (20$^{circ}$), the estimated 1$\sigma$
 uncertainty of the coseismic slip models based on comparisons between rakes of
 high-slip fault patches. Then, the posterior distribution $p(T | D)$ is
 estimated *(sampled?)* by comparing each model likelihood to a random number
 selected from the uniform distribution [0, 1), and retaining those models with
 a higher likelihood than the random value.
 
-### Analysis of friction and pore fluid pressure
+## Analysis of friction and pore fluid pressure
 
 Once the tectonic stress distributions consistent with the coseismic slip data
 have been determined, we analyze the distributions of $\mu$ and $\phi$ required
@@ -471,12 +492,12 @@ posteriors that are common to all models, which we call the "joint" [?]
 posteriors, or $p(P^{joint} | D)$ where $P$ is the parameter of interest.
 
 
-## T, $\mu$, $\phi$ results
+# T, $\mu$, $\phi$ results
 
-### Individual slip models
+## Individual slip models
 Results for $T$, $\mu$ and $\phi$ are quite consistent across all coseismic
 slip models. Maximum compressive stress $T_{max}$ is broadly east-west for all
-models, with a mode trending at ~105° (Figure \ref{fig:T_rose}).
+models, with a mode trending at ~105$^{circ}$ (Figure \ref{fig:T_rose}).
 $p(T_{max}|D)$ for each slip model increases from $T$ =0 to 0.5 or 1 before
 essentially leveling off, though some slip models, particularly the Qi models,
 show a slight decrease in [count? probability?] past the initial mode at $T$
@@ -504,7 +525,7 @@ low probability density, as it is unlikely that very low $T_{max}$ values can
 overcome sinistral and normal-sense topographic shear stresses to cause the
 observed coseismic slip kinematics.
 
-### Joint posteriors
+## Joint posteriors
 $p(T^{joint}_{max} | D)$ is not substantively different from any of the  
 
 
