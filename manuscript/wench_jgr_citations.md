@@ -28,3 +28,5 @@ zhang et al., 2012
 cattin et al 1997
 lamb 2006
 Zoback and Townend, 2001
+clark et al 2005 [gji]
+heidbach et al 2009 [world stress map]

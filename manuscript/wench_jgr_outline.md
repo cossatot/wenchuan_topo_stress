@@ -153,10 +153,10 @@
 
 
 
-
+*need more description of $\tau^M$ results.*
 
 *something about residual stresses being low compared to 2kyr accumulated
-tectonic stress *
+tectonic stress*
 
 *slip weighting means that we are not too influenced by deep fault geometry*
 
@@ -164,14 +164,30 @@ tectonic stress *
 
 ## List of figures
 1. map of eastern Tibet/ SB
-2. map of rupture zone
-  - fault traces (duh)
-  - velocities?
-  - rupture kinematics/ surface rupture offsets?
-  - anything else of relevance?
-3. Feng $\sigma^M_n$, slip contours, topo, Beich.
-4. Qi oblique figure showing ramp ($\tau^M_d$ (?), slip contours).
-5. Feng $\sigma^M_n$, slip mag scatter
-6. T-circle posteriors/ rose diagrams (fig:T_rose)
-7. T marginals (all figs?)
-8. $\mu$, $\phi$ scatters w/ marginals (fig:mu_phi_w_marginals) 
+1. schematic topo stress/faulting
+1. 3D fault results [clean up]
+1. normal stress / slip scatterplot, feng model [make vector]
+1. posteriors for each fault model *
+    - azimuth scatters
+    - T posteriors
+    - mu, phi
+1. joint posteriors (larger) [put both T2 and T2/T1]
+1. plots showing total shear and normal stress *
+1. T_max rose diagram (joint) *
+1. lorena-style plots *
+1. some sort of summary/discussion figure (?)
+
+
+to do:
+make script to make plots
+clean up figs
+incorporate geodynamic discussions
+get tong working
+comparison w/ lorena's results
+compare w/ borehole data
+
+![Topographic normal stress $\sigma_n^M$ (colors), slip magnitude (contours,
+1 m interval) and hanging-wall topography on the Feng et al. [2010] model of
+the Beichuan fault. Note the suppression of fault slip where normal stress is
+highest, such as below the Pengguan massif (P).
+\label{fig:feng_slip_sig_n_beich} ](../figures/feng_slip_sig_n_beich.png)
