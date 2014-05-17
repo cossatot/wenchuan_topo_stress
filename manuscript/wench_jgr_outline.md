@@ -171,9 +171,8 @@ tectonic stress*
     - azimuth scatters
     - T posteriors
     - mu, phi
-1. joint posteriors (larger) [put both T2 and T2/T1]
+1. joint posteriors (larger) [put both T2 and T2/T1], rose
 1. plots showing total shear and normal stress *
-1. T_max rose diagram (joint) *
 1. lorena-style plots *
 1. some sort of summary/discussion figure (?)
 

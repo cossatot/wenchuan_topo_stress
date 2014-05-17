@@ -30,3 +30,8 @@ lamb 2006
 Zoback and Townend, 2001
 clark et al 2005 [gji]
 heidbach et al 2009 [world stress map]
+McKenzie, 1969
+Angelier 1994
+Wallace [1951]
+Bott [1959]
+Lisle 2013
