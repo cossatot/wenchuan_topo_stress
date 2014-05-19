@@ -135,12 +135,16 @@ and Royden, 2000] and one of the highest and steepest escarpments on earth.
 This is most apparent in the southwestern portion of the earthquake rupture,
 where the extremely steep Pengguan massif, a Precambrian crystalline massif in
 the hanging wall of the Beichuan thrust, where elevations >4 km drop to ~1200
-m in as little as 6 km map distance (Figure /ref{fig:lms_map}).
+m in as little as 6 km map distance (Figure \ref{fig:lms_map}).
 
 ![Map of eastern Tibet and the Sichuan basin, showing active structures from
-Styron et al. (2010).  P = Pengguan massif.
+Styron et al. (2010). Faults that ruptured in the 2008 Wenchuan earthquake are
+shown in pink. GPS velocities are relative to the mean velocity of sites within
+Sichuan basin, with 1$\sigma$ uncertainty, from the dataset of Liang et al.
+[2013]. Beachball is from the Global CMT focal mechanism solution for the 2008
+Wenchuan earthquake. BF = Beichuan fault. PF = Pengguan fault. P = Pengguan
+massif. Grey box shows the extent of Figure \ref{fig:lms_stress_map}.
 \label{fig:lms_map}](../figures/lms_map.pdf)
-
 
 Coseismic slip on the fault is spatially variable. Surface ruptures on the 
 Beichuan fault show vertical (reverse-sense) displacements up to 6.5 m and
@@ -281,15 +285,15 @@ of the horizontal loading functions in Equations \ref{eqn:f_hor_xz} and
 \ref{eqn:f_hor_yz}. Convolutions were performed as multiplications in the time
 domain, and were done separately for each depth.
 
-Parameter	     				| Value   | Unit
+Parameter	     				    | Value      | Unit
 ------------------------------------|------------|----------------
-horizontal spacing	 			 	| 851    | m
-vertical spacing   			 	| 1000    | m
+horizontal spacing	 			 	| 851        | m
+vertical spacing   			 	    | 1000       | m
 minimum depth						| 851		 | m (below sea level)
 maximum depth						| 35851		 | m (below sea level)
-density ($\rho$)   			 	| 2700    | kg m$^{-3}$
-g          			 	| 9.81    | m s$^{-2}$
-Green's function kernel radius  	| 9e5    | m
+density ($\rho$)   			 	    | 2700       | kg m$^{-3}$
+g          			 	            | 9.81       | m s$^{-2}$
+Green's function kernel radius  	| 9e5        | m
 Lame's param (1)					| 1			 | -
 Lame's param (2)					| 1			 | -
 
@@ -316,18 +320,18 @@ each point in the coseismic slip models.
 # Results of topographic stress calculations on the Wenchuan faults
 
 Topographic stresses on the Wenchuan faults are in the 1--10s of MPa range
-(Figure \ref{fig:feng_slip_sig_n_beich}. Stresses are highest in the
-southwest, beneath the Pengguan massif (the highest topography of the Longmen
-Shan front), and decrease to the northeast. $\sigma_{zz}^M$ is the typically
-the largest of the 'cardinal' compressive stresses ($\sigma^M_{i=j}$), though
-it is not substantially larger than the other cardinal components. Maximum
-horizontal stress is not typically aligned with either cardinal horizontal
-component, and is typically larger than $\sigma^M_{zz}$ above 10 km. Maximum
-$\sigma^m_{zz}$ is near 80 MPa, on the southwestern Beichuan fault below the
-high peaks of the Pengguan massif, except for slip models with thrust flats at
-the base of the southwestern Beichuan fault, where $\sigma^M_{zz}$ reaches 100
-MPa. Vertical shear stresses ($\sigma^M_{xz, yz}$) are on the order of 1 MPa,
-and horizontal shear stress ($\sigma^M_{xy}$) is on the order of 0.1 MPa.
+(Figure \ref{fig:fault_stress_3d}. Stresses are highest in the southwest,
+beneath the Pengguan massif (the highest topography of the Longmen Shan front),
+and decrease to the northeast. $\sigma_{zz}^M$ is the typically the largest of
+the 'cardinal' compressive stresses ($\sigma^M_{i=j}$), though it is not
+substantially larger than the other cardinal components. Maximum horizontal
+stress is not typically aligned with either cardinal horizontal component, and
+is typically larger than $\sigma^M_{zz}$ above 10 km. Maximum $\sigma^m_{zz}$
+is near 80 MPa, on the southwestern Beichuan fault below the high peaks of the
+Pengguan massif, except for slip models with thrust flats at the base of the
+southwestern Beichuan fault, where $\sigma^M_{zz}$ reaches 100 MPa. Vertical
+shear stresses ($\sigma^M_{xz, yz}$) are on the order of 1 MPa, and horizontal
+shear stress ($\sigma^M_{xy}$) is on the order of 0.1 MPa.
 
 ![Southwest-looking views of topographic stresses and coseismic slip on
 selected slip models. All models share same lateral extent, but the
@@ -390,12 +394,11 @@ points with no slip.
 
 Faults fail in earthquakes when the shear stresses on the fault overcome the
 frictional stresses resisting slip on the fault. At the point of failure, the
-shear stress and normal stress are equal, as in the familiar Coulomb failure
-criterion 
+shear stress and normal stress are equal, as given in Amonton's law:
 
 \begin{equation}
 \tau = \mu ( \sigma_n - \phi )
-\label{eqn:coulomb_failure}
+\label{eqn:amonton}
 \end{equation}
 
 where $\mu$ is the coefficient
@@ -425,9 +428,8 @@ regional topography as calculated in this study. We do not immediately ascribe
 all tectonic stress to typical plate tectonic forces, either; because of the
 complexities of deformation in orogens, tectonic stresses could include
 contributions from processes such as lower crustal flow [e.g. Clark et al., 
-2005](, orogenic collapse along deep-seated shear zones [e.g. Flesch and
-Bendick, 2012]) or stresses induced by activity on neighboring faults [e.g.,
-ref].
+2005], mantle circulation on a regional scale [e.g. Flesch et al., 2000] or stresses induced by activity on neighboring faults [e.g.,
+ref],.
 
 ## Description of the stress state
 
@@ -525,7 +527,7 @@ retained in $p(T|D)$, and for each model draw a random $\phi$ from the uniform
 distribution $p(\phi)= [0,1)$ (again using a seeded pseudorandom number
 generator for consistent priors across all coseismic slip models). Next, we
 calculate $\tau^S$ and $\sigma_n^S-\phi$ for each point on the fault. Then, we
-solve Equation \ref{eqn:coulomb_failure} for $\mu$. Finally, we filter the
+solve Equation \ref{eqn:amonton} for $\mu$. Finally, we filter the
 results so that only models with $0 \ge \tau \ge 1$ are retained.
 
 After this analysis has been done for all slip models, we find the set of
@@ -552,7 +554,7 @@ relationship aside from the requirement that $T_max \ge T_{min}$.
 
 ![Scatterplots with marginals $p(T|D)$ for each coseismic slip model. Values
 are relative to lithostatic pressure. Inset rose diagrams are histograms of
-azimuth of $T_max$.  
+azimuth of $\sigma^T_{max}$.  
 \label{fig:T_scatters}](../figures/T_scatters.pdf)
 
 All slip models show $p(\phi | D)$ to be uniformly high from $\phi$ = 0 to
@@ -571,13 +573,31 @@ that very low $T_{max}$ values can overcome sinistral and normal-sense
 topographic shear stresses to cause the observed coseismic slip kinematics.
 
 ![Scatterplots of $p(\mu,\phi | D)$ for each coseismic slip model. Colors
-in the scatterplot indicate magnitude of $T_{max}$. Contour lines indicate
-relative density of posteriors; darker lines mean higher densities.
+in the scatterplot indicate magnitude of $T_{max}$. Need color bar. Contour
+lines indicate relative density of posteriors; darker lines mean higher
+densities.
 \label{fig:mu_phi_scatters}](../figures/mu_phi_fms.pdf)
 
 ## Joint posteriors
-$p(T^{joint}_{max} | D)$ is not substantively different from any of the 
-constituent model posteriors.
+In order to concatenate the posteriors yielded by each coseismic slip model,
+we define a final posterior as $p(T^{joint} | D)$, which comprises the samples
+common to the posteriors from all slip models. Unsuprisingly, given the broad
+similarity between the posteriors from the various slip models, 
+$p(T^{joint}_{max} | D)$ is not substantially different from any of the 
+constituent model posteriors. $p(\sigma^T_1 | D)$ has a somewhat more well-
+defined mode at ~0.6...
+
+In our estimation of $T$, $\phi$ and $\mu$, we have used the same random
+combinations of $T$ and $\phi$ for each slip model, and then solved for $\mu$
+so that the fault is at a critical stress state (Equation \ref{eqn:amonton}).
+because of slight differences in fault attitude, location and slip among the
+slip models, some variability exists in $\mu$ for each prior sample. We
+therefore choose $p(\mu^{joint}$ | D)$ to be the median $\mu$ of each slip
+model for each sample. $p(\mu^{joint}|D)$ has a mostly similar distribution
+as $p(\mu | D)$ for any of the slip models; however, likely because it is an
+average value, it lacks some density on the high-$\mu$ tail found in 
+$p(\mu | D)$ for the individual slip models, though it is not similarly sparse
+on the low-$\mu$ side, suggesting that low values for $\mu$ are more robust.
 
 ![Joint model results. 
 (A) E-W and N-S components of $T$.
@@ -587,7 +607,8 @@ constituent model posteriors.
 
 
 
-
+![LMS stress map
+\label{fig:lms_stress_map}](../figures/lms_map_stresses_rot.pdf)
 
 # Discussion
 
@@ -605,26 +626,32 @@ fault, and up to 100 MPa on thrust flats at depth.
 
 Topographic stresses are generally opposed to the tectonic slip direction,
 and therefore have to be overcome by tectonic stresses in order to produce
-the observed rupture patterns. This indicates that models suggesting the  
-
-
+the observed rupture patterns. However, models with thrust flats at the base
+of the faults show topographic loading in the direction of fault slip. This is
+especially apparent in the Qi et al. [2011] model, where the thrust flat is
+very broad. If such faults are able to accumulate shear stresses and transfer
+them to the higher and steeper faults, topographic stresses may contribute to
+the observed coseismic slip.
 
 ## Tectonic stresses, $\mu$, $\phi$
 
 ### Direction and magnitude of tectonic stresses
 The maximum tectonic stress $\sigma^T_1$ is consistently oriented roughly E-W
 in our results. This orientation is oblique to the Longmen Shan, which produces
-oblique (right-lateral and reverse sense) shear on the Beichuan fault. $T_2$ is
-~N-S oriented, and is only slightly larger than lithostatic pressure. This
-stress configuration is compatible with the observed kinematics of the Wenchuan
-faults, and in close agreement pre-earthquake stress measurements near the
-rupture zone (Figure \ref{fig:lms_map}), mostly from borehole breakout data
-from 2-5 km depth [Heidbach et al., 2009]. It is somewhat discrepant with
-stress orientations estimated at ~800 m depth adjacent to the Beichuan fault in
-the WFSD-1 borehole of the Wenchuan Earthquake Fault Scientific Drilling
-Project several years after the 2008 earthquake [Cui et al., 2014]
-[check on this! At this depth, the results may not be that different!  Look at
-magnitudes as well!].
+oblique (right-lateral and reverse sense) shear on the Beichuan fault.
+$\sigma^T_2$ is ~N-S oriented, and is only slightly larger than lithostatic
+pressure. This stress configuration is compatible with the observed kinematics
+of the Wenchuan faults, and in close agreement pre-earthquake stress
+measurements near the rupture zone (Figure \ref{fig:lms_stress_map}), mostly
+from borehole breakout data from 2-5 km depth [Heidbach et al., 2009], which is
+the zone of maximum slip in the coseismic slip models. It is somewhat
+discrepant with stress orientations estimated at ~800 m depth adjacent to the
+Beichuan fault in the WFSD-1 borehole of the Wenchuan Earthquake Fault
+Scientific Drilling Project several years after the 2008 earthquake [Cui et
+al., 2014], which show $\sigma_{Hmax}$ to be more orthogonal to the fault
+trace, suggesting that much of the right-lateral component of shear stress was
+released during the earthquake. *check on this! At this depth, the results may
+not be that different!  Look at magnitudes as well!*
 
 However, the orientation of the tectonic (and total) stresses near the Wenchuan
 faults shows a larger difference with the stresses that can be inferred from
@@ -659,4 +686,15 @@ These values are slightly lower than a value of 0.4 for friction at failure in
 laboratory experiments on samples recoverd from the WFSD-1 drill hole into the
 Beichuan fault [Kuo et al., 2014], though that value has a moderately high
 likelihood in our posteriors. These values, however, are lower than typical
-'Byerlee' type values derived from  
+'Byerlee' type values derived from laboratory experiments on intact rock,
+suggesting that slip occurred on preexisting faults because they are weaker
+than optimally-oriented new faults.
+
+1[Ratio of Coulomb faulure ratio (...) on the Beichuan fault from the Zhang
+et al. [2011] model to CFR on an optimally-oriented fault with $\mu = 0.6$,
+versus estimated $\mu$ on the Beichuan fault. Values less than 0 (1 in linear
+space) indicate that slip is favored on the Beichuan fault, even if it is non-
+optimally oriented. Values are calculated for each point in the slip model for 1000 randomly-drawn samples from $p(T,\mu,\phi |D)$.
+\label{fig:cfr_ratios}](../figures/cfr_ratios.png)
+
+Figure \ref{fig:cfr_ratios} shows stuff. 
