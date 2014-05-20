@@ -685,6 +685,20 @@ very broad. If such faults are able to accumulate shear stresses and transfer
 them to the higher and steeper faults, topographic stresses may contribute to
 the observed coseismic slip.
 
+The spatial variation in topographic stresses decreases in frequency and
+amplitude with depth. This is not surprising, because with increasing depth,
+the stress field at any point is more sensitive to surface loads from a greater
+region, and is less dominated by individual mountain-sized features. The
+spatial variablity of stress with depth is similar to the spatial variablity of
+coseismic slip in the models considered [e.g., Zhang et al, 2011], which are
+similarly more smooth at depth. Some of the estimated slip variability is
+likely partially due to the more limited detectability of displacements at
+depth versus near the surface. However, the negative spatial correlations of
+slip versis stress (especially $\sigma^M_N$) (Figures
+\ref{fig:fault_stress_3d}, \ref{fig:feng_slip_sig_n_scatter}) suggest this is a
+real signal: variations in $M$ influence rupture processes, leading to less
+slip where topographic stresses are less favorable on the fault.
+
 ## Tectonic stresses, $\mu$, $\phi$
 
 ### Direction and magnitude of tectonic stresses
@@ -725,7 +739,7 @@ some additional mechanism of redirecting crustal stresses is incorporated.
 The magnitudes of $\sigma^T_1$ and $\sigma^T_2$ are dominantly constrained on
 the low end by our analysis; this is apparent by the sharp decrease in the
 frequency of $p(T_{max}|D)$ below about 0.5. This indicates that $\sigma^T_1$
-of at least ~13.25 MPa km$^-1$ is necessary to overcome topographic stresses
+of at least ~13.25 MPa km$^{-1}$ is necessary to overcome topographic stresses
 resisting reverse and right-lateral slip on the faults. 
 
 ### Values of $\phi$ and $\mu$
@@ -793,9 +807,9 @@ lower than laboratory-derived values; using higher values would decrease the
 CFR. We then compare $CFR_o$ to $CFR_f$. When $CFR_o > CFR_f$, failure on an
 optimal plane is preferred to failure on the Beichuan fault.
 
-Figure \ref{fig:cfr_ratios} shows $\ln (CFR_o / CFR_f)$ plotted against $\mu$
+Figure \ref{fig:cfr_ratios} shows $log (CFR_o / CFR_f)$ plotted against $\mu$
 on the Beichuan fault for all samples. Though considerable scatter exists even
-in $\ln (CFR_f / CFR_o)$, it is clear that in most instances, slip on the
+in $log (CFR_f / CFR_o)$, it is clear that in most instances, slip on the
 Beichuan fault is preferred over slip on an optimal fault, except for high
 values of $\mu$. Because $T$, $\phi$ and $\mu$ can all affect fault
 reactivation [e.g., Sibson, 1985], we compare the relative contributions of
@@ -815,7 +829,7 @@ model for 1000 randomly-drawn samples from $p(T,\mu,\phi |D)$.
 \label{fig:cfr_ratios}](../figures/cfr_ratios.png)
 
 Parameter           | Coef.   | Std. Err. | t        | $P>|t|$      
---------------------|---------|---------- |----------|----------
+--------------------|---------|-----------|----------|----------
 Intercept           | -0.2566 | 0.0020    | -128.8   | <0.0001 
 $\mu$               | 1.1168  | 0.0086    | 130.6    | <0.0001
 $\sigma^T_{EW}$     | 0.9138  | 0.0048    | 191.2    | <0.0001
@@ -828,5 +842,31 @@ $\sigma^T_{EW}$. \label{table:cfr_regress}
 
 # Conclusions
 
-It is important to have conclusions. It brings closure and finality into what
-is otherwise a very open-ended thing.
+We have calculated the topographic stresses on the Wenchuan earthquake faults,
+and used those stresses to constrain tectonic stresses, fault friction and
+pore fluid pressure. From this work, we derive several conclusions:
+
+Topographic stresses in the Longmen Shan region, and on the Wenchuan faults, 
+are large. $\tau^M$ on the faults is up to |20| MPa, and $\sigma^M_N$ is up to
+80 MPa, and higher (up to 100 MPa) on deep thrust flats present in some
+coseismic slip models.
+
+These topographic stresses generally resist the slip displayed during the 2008
+Wenchuan earthquake. $\tau^M$ is opposed to the slip direction over much of the
+fault, and high values of $\sigma^M_N$ increase the frictional resistance to
+slip, potentially limiting slip magnitude in locations such as below the
+Pengguan massif.
+
+Because topographic stresses resist coseismic slip, the earthquake has to have
+been caused by tectonic stresses. The results of our Bayesian inversion for
+tectonic stresses, fault friction and pore fluid pressure indicate that the
+maximum tectonic stress is oriented ~E-W and has a likely minimum of 13.25 MPa
+km$^{-1}$. The minimum tectonic stress is oriented ~N-S and is fairly low.
+The coefficient of static friction on the fault is estimated at about 0.2-0.3,
+and fluid pressures are likely 0-0.5 of the total pressure.
+
+Taken together, these results suggest that local stress conditions caused by
+topographic loading are unfavorable to slip on the Wenchuan earthquake faults,
+but because of the low friction coefficients and moderate fluid pressures,
+slip occurred on these faults instead of more favorably-oriented faults
+elsehere in the region.
