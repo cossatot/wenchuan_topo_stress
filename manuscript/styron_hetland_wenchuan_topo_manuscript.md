@@ -380,7 +380,7 @@ each point in the coseismic slip models.
 # Results of topographic stress calculations on the Wenchuan faults
 
 Topographic stresses on the Wenchuan faults are in the 1--10s of MPa range
-(Figure \ref{fig:fault_stress_3d}. Stresses are highest in the southwest,
+(Figure \ref{fig:lms_topo_stress_rot}, \ref{fig:fault_stress_3d}. Stresses are highest in the southwest,
 beneath the Pengguan massif (the highest topography of the Longmen Shan front),
 and decrease to the northeast. $\sigma_{zz}^M$ is the typically the largest of
 the 'cardinal' compressive stresses ($\sigma^M_{i=j}$), though it is not
@@ -392,6 +392,24 @@ Pengguan massif, except for slip models with thrust flats at the base of the
 southwestern Beichuan fault, where $\sigma^M_{zz}$ reaches 100 MPa. Vertical
 shear stresses ($\sigma^M_{xz, yz}$) are on the order of 1 MPa, and horizontal
 shear stress ($\sigma^M_{xy}$) is on the order of 0.1 MPa.
+
+![Topographic horizontal in the Wenchuan rupture region (black and red crosses)
+at 5 km. Other symbology is the same as in Figure \ref{fig:lms_map}. Stresses
+shown are downsampled from grid resolution by a factor of 6.
+\label{fig:lms_topo_stress_rot}](../figures/lms_topo_stresses_rot.pdf)
+
+Because the compressive stresses are near equal, $M$ contains a large
+isotropic, or pressure, component and a smaller shear component. Consequently,
+$M$ resolves on the Wenchuan faults with a large $\sigma^M_n$ (median of about
+40-60 MPa for each slip model) and much smaller shear stresses. $\tau^M_d$
+median of about -3 to -6 MPa, where values less than zero indicate normal-sense
+shear; and $\sigma^M_s$ median values range from about -2 to 1 MPa, where
+values less than zero indicate sinistral shear. Thus, topographic shear
+stresses are typically resolved as normal-sinistral, as opposed to the dominant
+mode of coseismic slip, which is reverse-dextral. Both $\sigma^M_n$ and
+$\tau^M$ increase the overall resistance to tectonic slip in the 2008 Wenchuan
+event, and had to be overcome by tectonic compression in order for the
+earthquake to occur.
 
 ![Southwest-looking views of topographic stresses and coseismic slip on
 selected slip models. All models share same lateral extent, but the
@@ -406,19 +424,6 @@ vertical exaggeration.
 (C) $\tau_s^M$ (colors) and strike slip (contours, 1 m interval) on the Qi et 
 al. [-@qi2011] 'rough' slip model. 
 \label{fig:fault_stress_3d} ](../figures/fault_stress_3d.pdf)
-
-Because the compressive stresses are near equal, $M$ contains a large
-isotropic, or pressure, component and a smaller shear component. Consequently,
-$M$ resolves on the Wenchuan faults with a large $\sigma^M_n$ (median of about
-40-60 MPa for each slip model) and much smaller shear stresses. $\tau^M_d$
-median of about -3 to -6 MPa, where values less than zero indicate normal-sense
-shear; and $\sigma^M_s$ median values range from about -2 to 1 MPa, where
-values less than zero indicate sinistral shear. Thus, topographic shear
-stresses are typically resolved as normal-sinistral, as opposed to the dominant
-mode of coseismic slip, which is reverse-dextral. Both $\sigma^M_n$ and
-$\tau^M$ increase the overall resistance to tectonic slip in the 2008 Wenchuan
-event, and had to be overcome by tectonic compression in order for the
-earthquake to occur.
 
 However, much of the shallowly-dipping fault segments (the Pengguan fault and
 flats at the base of the Beichuan fault, where present) have $\tau^M$ in the
@@ -652,7 +657,7 @@ combinations of $T$ and $\phi$ for each slip model, and then solved for $\mu$
 so that the fault is at a critical stress state (Equation \ref{eqn:amonton}).
 because of slight differences in fault attitude, location and slip among the
 slip models, some variability exists in $\mu$ for each prior sample. We
-therefore choose $p(\mu^{joint}$ | D)$ to be the median $\mu$ of each slip
+therefore choose $p(\mu^{joint} | D)$ to be the median $\mu$ of each slip
 model for each sample. $p(\mu^{joint}|D)$ has a mostly similar distribution
 as $p(\mu | D)$ for any of the slip models; however, likely because it is an
 average value, it lacks some density on the high-$\mu$ tail found in 
@@ -723,7 +728,12 @@ that much of the right-lateral component of shear stress was released during
 the earthquake. *check on this! At this depth, the results may not be that
 different!  Look at magnitudes as well!*
 
-![LMS stress map
+![Topographic and tectonic horizontal stresses (taken from the most likely
+estimates of $p(T|D)$ in the Wenchuan rupture region (black and red crosses)
+with horizontal maximum stress orientation data taken from before the 2008
+Wenchuan event from the World Stress Map [@heidbach2009] (purple arrows).
+Other symbology is the same as in Figure \ref{fig:lms_map}. Stresses shown
+are downsampled from grid resolution by a factor of 9.
 \label{fig:lms_stress_map}](../figures/lms_map_stresses_rot.pdf)
 
 However, the orientation of the tectonic (and total) stresses near the Wenchuan
