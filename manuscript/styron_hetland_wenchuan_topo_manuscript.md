@@ -11,7 +11,7 @@ altaffiltext: 'Department of Earth and Environmental Sciences, University of Mic
 
 
 abstract:
-	Topographic stresses are big and stuff. TEST
+	Topographic stresses are big and stuff. 
 ...
 
 # Introduction
