@@ -49,7 +49,7 @@ def dip_shear(strike=None, dip=None, rho=None, g=None, mxx=None,
 
 def eff_normal_stress(strike=None, dip=None, rho=None, g=None, mxx=None, 
                  myy=None, mxy=None, mzz=None, myz=None, mxz=None,
-                 txx=None, txy=None, tyy=None, depth=None, lamb=0):
+                 txx=None, txy=None, tyy=None, depth=None, phi=0):
 
     strike = np.radians(strike)
     dip = np.radians(dip)
@@ -60,7 +60,7 @@ def eff_normal_stress(strike=None, dip=None, rho=None, g=None, mxx=None,
     s_yy = myy + p + p * tyy
     s_zz = mzz + p
            
-    p_fluid = lamb * (s_xx + s_yy + s_zz) / 3.
+    p_fluid = phi * (s_xx + s_yy + s_zz) / 3.
     
     s_xx += - p_fluid
     s_yy += - p_fluid

@@ -7,7 +7,7 @@
 
 - Topography creates substantial stress fields in high-relief areas
     - Both weight of topography ($\rho g z$) and shear stresses from slope
-    
+ 
 - Topographic stresses may influence fault activity
     - put faults nearer to or farther from failure
     - reorient shear stresses on faults
@@ -69,6 +69,21 @@
 	- Resolved into $\tau_s$, $\tau_d$, $\sigma_n$
 	- Compared to coseismic slip inversions (?)
 
+### Topographic stress results
+
+- Magnitude, directions of topographic stresses
+    - magnitudes
+        - cardinal directions (M diagonals)
+        - principal stress directions--trends
+        - $\sigma_n^M$ high
+    - directions of $\tau^M$
+    - coulomb stresses (fault mostly pushed away from failure)
+    - 
+- Topographic stresses are large, esp. on the SW Beichuan fault
+- Stresses are opposed to fault slip for most fault segments
+    - flats at depth are loaded in slip sense
+- normal stresses are up to ~80 MPa
+
 ## Tectonic stress calculations
 - We can use topographic stresses and the event of fault failure to constrain
   tectonic stresses at time of failure, based on Mohr-Coulomb failure criteria
@@ -98,41 +113,80 @@
 	- trim results for $\mu \le 0$ and $\mu \ge 1$
 	- profit!
 
-## Results
-### Topographic stresses
-- Topographic stresses are large, esp. on the SW Beichuan fault
-- Stresses are opposed to fault slip for most fault segments
-- normal stresses are up to ~80 MPa
-
 ### Tectonic stresses
 - Magnitudes and orientations
-- $\mu, \; \lambda$ and covariance
+    - Consistent across all slip models
+    - mode ~100°--110° (check)
+
+
+
+
+- $\mu, \; \phi$ 
+- numbers retained.
+- $\tau$ and $\sigma_n^{eff}$.
+- $\lambda$
 
 ## Discussion
- 
+
+- Magnitude, directions of topographic stresses
+    - magnitudes
+        - cardinal directions (M diagonals)
+        - principal stress directions--trends
+        - $\sigma_n^M$ high
+    - directions of $\tau^M$
+    - coulomb stresses (fault mostly pushed away from failure)
+    - 
+    - correlations with slip
+
+
+- Comparison of stresses w/ those derived from other studies:
+    - Luo and Liu 2010 Tectonophysics ($\tau$)
+    - Zoback and Townend 2001
+    - etc
+
+- Comparison of friction, fluid pressure w/ other studies:
+    - results from fault drilling
+    - other model estimates
 
 
 
 
 
 
+*need more description of $\tau^M$ results.*
 
+*something about residual stresses being low compared to 2kyr accumulated
+tectonic stress*
 
-
-* something about residual stresses being low compared to 2kyr accumulated
-tectonic stress *
-
-
+*slip weighting means that we are not too influenced by deep fault geometry*
 
 
 
 ## List of figures
 1. map of eastern Tibet/ SB
-2. map of rupture zone
-  - fault traces (duh)
-  - velocities?
-  - rupture kinematics/ surface rupture offsets?
-  - anything else of relevance?
-3. something, surely!  Schematic maybe?
-4. tectonic stress priors
-5. schematic/ workflow for bayesian/mu rake inversion
+1. schematic topo stress/faulting
+1. 3D fault results [clean up]
+1. normal stress / slip scatterplot, feng model [make vector]
+1. posteriors for each fault model *
+    - azimuth scatters
+    - T posteriors
+    - mu, phi
+1. joint posteriors (larger) [put both T2 and T2/T1], rose
+1. plots showing total shear and normal stress *
+1. lorena-style plots *
+1. some sort of summary/discussion figure (?)
+
+
+to do:
+make script to make plots
+clean up figs
+incorporate geodynamic discussions
+get tong working
+comparison w/ lorena's results
+compare w/ borehole data
+
+![Topographic normal stress $\sigma_n^M$ (colors), slip magnitude (contours,
+1 m interval) and hanging-wall topography on the Feng et al. [2010] model of
+the Beichuan fault. Note the suppression of fault slip where normal stress is
+highest, such as below the Pengguan massif (P).
+\label{fig:feng_slip_sig_n_beich} ](../figures/feng_slip_sig_n_beich.png)

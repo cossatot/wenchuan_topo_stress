@@ -20,7 +20,7 @@ $H$ := elevation array / general elevation
 
 $\sigma_{ij}^A$ := stress component (in $ij$ direction) of $A$ tensor/origin
 $\tau_i^A$ := shear stress (in $i$ direction) of $A$ origin
-$\theta$ := azimuth (of e.g. stress)
+$\alpha$ := azimuth (of e.g. stress)
 $\lambda$ := rake
 $d_i$ := displacement (distance) in 
 
