@@ -21,126 +21,143 @@ abstract:
 >
 > *The Holy Qur'an*, 15:16
 
-Stress is of fundamental importance to many processes in the earth. Both the
-isotropic (pressure) and anisotropic (shear) components of stress exert control
-on the deformation state of the earth at any point in the brittle regime.
-However, unlike other fundamental quantities such as temperature, stress is
-typically difficult to measure *in situ*, without drilling-based techniques 
-(i.e., there is no remote sensing of stress in the earth). Therefore, stress is
-often treated in a semi-quantitative manner, with an emphasis on directions and
-relative magnitudes of the principal stresses locally or regionally. These
-values are commonly derived from strain, for example from studies of earthquake
-focal mechanisms or geodetic velocity fields.
+Stress is of fundamental importance to many processes in the
+earth. Both the isotropic (pressure) and anisotropic (shear)
+components of stress exert control on the deformation state of the
+earth at any point in the brittle regime.  However, unlike other
+fundamental quantities such as temperature, stress is typically
+difficult to measure *in situ*, without drilling-based
+techniques. Therefore, stress is often treated in a semi-quantitative
+manner, with an emphasis on directions and relative magnitudes of the
+principal stresses, either locally or regionally [e.g., REFS]. These
+estimates of stress are commonly derived from strain, for example from
+studies of earthquake focal mechanisms [e.g., Micheal, 1984] or
+geodetic velocity fields [e.g., REF].
 
 In areas of substantial relief, high terrain and steep slopes generate
-proportionally large pressures and shear stresses in the crust beneath and
-adjacent to the high topography. Because of the irregularity of topography in
-mountainous regions, the stresses produced by topography are heterogeneous as
-well, and may play a prominent role in local or regional deformation,
-particularly if the region is tectonically active. For example, shear and
-normal stresses on a fault from topographic loading may push a particular fault
-closer to or (as suggested by the Qur'an) farther from failure, or reorient the
-net shear stress direction on a fault. These effects may affect the
-localization or deformational style in a region. Furthermore, heterogeneous
-topographic stresses on a particular fault may affect the way earthquake
-ruptures propagate across the fault plane.
+large stresses in the crust beneath and adjacent to the high
+topography [REFs]. Because of the irregularity of topography in
+mountainous regions, the stresses produced by topography are also
+heterogeneous, and may play a prominent role in local or regional
+deformation, particularly if the region is tectonically active. For
+example, shear and normal stresses on a fault from topographic loading
+may push a particular fault closer to or (as suggested by the Qur'an)
+farther from failure, or reorient the net shear stress direction on a
+fault. These effects may affect the localization or deformational
+style in a region. Furthermore, heterogeneous topographic stresses on
+a particular fault may affect the way earthquake ruptures propagate
+across the fault plane, although the degree to which topographic
+stresses effect faulting has received little attention.
 
-Though topographic stresses may be very heterogeneous, they may also be
-precisely estimated, because topography and material parameters (such as
-density) of constituent rocks are very well known compared to many other
-parameters of interest. Therefore, in areas where topographic stresses are
-a significant component of the total stress budget, these stresses may be used
-in conjunction with information on the deformational condition of a location to
-place quantitative constraints on other types of stresses and related
-parameters such as fault friction and pore fluid pressure.
 
-In this work, we study the effects of topographic stresses on the faults that
-ruptured in the 2008 Wenchuan, China earthquake. This earthquake is an ideal
-candidate for study because it occurred at the base of the Longmen Shan, one of
-the largest and steepest escarpments on Earth (Figure 1), and has a well-
-studied coseismic slip distribution displaying significant along-strike changes
-in kinematics that may be caused by changes in topographic shear stress along
-the fault. Additionally, because the earthquake occurred after ~2000 years of
-seismic quiescence, postseismic stresses in the lithosphere are likely to be
-negligible, suggesting that the stress state on the faults at the time of
-rupture can be described as the sum of topographic, lithostatic, and
-accumulated tectonic stresses. This allows us to use the Mohr-Coulomb failure
-criterion to bracket the tectonic stress field, pore fluid pressure, and
-friction on the fault at failure.
+In this work, we investigate the effects of topographic stresses on
+the faults that ruptured in the Mw 7.9 2008 Wenchuan, China
+earthquake.   This earthquake is an ideal candidate for study because
+it occurred at the base of the Longmen Shan, one of the largest and
+steepest escarpments on Earth (Figure 1), and has a well-studied
+coseismic slip distribution characterized by significant along-strike
+variations in coseismic slip rate. Additionally, because the
+earthquake occurred after ~2000 years of seismic quiescence,
+postseismic stresses in the lithosphere are likely to be negligible,
+suggesting that the stress state on the faults at the time of rupture
+can be approximated as the sum of topographic, lithostatic, and
+accumulated tectonic stresses. We then use the Mohr-Coulomb failure
+critereon to bracket the tectonic stress field, pore fluid pressure,
+and static friction of the fault.
 
 
 ## Previous work on topographic stresses
-Aspects of the topographic stresses and their relevance to tectonics have
-been studied for some time. Jeffreys [-@jeffreys1924] noted that the presence
-of high mountains is evidence that the Earth's crust can support significant
-heterogeneous differential stresses over long time periods Dalmayrac and
-Molnar [-@dalmayrac1981] and Molnar and Lyon-Caen [-@molnar1988] discussed
-how extensional deformation in the high parts of orogens temporally
-coincident with contractional deformation at the low-elevation margins of the
-orogen may be explained by a spatially invariant depth-integrated horizontal
-compressive stress with spatially varying vertical stress field caused by
-topographic variation. Richardson and Coblentz [-@richardson1994] exploited
-this relationship in the central Andes to estimate horizontal tectonic
-stresses through finite element modeling, Copley et al. [-@copley2009]
-performed similar work in Albania. Bollinger et al. [-@bollinger2004] showed
-how increased normal stress on the Main Himalayan thrust due to loading of
-the high Himalayan massifs locally suppressed microseismicity and increased
-fault locking.
 
-Aspects of topographic stresses are also found in common models of orogenic
-dynamics. For example, topographic loading is central to thin viscous sheet
-models [e.g., @birdpiper80; @flesch2010gpe] for lithospheric deformation.
-Critical taper models for thrust or extensional wedges [e.g. @dahlen1990;
-@xiao1991] incorporate both variation in vertical stress due to changing
-elevation as well as a shear stress contributed by the slope of the wedge
-surface.  Critical taper models also incorporate the idea that in a growing
-wedge, progressively increasing topographic stresses may eventually prevent
-continued slip on a given fault plane, and strain will instead be transferred
-to the toe of the thrust wedge where the stress state is more favorable.
+Aspects of the topographic stresses and their relevance to tectonics
+have been studied for some time. Jeffreys [-@jeffreys1924] noted that
+the presence of high mountains is evidence that the Earth's crust can
+support significant heterogeneous differential stresses over long time
+periods. Dalmayrac and Molnar [-@dalmayrac1981] and Molnar and
+Lyon-Caen [-@molnar1988] discussed how extensional deformation in the
+high parts of orogens temporally coincident with contractional
+deformation at the low-elevation margins of the orogen may be
+explained by a spatially invariant, depth-integrated horizontal
+compressive stress with spatially varying vertical stress field caused
+by topographic variation. Richardson and Coblentz [-@richardson1994]
+exploited this relationship in the central Andes to estimate
+horizontal tectonic stresses through finite element modeling, and more
+recently Copley et al. [-@copley2009] performed similar work in
+Albania. Bollinger et al. [-@bollinger2004] showed how increased
+normal stress on the Main Himalayan thrust due to loading of the high
+Himalayan massifs locally suppressed microseismicity and increased
+fault locking. Meade and Conrad [-@meade2008] also demostrated that
+the increased weight of the uplifting Andes influenced the Nazca-South
+America convergence rate.
 
-The contributions of variable topography to the full stress field in the
-elastic upper crust has been studied on smaller spatial scales. McTigue and Mei
-[-@mctiguemei1981] and Savage and Swolfs [-@savageswolfs1986] investigated the
-stress components from long, symmetric ridges and showed how horizontal tension
-is induced under ridge crests and horizontal compression is induced under
-valleys, mostly due to shear stresses generated by slopes. Liu and Zoback
-[-@liuzoback1992] investigated whether the topographic stresses generated by
-the mountains around Cajon Pass (California, USA) contributed to the observed
-left-lateral shear stress on a shallow portion of the right-lateral San Andreas
-fault. In their study, they developed methods for calculating the full (six
-component) stress tensor field from arbitrary topography based on elastic
-halfspace techniques, where previous solutions were limited to two dimensions
-and required topography to be mathematically-defined (e.g., sinusoidal).
-
-Luttrell [-@luttrell2011] performed a study very similar to ours in the region
-of the 2010 8.8 Maule, Chile earthquake. They calculated stresses on the
-megathrust from 
+Aspects of topographic stresses are also found in common models of
+orogenic dynamics. For example, topographic loading is central to thin
+viscous sheet models [e.g., @birdpiper80; @flesch2010gpe] for
+lithospheric deformation.  Critical taper models for thrust or
+extensional wedges [e.g. @dahlen1990; @xiao1991] incorporate both
+variation in vertical stress due to changing elevation as well as a
+shear stress contributed by the slope of the wedge surface.  Critical
+taper models also incorporate the idea that in a growing wedge,
+progressively increasing topographic stresses may eventually prevent
+continued slip on a given fault plane, and strain will instead be
+transferred to the toe of the thrust wedge where the stress state is
+more favorable.
 
 
+The contributions of variable topography to the full stress field in
+the elastic upper crust has been studied on smaller spatial
+scales. McTigue and Mei [-@mctiguemei1981] and Savage and Swolfs
+[-@savageswolfs1986] investigated the stress components from long,
+symmetric ridges and showed how horizontal tension is induced under
+ridge crests and horizontal compression is induced under valleys,
+mostly due to shear stresses generated by slopes. Liu and Zoback
+[-@liuzoback1992] investigated whether the topographic stresses
+generated by the mountains around Cajon Pass (California, USA)
+contributed to the observed left-lateral shear stress on a shallow
+portion of the right-lateral San Andreas fault. In their study, they
+developed methods for calculating the elastic stress tensor field
+arbitrary topography, where previous solutions were limited to two
+dimensions and required topography to be mathematically-defined (e.g.,
+sinusoidal).
 
+Luttrell [-@luttrell2011] inferred the coseismic shear stress changes
+during the 2010 Mw 8.8 Maule, Chile earthquake, and using the
+topographic stresses due to the overlying fore arc, constrained the
+the stresses that led to this earthquake. In their study, they
+calculated topographic stresses following a similar proceedure as Lui
+and Zoback [-@luizoback1992] (which we describe below), although they
+only considered the component of the topographic load that can be
+described by convolving a Boussinesq solution with the
+topography. Luttrell et al. [-@luttrel2011] also considered the
+contribution to stresses due to bouyancy.
 
+** MOVE THIS SECTION TO THE DISCUSSION:
 comparison:
 - we do not incorporate Moho topography (deep, small compared to change at Andean plate boundary
 - Topographic calculations are similar, though we do Cerruti correction
 - We solve for tectonic stress differently: we explicitly calculate whole stress tensor at each point (M + L + T) and use rake as constraint on allowable stresses. We also use a Bayesian search instead of a minimization, yielding a PDF of the stress results. We consider T1, T3, and rake instead of just T1 and rake.
 - We use both normal and shear stresses to constrain pore fluid pressure and friction.
+**
+
+
 
 ## The 2008 Wenchuan, China earthquake
-The 2008 *M*7.9 Wenchuan, China earthquake is one of the most devastating
-earthquakes in recent history. It is also extremely well-studied, and as such
-only relevant information will be summarized here. For an in-depth review and
-discussion of the earthquake, see Zhang et al. [-@zhang2010]. Surface rupture
-occurred along a 240 km segment of the Beichuan fault and a parallel 72 km
-segment of the Pengguan fault [@xu2009] (Figure \ref{fig:lms_map}). These
-faults lie at the base of the central and northeastern Longmen Shan, a mountain
-range that forms the eastern margin of the Tibetan plateau. Total relief across
-the central Longmen Shan is around 4 km, though relief subsides somewhat to the
-northeast. The central and southwestern Longmen Shan is the steepest margin of
-the Tibetan plateau [@clarkroyden2000] and one of the highest and steepest
-escarpments on earth.  This is most apparent in the southwestern portion of the
-earthquake rupture, where the extremely steep Pengguan massif (a Precambrian
-crystalline massif in the hanging wall of the Beichuan thrust), is located and
-elevations > 4000 m drop to ~1200 m in as little as 6 km map distance.
+
+The 2008 *M*7.9 Wenchuan, China earthquake is one of the most
+devastating earthquakes in recent history (for an in-depth review and
+discussion of the earthquake, see Zhang et al. [-@zhang2010]). Surface
+rupture occurred along a 240 km segment of the Beichuan fault and a
+parallel 72 km segment of the Pengguan fault [@xu2009] (Figure
+\ref{fig:lms_map}). These faults lie at the base of the central and
+northeastern Longmen Shan, a mountain range that forms the eastern
+margin of the Tibetan plateau. Total relief across the central Longmen
+Shan is around 4 km, though relief subsides somewhat to the
+northeast. The central and southwestern Longmen Shan is the steepest
+margin of the Tibetan plateau [@clarkroyden2000] and one of the
+highest and steepest escarpments on earth.  This is most apparent in
+the southwestern portion of the earthquake rupture, where elevations >
+4000 m over the Pengguan massif (a Precambrian crystalline massif in
+the hanging wall of the Beichuan thrust) drop to ~1200 m in as little
+as 6 km map distance.
 
 ![Map of eastern Tibet and the Sichuan basin, showing active structures from
 Styron et al. [-@styron2010]. Faults that ruptured in the 2008 Wenchuan
@@ -152,100 +169,120 @@ fault. P = Pengguan massif. Grey box shows the extent of Figure
 \ref{fig:lms_stress_map}.  
 \label{fig:lms_map}](../figures/lms_map.pdf)
 
-Coseismic slip on the fault is spatially variable. Surface ruptures on the 
-Beichuan fault show vertical (reverse-sense) displacements up to 6.5 m and
-horizontal (right-lateral sense) displacements up to 4.9 m. In general,
-vertical displacements are highest in the southwestern to central portions of
-the Beichuan rupture and decrease in the northeast, whereas horizontal offset
-is negligible in the southwest but high in the central to northeast. The rake
-of coseismic slip is consequently variable as well, from close to pure reverse
-faulting in the southwest to dominantly right-lateral in the northeast. Shorter
-wavelength variations in slip rake and magnitude are apparent, as well.
-Coseismic slip models estimating slip at depth, derived from geodetic and
-seismic data [e.g. @shen2009; @tong2010, @feng2010; @zhang2011; @qi2011;
-@fielding2013] reproduce the surface offsets, but typically show even greater
-displacements at depth.  Additionally, these coseismic slip models show that
-slip at depth is concentrated into a small number of high-slip patches that
-dominate the seismic moment release [e.g., @zhang2011]. 
+Surface ruptures during the Wenchuan earthquake are highly variable
+and show vertical (reverse-sense) displacements up to 9 m and
+horizontal (right-lateral sense) displacements up to 5 m [Lin et al.,
+2009; Liu et al., 2009; Xu et al., 2009]. **I'M NOT SURE IT IS THIS
+CUT AND DRY, AS LARGE STRIKE-SLIP OFFSETS MAPPED IN SW AS NE, ETC, I
+SUGGEST TO CUT: In general, vertical displacements are highest in the
+southwestern to central portions of the Beichuan rupture and decrease
+in the northeast, whereas horizontal offset is negligible in the
+southwest but high in the central to northeast.** Coseismic slip
+models constrained by seismic and geodetic data reveal a complicated
+pattern of coseismic slip in the Wenchaun earthquake, with several
+high-slip patches that dominate the seismic moment release and
+significant variation coseismic slip rake along strike [e.g. Nakamura
+et al., 2009; @shen2009; @tong2010, @feng2010; @zhang2011; @qi2011;
+@fielding2013]. The variation in rake is such that the southwest
+portions of the fault slipped largely in a reverse sense, while the
+northeast portions sliped largely in a right-lateral sense.  This
+change in rake is associated with a change in inferred fault
+dip. Sections of faults that ruptured in the Wenchuan earthquake
+(which we simply refer to as the "Wenchuan earthquake faults") with
+shallow to moderate dips largerly ruptured as thrust, and sections
+with steeper dips largely ruptured as strike-slip. Medina Luna and
+Hetland [-@medinaluna2013] concluded that this relationship is
+consistent with a uniform orientation of principal stresses, where the
+variation of the dip of the fault leads to a change in the direction
+of maximum fault shear stress, which they assumed to be the coseismic
+slip rake.
 
-Coseismic slip models also clearly show that the broad along-strike shift in
-rake from reverse slip in the southwest to right-lateral slip in the northeast
-is persistent at depth. This change in rake is associated with a change in
-fault dip. Sections of the fault with mostly reverse slip have shallow to
-moderate dips, where sections with mostly right-lateral slip have steeper dips.
-Medina Luna and Hetland [-@medinaluna2013] concluded that this relationship is consistent
-with a uniform stress tensor that produces maximum shear stresses in the
-direction of coseismic slip on the variably-oriented fault segments. However,
-the horizontal component of coseismic slip also generally points away from the
-high topography of the central Longmen Shan, particularly the Pengguan massif
-in the hanging wall of the Beichuan fault. This suggests that the very high
-and steep mountains may be spreading outward.
+
+## This study 
+
+We seek to quantify the topographic stress field in the Longmen Shan
+region, and on the Wenchuan earthquake faults
+themselves. Specifically, we evaluate the extent to which topographic
+stresses promote or inhibit slip in the 2008 Wenchuan earthquake.  If
+topographically induced shear stresses on the fault are in roughly in
+the same direction as the coseismic slip, then topographic loading
+generall promotes coseismic slip (**FIGURE 2a**). If topographic
+loading promoted slip across the entire Beichuan faults, the
+earthquake would result in the outward spreading of the very high and
+steep Longmenshan. On the other hand, if the topographic shear
+stresses are roughly in the opposite direction of coseismic slip, then
+topographic loading inibits coseismic slip. (**FIGURE 2b**). If
+topographic loading resisted slip across the Beichuan failts, then
+tectonic stresses would need to counteract the topographic stfault
+stresses for the coseismic slip to result.  **DO YOU WANT TO KEEP THE
+GPS SENTENCE IN? THERE IS A MISMATCH BETWEEN SEISMIC QUIESENCE AND NO
+OR LOW TECTONIC STRESS: The very low GPS inferred pre-seismic strain
+rates across the fault (Figure \ref{fig:lms_map}) had convinced many
+researchers that the Longmen Shan fault zone was tectonically
+quiescent [e.g.  ref].** Additionally, the horizontal component of
+coseismic slip generally points away from the high topography of the
+central Longmen Shan, which might suggest a topographic collapse of
+the Longmenshan during the Wenchuan earthquake.  On a smaller scale,
+the heterogeneity of coseismic slip in the earthquake may be
+influenced by shorter wavelength variations in topography and
+topographic stresses.
+
+
 
 ![Scenarios for topographic effects on rangefront thrust faulting. (a)
 Topographic stresses promote thrust faulting. (b) Topographic stresses inhibit
 thrust faulting.
 \label{fig:topo_fault_scenarios}](../figures/topo_stress_possibilities.pdf)
 
-## This study
-We seek to quantify the topographic stress field in the Longmen Shan region,
-and on the Wenchuan earthquake faults themselves. This study is motivated by
-several distinct sets of ideas, but is also largely exploratory, as topographic
-stresses on faults are somewhat understudied.
- 
-We evaluate the extent to which topographic stresses promote or inhibit slip
-similar to the coseismic displacement field in the 2008 Wenchuan event on those
-faults that ruptured (which we call the Wenchuan earthquake faults).  Several
-aspects of the rupture suggest topographic forcing or involvement in the
-earthquake. First, the coseismic displacement of the hanging wall is roughly
-radial away from the high Pengguan massif in the southwestern portion of the
-rupture. Second, the very low pre-seismic strain rates across the fault evident
-in the GPS velocity field (Figure \ref{fig:lms_map}) had convinced many
-researchers that the Longmen Shan fault zone was tectonically quiescent [e.g.
-ref]; it is possible that the earthquake occurred due to topographic forces
-such as in gravitational spreading or collapse models of orogenic dynamics. In
-this case, it is possible that accumulated shear stresses on the fault were
-topographic in origin and the interseismic strain field associated with these
-stresses has a fundamentally different geodetic signature than the typical
-tectonically-induced velocity gradients across locked faults. On a smaller
-scale, the heterogeneity of surface and subsurface displacement in the
-earthquake may be influenced by shorter wavelength variations in topography
-and topographic stresses.
+Topographic stresses are only one component of the total stress field
+in the crust [@molnar1988]. Coseismic slip in the Wenchaun earthquake
+is due to the total accumulated stress on the faults, which also
+includes components from lithostatic and tectonic stresses. (In the
+present stuty, we do not consider stresses due to flexure [e.g.,
+Luttrell et al., 2007] or bouancy [e.g., Luttrell et al, 2011].) By
+quantifying both the topographic and lithostatic stresses, we can use
+coseismic slip models to solve for the tectonic stress assuming that
+(1) the total shear stress on the fault is in the direction of the
+coseismic slip [e.g., McKenzie, 1969; Angelier, 1979] and (2) the
+fault is at Mohr-Coulomb failure everywhere that is slipped.  If
+topographic stresses are significant and produce shear in the
+direction of fault slip, then for given values of static friction and
+pore fluid pressure, we can calculate the amount of tectonic stress
+that can be added to the ambient stress field before the faults should
+rupture; given limited acceptable ranges for friction and fluid
+pressure, we are essentially able to place maximum constraints on
+tectonic stress. Alternately, if topographic stresses work against
+coseismic slip, for given friction and fluid pressures we can estimate
+the minimum magnitudes of tectonic stresses necessary to overcome
+shear and frictional resistance to slip. In a scenario with complex
+faulting and topography, it may be possible to put tight bounds on
+minimum and maximum magnitudes and directions of tectonic stresses.
+To account for the non-uniqueness of the solution, we use a Bayesian
+Monte-Carlo methodology to estimate posterior probability density
+functions (PDFs) of tectonic stresses, static fault friction, and pore
+fluid pressure.
 
-Few studies have performed similar quantification of static stress fields on
-faults (see Section \ref{previous-work-on-topographic-stresses} for some
-examples). This is important to address because most studies of fault rupture
-dynamics assume either a homogeneous or stochastic shear stress distribution
-[e.g., @oglesbyday2002] and few assume any variation in normal stress [e.g.,
-@aagaard2001] , despite the importance that stress variations likely have in
-earthquake dynamics. By quantifying the topographic stresses on the fault,
-including both the shear and normal components, we may place empirical
-constraints on the potential heterogeneity of fault stresses, which may then be
-compared to the coseismic slip distribution to evaluate potential interactions.
 
-Topographic stresses are one component of the total stress field in the crust
-[@molnar1988], in addition to lithostatic and tectonic stresses.
-These all contribute to fault deformation. In the case of the Wenchuan event,
-by analyzing the coseismic displacements, we can essentially invert for the
-total stress field immediately before rupture, under certain constraints [e.g.,
-@mckenzie1969; @medinaluna2013]. Because we will have fully
-quantified two elements (topographic and lithostatic) of the stress field, we
-may solve for the third (tectonic stress) that best matches the coseismic
-displacement field. This solution is nonunique, so our methods will be
-iterative (Monte Carlo based), in order to explore the ranges of tectonic
-stresses that are consistent with the observed displacements. Furthermore, the
-interaction between topographic stresses and the displacement field will
-determine where we can firmly constrain tectonic stresses. For example, if
-topographic stresses are significant and produce shear in the direction of
-fault slip, then for given values of static friction and pore fluid pressure,
-we can calculate the amount of tectonic stress that can be added to the ambient
-stress field before the faults should rupture; given limited acceptable ranges
-for friction and fluid pressure, we are essentially able to place maximum
-constraints on tectonic stress. Alternately, if topographic stresses work
-against coseismic slip, for given friction and fluid pressures we can estimate
-the minimum magnitudes of tectonic stresses necessary to overcome shear and
-frictional resistance to slip. In a scenario with complex faulting and
-topography, it may be possible to put tight bounds on minimum and maximum
-magnitudes and directions of tectonic stresses.
+
+
+
+
+**MOVE THIS POINT TO THE DISCUSSION: Few studies have performed
+similar quantification of static stress fields on faults (see Section
+\ref{previous-work-on-topographic-stresses} for some examples). This
+is important to address because most studies of fault rupture dynamics
+assume either a homogeneous or stochastic shear stress distribution
+[e.g., @oglesbyday2002] and few assume any variation in normal stress
+[e.g., @aagaard2001] , despite the importance that stress variations
+likely have in earthquake dynamics. By quantifying the topographic
+stresses on the fault, including both the shear and normal components,
+we may place empirical constraints on the potential heterogeneity of
+fault stresses, which may then be compared to the coseismic slip
+distribution to evaluate potential interactions.**
+
+
+
+
 
 
 # Topographic stresses on the Longmen Shan faults
