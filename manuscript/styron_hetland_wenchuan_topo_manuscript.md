@@ -299,6 +299,7 @@ $M^B(x,y,z)$ is the component of the stress field due to the vertical
 loading of the topography, and is
 \begin{equation}
 M^B(x, y, z) = G^B(x,y,z) * F_v(x, y) \; ,
+\label{eqn:bous}
 \end{equation}
 where $G^B(x,y,z)$ are the Boussinesq solutions for stresses in a
 halfspace due to a vertical point load on the surface (see Appendix A1) and $F_v(x,y) =
@@ -491,18 +492,6 @@ not include points with no slip.
 # Calculations of tectonic stress, fault friction and pore fluid pressure
 
 
-**MOVE THIS PARAGRAPH TO THE DISCUSSION: Quantifying the stress,
-friction and pore fluid pressure involved in faulting is a major
-challenge in studies of faulting and orogenic dynamics [e.g.
-@meissner1982; @oglesbyday2002].  Previous workers have demonstrated
-that by quantifying topographic stress, other components in the
-Coulomb stress balance may be bracketed [e.g., @cattin1997; @lamb2006;
-@luttrell2011].  Each of these studies uses somewhat different
-approaches. Our approach is most similar to that of Luttrell et
-al. [-@luttrell2011], although there are significant differences: (1)
-we use the ...  we consider a full range of tectonic stresses instead
-of simply calculating the minimum principal tectonic stress, and we
-also constrain fluid pressure and fault friction.**
 
 **YOU USE $\phi$ FOR BOTH A STRESS AND A SCALAR, CLARIFIED BELOW, BUT
   I MIGHT HAVE MISSED SOME PLACES, I ALSO GENERALLY THINK OF THREE
@@ -770,85 +759,117 @@ densities.
 
 # Discussion
 
-** MOVE THIS SECTION TO THE DISCUSSION:
-comparison:
-- we do not incorporate Moho topography (deep, small compared to change at Andean plate boundary
-- Topographic calculations are similar, though we do Cerruti correction
-- We solve for tectonic stress differently: we explicitly calculate whole stress tensor at each point (M + L + T) and use rake as constraint on allowable stresses. We also use a Bayesian search instead of a minimization, yielding a PDF of the stress results. We consider T1, T3, and rake instead of just T1 and rake.
-- We use both normal and shear stresses to constrain pore fluid pressure and friction.
-**
 
-**MOVE THIS POINT TO THE DISCUSSION: Few studies have performed
-similar quantification of static stress fields on faults (see Section
-\ref{previous-work-on-topographic-stresses} for some examples). This
+
+Few studies have performed similar quantification of static stress
+fields on faults (see Section
+\ref{previous-work-on-topographic-stresses} for some examples).  This
 is important to address because most studies of fault rupture dynamics
 assume either a homogeneous or stochastic shear stress distribution
 [e.g., @oglesbyday2002] and few assume any variation in normal stress
 [e.g., @aagaard2001] , despite the importance that stress variations
-likely have in earthquake dynamics. By quantifying the topographic
-stresses on the fault, including both the shear and normal components,
-we may place empirical constraints on the potential heterogeneity of
-fault stresses, which may then be compared to the coseismic slip
-distribution to evaluate potential interactions.**
+likely have in earthquake dynamics [e.g., Day, 1982; Olsen et al.,
+1997] **THESE REFERENCES ARE IN THE USGS WFZ PROPOSAL**.
+Additionally, quantifying friction and pore fluid pressure involved in
+faulting is a major challenge in studies of faulting and orogenic
+dynamics [e.g.  @meissner1982; @oglesbyday2002].  
 
+Previous workers have demonstrated that by quantifying topographic
+stress, other components in the Coulomb stress balance may be
+bracketed [e.g., @cattin1997; @lamb2006; @luttrell2011].  Each of
+these studies uses somewhat different approaches. Our approach is most
+similar to that of Luttrell et al. [-@luttrell2011], although there
+are significant differences: (1) We use the topographic stresss
+calculations proposed by Liu and Zoback [-@liuzoback92], wheras
+Luttrell et al. [-@luttrell2011] only uses the vertical loading from
+topography, equivalent to $M^B$ in equation (\ref{eqn:bous}). (2) We
+do not consider bouancy forces due to lateral variations in density,
+due for instance to Moho variation, as done by Luttrell et
+al. [-@luttrell2011]. In the Longmen Shan region, Moho variation is
+small compared to the change in Moho depths at the Andrean plate
+boundary, and so the bouancy terms should be relatively small. (3) We
+consider a full range of tectonic stresses, instead of simply
+calculating the minimum principal tectonic stress and its
+orientation. (4) We consider the stress tensor at each point due to
+topographic loading, lithostatic stress, and horizontal tectonic
+stress, and use inferred coseismic slip rake as a constraint on the
+allowable stresses, rather than inferring the earthquake stress drop
+from the coseismic slip models, as done by Luttrell et
+al. [-@luttrell2011]. (5) We use both normal and shear stresses to
+constrain pore fluid pressure and friction. (6) We use a Bayesian
+estimation, resulting in a PDF of tectonic stress, as well as $\mu$
+and $\phi$, rather than solving for just the minimum tectonic stress
+required for faulting, as done by Luttrell et al. [-luttrell2011].
 
 
 ## Topographic stresses on the Wenchuan faults
 
-Topographic stresses on the Wenchuan faults are of considerable magnitude:
-$\tau^M$ ranges from about -20 to 10 MPa, which is on the order of inferred
-stress drop in earthquakes [e.g. @allmann2009]. These stresses are likely
-persistent over the lifespan of the topography, i.e. on the order of millions
-to tens of millions of years, and vary little over the earthquake
-cycle. Therefore, if shear stress drop is complete or near complete on these
-faults, some residual tectonic stress must remain to cancel out $\tau^M$. 
-$\sigma_n^M$ is larger, with maximum values around 80 MPa on the Beichuan
-fault, and up to 100 MPa on thrust flats at depth.
+Topographic stresses on the main Wenchuan faults are of considerable
+magnitude: $\tau^M$ ranges from about -20 to 10 MPa, which is on the
+order of inferred stress drop in earthquakes [e.g. @kanamori1975;
+@allmann2009] **REF SHEARER TOO? KANAMORI AND ANDERSON REF IN THE USGS
+PROPOSAL, AND SHOULD BE INCLUDED AS IT IS PRIMARY REFERNCE**.
+Topographic stresses are generally opposed to the tectonic slip
+direction, and therefore have to be overcome by tectonic stresses in
+order to produce the observed rupture patterns. The topographic shear
+stresses are likely persistent over the lifespan of the topography
+(i.e. on the order of millions to tens of millions of years),
+otherwise the Wenchaun faults may fail in a normal sense simply due to
+the weight of the Longmen Shan. This would argue that stress drop in
+the Wenchuan earthquake was not complete, as some residual tectonic
+shear stress must remain on the fault to cancel out $\tau^M$.
 
-Topographic stresses are generally opposed to the tectonic slip direction,
-and therefore have to be overcome by tectonic stresses in order to produce
-the observed rupture patterns. However, models with thrust flats at the base
-of the faults show topographic loading in the direction of fault slip. This is
-especially apparent in the Qi et al. [-@qi2011] model, where the thrust flat is
-very broad. If such faults are able to accumulate shear stresses and transfer
-them to the higher and steeper faults, topographic stresses may contribute to
-the observed coseismic slip.
+$\sigma_n^M$ is larger than $\tau^M$, with maximum values around 80
+MPa on the Beichuan fault, and up to 100 MPa on thrust flats at
+depth. Hence, low effective frictions are likely needed for coseismic
+slip or creep on near-horizontal faults in the midcrust. $\tau^M$ on
+these near-horizontal faults is in a thrust direction, and thus
+topographic loading is in the direction of inferred fault slip in
+coseismic slip models that contain thrust flats in the mid-crust.
+This loading in the thrust sense is especially apparent in the Qi et
+al. [-@qi2011] model, where the thrust flat is very broad. If such
+faults are able to accumulate shear stresses and transfer them to the
+higher and steeper faults, topographic stresses may contribute to the
+observed coseismic slip.
 
-The spatial variation in topographic stresses decreases in frequency and
-amplitude with depth. This is not surprising, because with increasing depth,
-the stress field at any point is more sensitive to surface loads from a greater
-region, and is less dominated by individual mountain-sized features. The
-spatial variablity of stress with depth is similar to the spatial variablity of
-coseismic slip in the models considered [e.g., @zhang2011], which are
-similarly more smooth at depth. Some of the estimated slip variability is
-likely partially due to the more limited detectability of displacements at
-depth versus near the surface. However, the negative spatial correlations of
-slip versis stress (especially $\sigma^M_n$) (Figures
-\ref{fig:fault_stress_3d}, \ref{fig:feng_slip_sig_n_scatter}) suggest this is a
-real signal: variations in $M$ influence rupture processes, leading to less
-slip where topographic stresses are less favorable on the fault.
+The spatial variation in topographic stresses decreases in frequency
+and amplitude with depth. This is not surprising, because with
+increasing depth, the stress field at any point is more sensitive to
+surface loads averaged over a greater region, and is less dominated by
+smaller scale topographic features (i.e., individual mountains). The
+spatial variablity of the topography stress with depth is similar to
+the spatial variablity of coseismic slip in the models considered
+[e.g., @zhang2011], which are similarly more smooth at depth. Some of
+the estimated slip variability is likely partially due to the more
+limited detectability of displacements at depth versus near the
+surface. However, the negative spatial correlations of slip versus
+stress (especially $\sigma^M_n$) (Figures \ref{fig:fault_stress_3d},
+\ref{fig:feng_slip_sig_n_scatter}) suggest this may be a real
+signal. **THIS WAS A TRAILING SENTENCE, I'M NOT SURE HOW TO CLEAN IT
+UP** In general, variations in $M$ lead to less slip where topographic
+stresses are less favorable on the fault.
 
-## Tectonic stresses, $\mu$, $\phi$
+## Tectonic stresses
 
-### Direction and magnitude of tectonic stresses The maximum tectonic
-stress $T_{\mathrm{max}}$ is consistently oriented roughly E-W in our
-results. This orientation is oblique to the Longmen Shan, which
-produces oblique (right-lateral and reverse sense) shear on the
-Beichuan fault.  $T_{\mathrm{min}}$ is ~N-S oriented, and is only
-slightly larger than lithostatic pressure. This stress configuration
-is compatible with the observed kinematics of the Wenchuan faults, and
-in close agreement pre-earthquake stress measurements near the rupture
-zone (Figure \ref{fig:lms_stress_map}), mostly from borehole breakout
-data from 2-5 km depth [@heidbach2009], which is the zone of maximum
-slip in the coseismic slip models. It is somewhat discrepant with
-stress orientations estimated at ~800 m depth adjacent to the Beichuan
-fault in the WFSD-1 borehole of the Wenchuan Earthquake Fault
-Scientific Drilling Project several years after the 2008 earthquake
-[@cui2014], which show $\sigma_{Hmax}$ to be more orthogonal to the
-fault trace, suggesting that much of the right-lateral component of
-shear stress was released during the earthquake. *check on this! At
-this depth, the results may not be that different!  Look at magnitudes
-as well!*
+The maximum tectonic stress, $T_{\mathrm{max}}$, is consistently
+oriented roughly E-W in our results. This orientation is oblique to
+the Longmen Shan, which produces oblique (right-lateral and reverse
+sense) shear on the Beichuan fault.  $T_{\mathrm{min}}$ is ~N-S
+oriented, and is only slightly larger than lithostatic pressure. This
+stress configuration is compatible with the observed kinematics of the
+Wenchuan faults, and in close agreement pre-earthquake stress
+measurements  near the rupture zone (Figure
+\ref{fig:lms_stress_map}), mostly from borehole breakout data from 2-5
+km depth [@heidbach2009], which is the zone of maximum slip in the
+coseismic slip models. It is somewhat discrepant with stress
+orientations estimated at ~800 m depth adjacent to the Beichuan fault
+in the WFSD-1 borehole of the Wenchuan Earthquake Fault Scientific
+Drilling Project several years after the 2008 earthquake [@cui2014],
+which show $\sigma_{Hmax}$ to be more orthogonal to the fault trace,
+suggesting that much of the right-lateral component of shear stress
+was released during the earthquake. *check on this! At this depth, the
+results may not be that different!  Look at magnitudes as well!*
+
 
 ![Topographic and tectonic horizontal stresses (taken from the most likely
 estimates of $p(T|D)$ in the Wenchuan rupture region (black and red crosses)
@@ -858,8 +879,29 @@ Other symbology is the same as in Figure \ref{fig:lms_map}. Stresses shown
 are downsampled from grid resolution by a factor of 9.
 \label{fig:lms_stress_map}](../figures/lms_map_stresses_rot.pdf)
 
-However, the orientation of the tectonic (and total) stresses near the
-Wenchuan faults shows a larger difference with the stresses that can
+
+The magnitudes of $T_{\mathrm{max}}$ and $T_{\mathrm{min}}$ are
+dominantly constrained on the low end by our analysis, which is
+apparent by the sharp decrease in the frequency of
+$p(T_{\mathrm{max}}|D)$ below about 0.5\@. This indicates that
+$T_{\mathrm{max}}$ of at least ~13.25 MPa km$^{-1}$ is necessary to
+overcome topographic stresses resisting reverse and right-lateral slip
+on the faults. We find that most likely ratio of the tectonic
+horizontal shear to the compression along the Wenchuan faults is just
+below 0.5, with ratios greater than 1 less likely in $p_{\mathrm{J}}(T
+| D). In other words, the most likely tectonic stress roughly causes
+twice as much fault perpendicular compression acorss the Longmen Shan
+as shear. This is somewhat at odds to inferences of
+strain-accumulation rates inferred from GPS by Loveless and Meade
+[2011], who inferred that the rate of slip deficit accumulation in the
+thrust and dextral sense was approximately equal. While the tectonic
+stresses we estimate here, represent the accumulated stresses prior to
+the Wenchuan earthquake, the relation of these stresses to accumulated
+slip-deficit needs to be through a model of strain-accumulation.
+
+
+The orientation of both the tectonic and total stresses near the
+Wenchuan faults shows a larger difference with the stresses than can
 be inferred from regional deformation. For example, the presence of
 N-S contraction and E-W extension throughout the high Tibetan plateau
 and much of the Himalaya [e.g., gimme ref; Taylor et al., 2003; Molnar
@@ -868,39 +910,29 @@ E-W $T_{\mathrm{min}}$. Because $T_{\mathrm{min}}$ is only slighly above
 lithostatic pressure on the Wenchuan faults, it is quite possible that
 the N-S compression in the Himalaya and Tibet, which is almost
 certainly due to Indo-Asian plate collision, has almost completely
-decayed [attenuated?  diminished?] some 850 km northeast of the
+decayed at the Longmen Shan,  some 850 km northeast of the
 easternmost Himalaya. Therefore, contraction across the Longmen Shan
 cannot easily be interpreted to directly reflect stresses due to the
 Indo-Asian collision alone, unless some additional mechanism of
 redirecting crustal stresses is incorporated.
-
-The magnitudes of $T_{\mathrm{max}}$ and $T_{\mathrm{min}}$ are dominantly constrained on
-the low end by our analysis; this is apparent by the sharp decrease in the
-frequency of $p(T_{\mathrm{max}}|D)$ below about 0.5. This indicates that $T_{\mathrm{max}}$
-of at least ~13.25 MPa km$^{-1}$ is necessary to overcome topographic stresses
-resisting reverse and right-lateral slip on the faults. 
-
-### Values of $\phi$ and $\mu$
-
-Our quantification of the stresses on the Wenchuan earthquake faults has
-allowed us to estimate average values for $\phi$ and $\mu$ on the faults that
-ruptured in the 2008 Wenchuan event, based on stress balance and critical
-failure arguments. These values are weighted by the high slip patches
-
-$\phi$...
-
-Our highest likelihood estimates of $\mu$, which is the coefficient of static
-friction on the fault immediately before failure, indicate values of 0.2--0.3.
-These values are slightly lower than a value of 0.4 for friction at failure in
-laboratory experiments on samples recoverd from the WFSD-1 drill hole into the
-Beichuan fault [@kuo2014], though that value has a moderately high
-likelihood in our posteriors. These values, however, are lower than typical
-'Byerlee' type values derived from laboratory experiments on intact rock,
-suggesting that slip occurred on preexisting faults because they are weaker
-than optimally-oriented new faults.
+ (i.e., the tectonic stresses roughly contribute twice 
 
 
 ## Slip on the Beichuan fault vs. optimally-oriented faults
+
+Our highest likelihood estimates of $\mu$, which is the coefficient of
+static friction on the fault immediately before failure, are in the
+range of 0.2--0.3\@.  These values are slightly lower than $\mu
+\approx 0.4$ inferred in laboratory experiments on samples recoverd
+from the WFSD-1 drill hole into the Beichuan fault
+[@kuo2014]. However, it should be noted that $\mu \approx 0.4$ is
+likely relatively high likelihood in our posteriors (**REFER TO
+FIGURE**). These values of friction, however, are lower than typical
+values derived from laboratory experiments on intact rock [e.g.,
+Byerlee, 1978], suggesting that slip occurred on preexisting faults
+because they are weaker than optimally-oriented new faults.
+
+
 
 The obliquity of slip on the Wenchuan earthquake faults suggests that these
 faults may not be optimally oriented for slip given the total stress state in
