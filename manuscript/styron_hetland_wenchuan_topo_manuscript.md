@@ -858,17 +858,20 @@ sense) shear on the Beichuan fault.  $T_{\mathrm{min}}$ is ~N-S
 oriented, and is only slightly larger than lithostatic pressure. This
 stress configuration is compatible with the observed kinematics of the
 Wenchuan faults, and in close agreement pre-earthquake stress
-measurements  near the rupture zone (Figure
-\ref{fig:lms_stress_map}), mostly from borehole breakout data from 2-5
-km depth [@heidbach2009], which is the zone of maximum slip in the
-coseismic slip models. It is somewhat discrepant with stress
-orientations estimated at ~800 m depth adjacent to the Beichuan fault
-in the WFSD-1 borehole of the Wenchuan Earthquake Fault Scientific
-Drilling Project several years after the 2008 earthquake [@cui2014],
-which show $\sigma_{Hmax}$ to be more orthogonal to the fault trace,
-suggesting that much of the right-lateral component of shear stress
-was released during the earthquake. *check on this! At this depth, the
-results may not be that different!  Look at magnitudes as well!*
+measurements near the rupture zone (Figure \ref{fig:lms_stress_map}),
+mostly from borehole breakout data from 2-5 km depth [@heidbach2009],
+which is the zone of maximum slip in the coseismic slip models. It is
+somewhat discrepant with stress orientations estimated at ~800 m depth
+adjacent to the Beichuan fault in the WFSD-1 borehole of the Wenchuan
+Earthquake Fault Scientific Drilling Project several years after the
+2008 earthquake [@cui2014], which show $\sigma_{Hmax}$ to be more
+orthogonal to the fault trace, suggesting that much of the
+right-lateral component of shear stress was released during the
+earthquake. **check on this! At this depth, the results may not be that
+different!  Look at magnitudes as well!** These results are simmilar to
+the orientations of total stress obtained by Medina Luna and Hetland
+[2013], although they were unable to constrain the magnitudes of
+stresses.
 
 
 ![Topographic and tectonic horizontal stresses (taken from the most likely
@@ -1021,34 +1024,40 @@ $T^\prime_{\mathrm{EW}}$. \label{table:cfr_regress}
 
 # Conclusions
 
-We have calculated the topographic stresses on the Wenchuan earthquake faults,
-and used those stresses to constrain tectonic stresses, fault friction and
-pore fluid pressure. From this work, we derive several conclusions:
+We have calculated shear and normal stresses due to topographic
+loading on the Wenchuan earthquake faults, and used those stresses to
+constrain tectonic stresses, fault friction and pore fluid
+pressure. Topographic stresses on the main Wenchuan faults are large,
+with $\tau^M$ on the faults up to |20| MPa, and $\sigma^M_n$ up to 80
+MPa.  $\sigma^M_n$ reaches up to 100 MPa on mid-crustal thrust flats
+present in some coseismic slip models. These topographic stresses
+generally resist the slip inferred during the 2008 Wenchuan
+earthquake, with $\tau^M$ opposed to the slip direction over much of
+the fault, indicating that weight of the topographry resist coseismic
+slip. High values of $\sigma^M_n$ increase the frictional resistance
+to slip, potentially limiting slip magnitude in locations such as
+below the Pengguan massif.
 
-Topographic stresses in the Longmen Shan region, and on the Wenchuan faults, 
-are large. $\tau^M$ on the faults is up to |20| MPa, and $\sigma^M_n$ is up to
-80 MPa, and higher (up to 100 MPa) on deep thrust flats present in some
-coseismic slip models.
 
-These topographic stresses generally resist the slip displayed during the 2008
-Wenchuan earthquake. $\tau^M$ is opposed to the slip direction over much of the
-fault, and high values of $\sigma^M_n$ increase the frictional resistance to
-slip, potentially limiting slip magnitude in locations such as below the
-Pengguan massif.
+Assuming that the Beichuan faults were at a Mohr-Coulomb fault
+criterion immediately prior to the Wenchuan earthquake, we estimate
+the tectonic stresses required for the faults to fail. We use a
+Bayesian estimation, resulting in posteriors representing likelihood
+of tectonic stress, static friction, and a pore pressure
+parameter. The results of our Bayesian inversion indicate that the
+maximum tectonic stress is oriented ~E-W and has a likely minimum of
+13.25 MPa km$^{-1}$. The minimum tectonic stress is oriented ~N-S and
+is fairly low, with highest likelihood one half of the E-W tectonic
+stress.  The highest likelihood coefficient of static friction on the
+fault is estimated at about 0.2--0.3, although values up to 0.5--0.6
+are permissable. Fluid pressures are likely 0--0.5 of the total
+pressure.
 
-Because topographic stresses resist coseismic slip, the earthquake has to have
-been caused by tectonic stresses. The results of our Bayesian inversion for
-tectonic stresses, fault friction and pore fluid pressure indicate that the
-maximum tectonic stress is oriented ~E-W and has a likely minimum of 13.25 MPa
-km$^{-1}$. The minimum tectonic stress is oriented ~N-S and is fairly low.
-The coefficient of static friction on the fault is estimated at about 0.2-0.3,
-and fluid pressures are likely 0-0.5 of the total pressure.
-
-Taken together, these results suggest that local stress conditions caused by
-topographic loading are unfavorable to slip on the Wenchuan earthquake faults,
-but because of the low friction coefficients and moderate fluid pressures,
-slip occurred on these faults instead of more favorably-oriented faults
-elsehere in the region.
+These results suggest that local stress conditions caused by
+topographic loading are unfavorable to slip on the Wenchuan earthquake
+faults, but because of the low friction coefficients and moderate
+fluid pressures, slip occurred on these faults instead of more
+favorably-oriented faults elsehere in the region.
 
 
 # Appendix
