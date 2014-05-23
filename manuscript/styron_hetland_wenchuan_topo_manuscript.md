@@ -492,148 +492,179 @@ not include points with no slip.
 
 
 
-
 # Calculations of tectonic stress, fault friction and pore fluid pressure
 
-Faults fail in earthquakes when the shear stresses on the fault overcome the
-frictional stresses resisting slip on the fault. At the point of failure, the
-shear stress and normal stress are equal, as given in Amonton's law [e.g.,
-Sibson, 1990]:
-\begin{equation}
-\tau = \mu ( \sigma_n - \phi )
-\label{eqn:amonton}
+
+**MOVE THIS PARAGRAPH TO THE DISCUSSION: Quantifying the stress,
+friction and pore fluid pressure involved in faulting is a major
+challenge in studies of faulting and orogenic dynamics [e.g.
+@meissner1982; @oglesbyday2002].  Previous workers have demonstrated
+that by quantifying topographic stress, other components in the
+Coulomb stress balance may be bracketed [e.g., @cattin1997; @lamb2006;
+@luttrell2011].  Each of these studies uses somewhat different
+approaches. Our approach is most similar to that of Luttrell et
+al. [-@luttrell2011], although there are significant differences: (1)
+we use the ...  we consider a full range of tectonic stresses instead
+of simply calculating the minimum principal tectonic stress, and we
+also constrain fluid pressure and fault friction.**
+
+**YOU USE $\phi$ FOR BOTH A STRESS AND A SCALAR, CLARIFIED BELOW, BUT
+  I MIGHT HAVE MISSED SOME PLACES, I ALSO GENERALLY THINK OF THREE
+  AMONTONS' LAWS, BUT I KNOW THAT GEOLOGISTS TEND TO ONLY CONSIDER IT
+  TO BE ONE, AND THE FAILURE CRITERION IS USUALLS REFERRED TO AS
+  MOHR-COULOMB, ALTHOUGH I TEND TO LIKE JUST COULOMB BETTER,
+  ADDITIONALLY, NEITHER AMONTON OR COULOMB CONSIDERED THE AFFECT OF
+  FLUIDS, SO ASCRIBING THIS TO THEM IS SOMEWHAT OVERLY GENEROUS**
+
+Faults fail in earthquakes when the shear stresses on the fault
+overcome the frictional stresses resisting slip on the fault [e.g.,
+REFS]. We assume that the entire fault was at at the point of failure
+when the Wenchuan fault initiated, and use the Mohr-Coulomb failure
+critereon 
+\begin{equation} 
+\tau = \mu ( \sigma_n - \sigma_\p ) \; ,
+\label{eqn:amonton_raw} 
+\end{equation} 
+where where $\mu$ is the
+coefficient of static friction on the fault and $\sigma_p$ is the pore fluid pressure [e.g.,
+Sibson, 1990]. We describe the pore fluid pressure using a scalar, $0
+\leq \phi \leq 1$, which is the pore fluid pressure as a fraction of
+total pressure, and so the failure critereon is
+\begin{equation} 
+\tau = \mu (1 - \phi) \sigma_n \; 
+\label{eqn:amonton} 
 \end{equation}
-where $\mu$ is the coefficient
-of static friction on the fault and $\phi$ is the fluid pressure.
+[e.g., Sibson, 1990]. We assume that both $\mu$ and $\phi$ are constant across the Wenchuan faults.
+$\phi$ is the
 
-Quantifying the stress, friction and pore fluid pressure involved in faulting
-is a major challenge in studies of faulting and orogenic dynamics [e.g.  
-@meissner1982; @oglesbyday2002].  Previous workers have demonstrated that by
-quantifying topographic stress, other components in the Coulomb stress balance
-may be bracketed [e.g., @cattin1997; @lamb2006; @luttrell2011].  Each of these
-studies uses somewhat different approaches and scales; ours are most similar to
-those of Luttrell et al. [-@luttrell2011], although there are significant
-differences: primarily, we consider a full range of tectonic stresses instead
-of simply calculating the minimum principal tectonic stress, and we also
-constrain fluid pressure and fault friction.
+We estimate the tectonic stress tensor field, $\mu$, and $\phi$
+consistent with published coseismic slip models of the Wenchuan
+earthquake using a Bayesian estimation.  Bayesian estimation yields
+posterior probability density functions of the model parameters [e.g.,
+Mosegaard and Tarantola, 1995]. We first estimate posteriors of $T$
+cosistent with the coseismic slip models, and then estimate $\mu$ and
+$\phi$ consistent with Mohr-Coulomb failure. The nature of Bayesian
+estimation allows us to quantify both the relative likelihoods of
+model parameters and the tradeoffs between them. 
 
-We estimate the tectonic stress tensor field $T$, fault friction $\mu$ and pore
-fluid pressure $\phi$ on the Wenchuan faults at the time of fault failure
-through a Bayesian inversion to estimate tectonic stresses consistent with
-published coseismic slip models, and then a second analysis to estimate fault
-friction and pore fluid pressures consistent with the posterior stresses. Our
-methods yield joint probability distributions for the parameters we estimate,
-illustrating both the likelihood of values for each parameter and the tradeoffs
-between them. 
-
-In this work, we will assume that 'tectonic stresses' are horizontal stresses
-in the crust that are laterally homogeneous and do not result from local or
-regional topography as calculated in this study. We do not immediately ascribe
-all tectonic stress to typical plate tectonic forces, either; because of the
-complexities of deformation in orogens, tectonic stresses could include
-contributions from processes such as lower crustal flow [e.g. @clark2005] or
-stresses induced by activity on neighboring faults [e.g., ref],.
 
 ## Description of the stress state
 
-We consider the complete stress tensor $S$ at a point in the crust to be
-$S = M + T + L$, where $M$ is the topographic stress tensor as described above,
-$T$ is the tectonic stress tensor, and $L$ is the lithostatic pressure tensor.
-In our analysis, $M$ is a full stress tensor with independent and non-zero
-values for each element; $L$ has only the principal stresses $L_{xx}$, $L_{yy}$
-and $L_{zz}$, which all equal $\rho g z$ and off-diagonal (shear) stresses are
-zero; and $T$ has only horizontal stresses $T_{xx}$, $T_{yy}$ and $T_{xy}$,
-which are assumed to increase linearly with depth so that the entire upper
-crust is near the critical failure envelope [e.g., townend2000], and
-are therefore parameterized as scalars multiplied by lithostatic pressure. 
-
-Therefore, the full stress tensor at a point is
+We consider the complete stress tensor, $S$, at a point in the crust to be
 \begin{equation}
-S = \begin{bmatrix}
-  M_{xx} + T_{xx} + L_{xx} & M_{xy} + T_{xy} &  M_{xz} \\
-	M_{xy} + T_{xy} &  M_{yy} + T_{yy} + L_{yy} & M_{yz} \\
-	M_{xz}     &  M_{yz}  &  M_{zz} + L_{zz}
-	\end{bmatrix} \; .
-\label{eqn:stress_tensor}
+S = M + T + L \; ,
 \end{equation}
-
-$\phi$ is considered to be a scalar between zero and one that expresses pore
-fluid pressure as a fraction of total pressure (the mean of the main diagonal
-of $S$) at each point on the fault. $\mu$ is the coefficient of static friction
-and is considered constant along the fault.
+where $M$ is described above, $T$ is the tectonic stress tensor, and
+$L$ is the lithostatic pressure tensor. $L$ is isotrapic, with
+diagonal components equal to $\rho g z$.  We assume that $T$ is
+latterally homogeneous and only has horizontal stress components
+(i.e., $T_{xz} = T_{yz} = T_{zz} = 0$, with $T_{xx}$, $T_{yy}$ and
+$T_{xy}$ non-zero). We further assume that $T$ increases linearly with
+depth so that the entire upper crust is near the critical failure
+envelope [e.g., townend2000], are thus we parameterize the components
+of $T$ as scalars multiplied by lithostatic pressure. **IT IS NOT
+CLEAR WHY WE NEED THE FOLLOWING EQUATION - I SAY EITHER DELETE OR
+EXPAND IT OUT REPLACING $T_{ij}$ AND $L_{kk} WITH $\rho g z$ - THERE
+IS A POTENTIAL CONFUSION IN SYMBOLS AGAIN THOUGH, HERE YOU USE
+$T_{ij}$ TO BE A STRESS, AND BELOW YOU USE $T_{ij}$ TO BE THE SCALAR**
+The full stress tensor is then \begin{equation} S = \begin{bmatrix}
+M_{xx} + T_{xx} + L_{xx} & M_{xy} + T_{xy} & M_{xz} \\ M_{xy} + T_{xy}
+& M_{yy} + T_{yy} + L_{yy} & M_{yz} \\ M_{xz} & M_{yz} & M_{zz} +
+L_{zz} \end{bmatrix} \; .  \label{eqn:stress_tensor} \end{equation}
 
 
 ## Bayesian inversion of tectonic stresses
 
-We invert topographic stresses and coseismic slip models for tectonics stresses
-using Bayesian methods, and making the common 'Wallace-Bott' assumption (named
-after Wallace [1951] and Bott [1959]) that slip on the fault occurs in the
-general direction of the maximum resolved shear stress on the fault [e.g.,
-McKenzie, 1969; Angelier, 1994]. We estimate the tectonic stresses in light of
-the topographic stresses and slip distributions through the relation
+We invert topographic stresses and coseismic slip models for tectonics
+stresses using Bayesian methods, and making the common 'Wallace-Bott'
+assumption (named after Wallace [1951] and Bott [1959]) that slip on
+the fault occurs in the general direction of the maximum resolved
+shear stress on the fault [e.g., McKenzie, 1969; Angelier, 1994]. We
+estimate the tectonic stresses in light of the topographic stresses
+and slip distributions through the relation 
+\begin{equation} 
+p(T|D) \propto p(T) \, p(D|T) \; , 
+\label{eqn:bayes_rule} 
+\end{equation} 
+where $p(T)$ is the prior PDF (or *priors*) of $T$, $p(D|T)$ is the
+likelihood of observing the coseismic slip distribution $D$ given the
+tectonic stresses $T$, and $p(T|D)$ is the posterior PDF of $T$ given
+$D$, which is the solution to the inversion [e.g., Mosegaard and
+Tarantola, 1995]. Due to the unknown proportionality in equation
+(\ref{eqn:bayes_rule}), our posterior only gives likelihood of $T$
+relative to the most likely estiamte (MLE) [Tarantola, 2005]. We
+follow a Monte-Carlo strategy, where samples of the prior PDF are
+retained as samples of the posterior in proportion to $p(D|T)$ [e.g.,
+Mosegaard and Tarantola, 1995].
+
+We parameterize $T$ by the magnitudes and orientation of the maximum
+and minimum principal tectonic stresses. We assume priors such that
+the magintudes of principal tectonic stresses are equally likely
+within bounds and that all orientations are equally likely.  Because
+the Wenchuan event was an oblique reverse faulting earthquake, we
+assume that total horizontal stresses are greater than the vertical
+stress, which is satisfied if the tectonic stresses are positive.
+Prior samples of maximum principal stress are taken from a uniform
+distribution between $\rho g z$ and 2.5 $\rho g z$. Samples of the
+minumum principal stress are from a uniform distribution between 0 and
+the value for maximum stress.  We describe the orientation of the
+tectonic stress using the azimuth of the maximum tectonic stress,
+which are sampled uniformly from 0 to 360$^{\circ}$.
+
+We test 100,000 unique samples drawn from the prior using a seeded
+pseudorandom number generator. We test the same prior samples against
+each of the coseismic slip models.  $S$ is then constructed for each
+point discretizing the fault geometries in the coseismic slip
+models. The rake of the maximum shear stress $\lambda^S$ on each point
+of the fault is calculated and compared to the coseismic slip rake
+$\lambda^D$ at that point. A weighted mean misfit is calculated by
 \begin{equation}
-p(T|D) \propto p(T) \, p(D|T)
-\label{eqn:bayes_rule}
-\end{equation}
-where $p(T)$ is the prior probability distribution (or *priors*) of $T$, 
-$p(D|T)$ is the likelihood of observing the coseismic slip distribution $D$
-given the tectonic stresses $T$, and $p(T|D)$ is the posterior probability
-distribution of $T$ given $D$, which is the solution to the inversion.
-
-We choose priors for the magnitudes and orientation of the maximum and minimum
-principal tectonic stresses. The maximum principal stress is sampled from a
-uniform distribution between $\rho g z$ and 2.5 $\rho g z$. The minumum
-principal stress is sampled from a uniform distribution between 0 and the value
-for maximum stress. Because the Wenchuan event was an oblique reverse faulting
-earthquake, both the maximum and minimum (horizontal) stress directions have to
-be positive as they are greater than the vertical stress. The stress
-orientations are taken as the azimuth of maximum tectonic stress and are
-sampled uniformly from 0 to 360$^{\circ}$.
-
-For each of 100,000 iterations, unique samples for each of the priors are drawn
-using a seeded pseudorandom number generator (so that the same priors are drawn
-for each coseismic slip model). Then, the complete stress tensor $S$ is
-constructed for each fault point in a coseismic slip model. The rake of the
-maximum shear stress $\lambda^S$ on each point on the fault is then calculated,
-and compared with the coseismic slip rake $\lambda^D$ at that point. Then, a
-weighted mean misfit is determined:
-
-\begin{equation}
-\bar{\lambda}^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) D_i} {\bar{ D}}
+\bar{\lambda}^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) D_i} {\bar{ D}} \; ,
 \label{eqn:rake_misfit}
 \end{equation}
-
-Finally, the relative likelihood of each model is taken as 
-\begin{equation}
-p (D | T) = \frac{ \exp ( \kappa \cos \bar{\lambda}^m )} {\exp (\kappa \cos \bar{\lambda}^m_{\min})}
+where $D$ is the coseismic slip and $\bar{D}$ is the average coseismic
+slip in a given coseismic slip model. Finally, the relative likelihood
+of each model is computed using a Von Mises distribution as
+ \begin{equation}
+p (D | T) = \frac{ \exp ( \kappa \cos \bar{\lambda}^m )} {\exp (\kappa \cos \bar{\lambda}^m_{\min})} \;,
 \label{eqn:rel_likelihood}
 \end{equation}
-
-where $\kappa$ = 8.529, which is calculated so that 68.2% of the Von Mises
-distribution is within $\pi$/9 radians (20$^{\circ}$), the estimated 1$\sigma$
-uncertainty of the coseismic slip models based on comparisons between rakes of
-high-slip fault patches (note that for a planar fault, $\tau$ at $\pi/9$
-radians from $\lambda_{max}$ is still >90% of $\tau_{max}$ [-@lisle2013]).
-Then, the posterior distribution $p(T | D)$ is estimated *(sampled?)* by
-comparing each model likelihood to a random number selected from the uniform
-distribution [0, 1), and retaining those models with a higher likelihood than
-the random value.
+where $\kappa$ = 8.529, which is calculated so that the 68.2%
+confidence interval the Von Mises distribution is within $\pi$/9
+radians (20$^{\circ}$), the estimated 1$\sigma$ uncertainty of the
+coseismic slip models based on comparisons between rakes of high-slip
+fault patches (note that for a planar fault, $\tau$ at $\pi/9$ radians
+from $\lambda_{max}$ is still >90% of $\tau_{max}$
+[-@lisle2013]). Prior samples are retained in propotion to $p(D|T)$,
+and the retained samples are then samples of the posterior.
 
 ## Analysis of friction and pore fluid pressure
 
-Once the tectonic stress distributions consistent with the coseismic slip data
-have been determined, we analyze the distributions of $\mu$ and $\phi$ required
-for critical failure conditions on the faults. First, we take each model
-retained in $p(T|D)$, and for each model draw a random $\phi$ from the uniform
-distribution $p(\phi)= [0,1)$ (again using a seeded pseudorandom number
-generator for consistent priors across all coseismic slip models). Next, we
-calculate $\tau^S$ and $\sigma_n^S-\phi$ for each point on the fault. Then, we
-solve Equation \ref{eqn:amonton} for $\mu$. Finally, we filter the
-results so that only models with $0 \ge \tau \ge 1$ are retained.
+**CLEAN UP NOTATION, YOU INTRODUCE NEW SYMBOLS IN THIS SUBSECTION, i.e., $S$ vs. $\sigma_n$ vs. $\sigma_n^S$**
 
-After this analysis has been done for all slip models, we find the set of
-posteriors that are common to all models, which we call the "joint" [?]
-posteriors, or $p(P^{joint} | D)$ where $P$ is the parameter of interest.
+Once the tectonic stress distributions consistent with the coseismic
+slip models have been determined, we deduce the distributions of $\mu$
+and $\phi$ assuming that the stress is at the failure criterion in
+equation (\ref{eqn:amonton}). We do this in three steps: First, we
+draw a random $\phi$ from a uniform distribution, assuming $0 \leq
+\phi < 1$\@. We again use a seeded pseudorandom number generator, such
+that each stress model has a uniquely assigned $\phi$ that is
+consistent priors accross all coseismic slip models. Second, we
+calculate $\tau^S$ and $\sigma_n^S(1-\phi)$ for each point on the
+fault. Third, we solve Equation \ref{eqn:amonton} for $\mu$.  **I
+DON'T UNDERSTAND THIS NEXT PART, IF ALL THE SAMPLES TRIED HERE ALL
+HAVE MAX $\tau$ IN THE DIRECTION OF SLIP, THEN THERE IS NO ADDITIONAL
+CONSTRAINT THAT CAN BE APPLIED, THIS SEEMS TO SAY THAT WE DISCARD
+MODELS THAT DO NOT PRODUCE THE RIGHT SENSE OF SLIP (THRUST AND
+RIGHT-LATERAL), BUT NONE OF THE SAMPLES IN THE POSTERIOR SHOULD HAVE
+THAT** Finally, we filter the results so that only models with $0 \ge
+\tau \ge 1$ are retained.
+
+After this analysis has been done for all coseismic slip model, we
+find the joint posterior (i.e., the posterior consistent with all of
+the coseismic slip models) by taking the samples that are common to
+all of the individual posteriors. We denote the joint posterior as
+$p(P^{\mathrm{joint}} | D)$, where $P$ is the parameter of interest.
 
 
 # T, $\mu$, $\phi$ results
