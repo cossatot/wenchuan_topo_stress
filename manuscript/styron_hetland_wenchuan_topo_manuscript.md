@@ -380,7 +380,10 @@ g          			 	            | 9.81       | m s$^{-2}$
 Green's function radius  	| 9e5        | m
 Poisson ratio				| 0.25			 | -
 
-Table: Parameters for numerical calculations of topographic stresses. \label{table:convo_params} **LAME PARAMETERS HAVE UNITS, AND GIVING THEM AS UNITLESS AND ONE IS INCONSISTENT WITH REST OF PAPER THAT IS DIMENSIONAL**
+Table: Parameters for numerical calculations of topographic
+stresses. \label{table:convo_params} **LAME PARAMETERS HAVE UNITS, AND
+GIVING THEM AS UNITLESS AND ONE IS INCONSISTENT WITH REST OF PAPER
+THAT IS DIMENSIONAL**
 
 ## Topographic fault stress calculations
 
@@ -403,37 +406,43 @@ stress, $\tau_s^M$ at each point in describing the fault geometry.
 
 # Results of topographic stress calculations on the Wenchuan faults
 
-Topographic stresses on the Wenchuan faults are in the 1--10s of MPa range
-(Figure \ref{fig:lms_topo_stress_rot}, \ref{fig:fault_stress_3d}. Stresses are highest in the southwest,
-beneath the Pengguan massif (the highest topography of the Longmen Shan front),
-and decrease to the northeast. $\sigma_{zz}^M$ is the typically the largest of
-the 'cardinal' compressive stresses ($\sigma^M_{i=j}$), though it is not
-substantially larger than the other cardinal components. Maximum horizontal
-stress is not typically aligned with either cardinal horizontal component, and
-is typically larger than $\sigma^M_{zz}$ above 10 km. Maximum $\sigma^m_{zz}$
-is near 80 MPa, on the southwestern Beichuan fault below the high peaks of the
-Pengguan massif, except for slip models with thrust flats at the base of the
-southwestern Beichuan fault, where $\sigma^M_{zz}$ reaches 100 MPa. Vertical
-shear stresses ($\sigma^M_{xz, yz}$) are on the order of 1 MPa, and horizontal
-shear stress ($\sigma^M_{xy}$) is on the order of 0.1 MPa.
+Topographic stresses on the Wenchuan faults are in the 1--10s of MPa
+range (Figure \ref{fig:lms_topo_stress_rot},
+\ref{fig:fault_stress_3d}. Stresses are highest in the southwest,
+beneath the Pengguan massif (the highest topography of the Longmen
+Shan front), and decrease to the northeast. $\sigma_{zz}^M$ is
+typically larger, though not substantially, than $\sigma^M_{xx}$ or
+$\sigma^M_{yy}$. **THIS IS THE FIRST TIME YOU HAVE USED $\sigma^M$ AND
+IT IS NOT DESCRIBED, PREVIOUSLY YOU USE $M$ FOR THE STRESS FIELD, WHY
+A NEW SYMBOL, SHOULD THIS JUST BE $M_{ij}$ TO BE CONSISTENT WITH
+PREVIOUS AND NEXT SECTIONS?** Maximum horizontal stress is not
+typically aligned with either cardinal horizontal component, and is
+typically larger than $\sigma^M_{zz}$ above 10 km. Maximum
+$\sigma^m_{zz}$ is near 80 MPa, on the southwestern Beichuan fault
+below the high peaks of the Pengguan massif, except for in slip models
+containing near-horizontal fault segments in the mid-crust, where
+$\sigma^M_{zz}$ reaches 100 MPa. Vertical shear stresses
+($\sigma^M_{xz}$ and $\sigma^M_{yz}$) are on the order of 1 MPa, and
+horizontal shear stress ($\sigma^M_{xy}$) is on the order of 0.1 MPa.
 
-![Topographic horizontal in the Wenchuan rupture region (black and red crosses)
-at 5 km. Other symbology is the same as in Figure \ref{fig:lms_map}. Stresses
-shown are downsampled from grid resolution by a factor of 6.
+![Horizontal topographic stresses in the Longmen Shan region at 5 km
+depth: black and red lines signify most and least compressive
+horizontal stresses.  Other symbols are the same as in Figure
+\ref{fig:lms_map}. Stresses shown are down-sampled from the
+discretization used in the calculations by a factor of 6.
 \label{fig:lms_topo_stress_rot}](../figures/lms_topo_stresses_rot.pdf)
 
 Because the compressive stresses are near equal, $M$ contains a large
-isotropic, or pressure, component and a smaller shear component. Consequently,
-$M$ resolves on the Wenchuan faults with a large $\sigma^M_n$ (median of about
-40-60 MPa for each slip model) and much smaller shear stresses. $\tau^M_d$
-median of about -3 to -6 MPa, where values less than zero indicate normal-sense
-shear; and $\sigma^M_s$ median values range from about -2 to 1 MPa, where
-values less than zero indicate sinistral shear. Thus, topographic shear
-stresses are typically resolved as normal-sinistral, as opposed to the dominant
-mode of coseismic slip, which is reverse-dextral. Both $\sigma^M_n$ and
-$\tau^M$ increase the overall resistance to tectonic slip in the 2008 Wenchuan
-event, and had to be overcome by tectonic compression in order for the
-earthquake to occur.
+isotropic component and a smaller shear component. Consequently, $M$
+resolves on the Wenchuan faults with a large $\sigma^M_n$ (median of
+about 40-60 MPa for each slip model) and much smaller shear
+stresses. The median $\tau^M_d$ is about -3 to -6 MPa in each slip
+model, where values less than zero indicate normal-sense shear, and
+$\sigma^M_s$ median values range from about -2 to **SHOULD THIS BE
+NEGATIVE -1** 1 MPa, where values less than zero indicate sinistral
+shear. On the steeper fault segments, topographic shear stresses are
+typically normal-sinistral, as opposed to the dominant mode of
+coseismic slip, which is reverse-dextral.
 
 ![Southwest-looking views of topographic stresses and coseismic slip on
 selected slip models. All models share same lateral extent, but the
@@ -449,33 +458,38 @@ vertical exaggeration.
 al. [-@qi2011] 'rough' slip model. 
 \label{fig:fault_stress_3d} ](../figures/fault_stress_3d.pdf)
 
-However, much of the shallowly-dipping fault segments (the Pengguan fault and
-flats at the base of the Beichuan fault, where present) have $\tau^M$ in the
-direction of coseismic slip. The full stress tensor $M$ is not significantly
-different in these locations, but because of the low dip angle, $\sigma^M_{zz}$
-contributes more significantly to $\sigma^M_n$ than to $\tau^M_d$, which is
-then dominated by horizontal compression, leading to reverse-sense shear.
-Additionally, the stresses caused by the Pengguan massif locally resolve as
-right-lateral on these segments as well. Coseismic slip on these fault patches
-is much lower than on the steeper Beichuan fault, where the majority of slip
-occurred and which is loaded in the opposite shear sense.
+In contrast to the steeper fault segments, much of the
+shallowly-dipping fault segments (the Pengguan fault and flats at the
+base of the Beichuan fault, where present) have $\tau^M$ in the
+direction of coseismic slip. The full stress tensor $M$ is not
+significantly different in these locations, but because of the low dip
+angle, $\sigma^M_{zz}$ contributes more significantly to $\sigma^M_n$
+than to $\tau^M_d$, which is then dominated by horizontal compression,
+leading to reverse-sense shear.  Additionally, the stresses caused by
+the Pengguan massif locally resolve as right-lateral on these segments
+as well. Coseismic slip on these fault patches is much lower than on
+the steeper Beichuan fault, where the majority of slip occurred and
+which is topographically loaded in the opposite shear sense.
 
 Compellingly, similar patterns exist in the spatial distributions of
-$\sigma^M_n$ and coseismic slip. Most obvious is the coincidence of locally
-high $\sigma^M_n$ and locally low slip magnitude on the southwestern Beichuan
-fault below the culmination of the Pengguan massif, in an area of otherwise
-high slip (Figure \ref{fig:fault_stress_3d}). These correlations exist
-for other fault patches, but they are not as clear (Figure
+$\sigma^M_n$ and coseismic slip. Most obvious is the coincidence of
+locally high $\sigma^M_n$ and locally low slip magnitude on the
+southwestern Beichuan fault below the culmination of the Pengguan
+massif, in an area of otherwise high slip (Figure
+\ref{fig:fault_stress_3d}). These correlations exist for other fault
+patches, but they are not as clear (Figure
 \ref{fig:feng_slip_sig_n_scatter}). This raises the possibility that
-$\sigma^M_n$ is capable of limiting slip once failure has occurred, and may
-have implications for estimations of dynamic friction and the completeness of
-stress drop during the earthquake. Preliminary analysis of this is currently
-being performed, and will be described in a forthcoming manuscript.
+$\sigma^M_n$ is capable of limiting slip once failure has occurred,
+and may have implications for estimations of dynamic friction and the
+completeness of stress drop during the earthquake. Preliminary
+analysis of this is currently being performed, and will be described
+in a forthcoming manuscript.
 
 ![Coseismic slip magnitude and $\sigma^M_n$ on the four segments of the Feng
 et al. [-@feng2010] coseismic slip model. Trendlines are L1 regressions and do
 not include points with no slip.
 \label{fig:feng_slip_sig_n_scatter}](../figures/feng_slip_sig_n_scatter.png)
+
 
 
 
