@@ -886,7 +886,7 @@ apparent by the sharp decrease in the frequency of
 $p(T_{\mathrm{max}}|D)$ below about 0.5\@. This indicates that
 $T_{\mathrm{max}}$ of at least ~13.25 MPa km$^{-1}$ is necessary to
 overcome topographic stresses resisting reverse and right-lateral slip
-on the faults. We find that most likely ratio of the tectonic
+on the faults. We find that highest likely ratio of the tectonic
 horizontal shear to the compression along the Wenchuan faults is just
 below 0.5, with ratios greater than 1 less likely in $p_{\mathrm{J}}(T
 | D). In other words, the most likely tectonic stress roughly causes
@@ -894,10 +894,13 @@ twice as much fault perpendicular compression acorss the Longmen Shan
 as shear. This is somewhat at odds to inferences of
 strain-accumulation rates inferred from GPS by Loveless and Meade
 [2011], who inferred that the rate of slip deficit accumulation in the
-thrust and dextral sense was approximately equal. While the tectonic
-stresses we estimate here, represent the accumulated stresses prior to
-the Wenchuan earthquake, the relation of these stresses to accumulated
-slip-deficit needs to be through a model of strain-accumulation.
+thrust and dextral sense was approximately equal. It should be noted,
+however, that the posteriors of $T$ are quite broad, and the highest
+likely estimates from these constraints do not neccessarily correspond
+the true tectonic stresses.  The tectonic stresses we estimate here
+represent the accumulated stresses prior to the Wenchuan earthquake,
+and the relation of these stresses to accumulated slip-deficit needs
+to be through a model of strain-accumulation.
 
 
 The orientation of both the tectonic and total stresses near the
@@ -917,78 +920,84 @@ Indo-Asian collision alone, unless some additional mechanism of
 redirecting crustal stresses is incorporated.
  (i.e., the tectonic stresses roughly contribute twice 
 
-
 ## Slip on the Beichuan fault vs. optimally-oriented faults
 
-Our highest likelihood estimates of $\mu$, which is the coefficient of
-static friction on the fault immediately before failure, are in the
-range of 0.2--0.3\@.  These values are slightly lower than $\mu
-\approx 0.4$ inferred in laboratory experiments on samples recoverd
-from the WFSD-1 drill hole into the Beichuan fault
-[@kuo2014]. However, it should be noted that $\mu \approx 0.4$ is
-likely relatively high likelihood in our posteriors (**REFER TO
-FIGURE**). These values of friction, however, are lower than typical
-values derived from laboratory experiments on intact rock [e.g.,
-Byerlee, 1978], suggesting that slip occurred on preexisting faults
-because they are weaker than optimally-oriented new faults.
+Our highest likelihood estimates of the coefficient of static friction
+on the fault immediately before failure ($\mu$), are in the range of
+0.2--0.3\@.  These values are slightly lower than $\mu \approx 0.4$
+inferred in laboratory experiments on samples recoverd from the WFSD-1
+drill hole into the Beichuan fault [@kuo2014]. However, it should be
+noted that $\mu \approx 0.4$ is likely relatively high likelihood in
+our posteriors (**REFER TO FIGURE**). These values of friction,
+however, are lower than typical values derived from laboratory
+experiments on intact rock [e.g., Byerlee, 1978], suggesting that slip
+occurred on preexisting faults because they are weaker than
+optimally-oriented new faults.
 
 
+The obliquity of slip on the Wenchuan earthquake faults also suggests
+that these faults may not be optimally oriented for slip given the
+total stress state in the region of these faults. However, the Longmen
+Shan fault zone dates back to the Indosinian orogeny, locally late
+Triassic (226-206 Ma) [-@yong2003] and has had multiple episodes of
+reactivation since [e.g., @burchfiel1995; @wang2012], accumulating
+tens of kilometers of shortening [e.g.,@hubbard2010]. Such a mature
+fault system may be expected to have low coefficients of friction due
+to processes such as gouge development [e.g., kuo2014], and therefore
+may slip in non-optimal orientations, with high $\phi$ values also
+potentially contributing to this [e.g, @sibson1985].
 
-The obliquity of slip on the Wenchuan earthquake faults suggests that these
-faults may not be optimally oriented for slip given the total stress state in
-the region of these faults. However, the Longmen Shan fault zone dates back to
-the Indosinian orogeny, locally late Triassic (226-206 Ma) [-@yong2003] and has
-had multiple episodes of reactivation since [e.g., @burchfiel1995; @wang2012],
-accumulating tens of kilometers of shortening [e.g.,@hubbard2010]. Such
-a mature fault system may be expected to have low coefficients of friction due
-to processes such as gouge development [e.g., kuo2014], and therefore may slip
-in non-optimal orientations; high $\phi$ values may also contribute to this
-[e.g, @sibson1985].  
-
-Our posterior estimates for $T$, $\phi$ and $\mu$ let us quantitatively
-evaluate to what extent slip on the Wenchuan faults is more favorable than on
-optimally-oriented faults with more typical friction coefficients under the
-same stress conditions, assuming these optimal faults exist. Additionally, we
-can evaluate the relative contributions of $T$, $\phi$ and $\mu$ on potential
-fault weakening and reactivation. To explore these relationships, we perform
-some preliminary analysis on a single fault model (from Zhang et al.
-[-@zhang2011]) using a subset of 1000 samples drawn randomly from the joint
-posteriors. Given the similarity of the fault models and of the posteriors for
-each model, we do not expect that an analysis of all results on all fault
-models will yield different conclusions.
+Our posterior estimates for $T$, $\phi$ and $\mu$ let us
+quantitatively evaluate to what extent slip on the Wenchuan faults is
+more favorable than on optimally oriented faults with more typical
+friction coefficients. We use the same failure conditions as in
+determing the posteriors above, and that optimally oriented faults
+exist. Additionally, we evaluate the relative contributions of $T$,
+$\phi$ and $\mu$ on potential fault weakening and reactivation. To
+explore these relationships, we perform some preliminary analysis on a
+single fault model (from Zhang et al.  [-@zhang2011]) using a subset
+of 1000 samples drawn randomly from the joint posteriors. Given the
+similarity of the fault models and of the posteriors for each model,
+we do not expect that an analysis of all results on all fault models
+will yield different conclusions.
 
 First, we establish a metric with which to evaluate the favorability of slip
 on a given fault plane, which we call the Coulomb failure ratio, or CFR:
 \begin{equation}
-CFR = \tau / \mu (\sigma_n - \phi)
+\matrm{CFR} = \tau / \mu (1 - \phi) \sigma_n \; .
 \label{eqn:cfr}
 \end{equation}
-The CFR indicates whether a fault should faul under a given stress state:
-A CFR > 1 indicates failure, while a CFR < 1 indicates fault stability. We then
-calculate the CFR on each point in the model of the Beichuan fault (594 points)
-based on the full stress field $S$ at each point on the fault, for each of 1000
-samples of $T$, $\phi$ and $\mu$ drawn randomly from the posteriors (note that
-each sample contains a value for $T$, $\phi$ and $\mu$ as a set, which is
-persistent throughout the work in this study). We call this $CFR_f$. Then,
-using the same $S$ and $\phi$, we calculate the CFR on an optimally-oriented
-fault with $\mu=0.6$ and no cohesion, which we call $CFR_o$. Note these values
-are typical for immature crustal faults [e.g. Townend and Zoback, 2004?], but
-lower than laboratory-derived values; using higher values would decrease the
-CFR. We then compare $CFR_o$ to $CFR_f$. When $CFR_o > CFR_f$, failure on an
-optimal plane is preferred to failure on the Beichuan fault.
 
-Figure \ref{fig:cfr_ratios} shows $log (CFR_o / CFR_f)$ plotted against $\mu$
-on the Beichuan fault for all samples. Though considerable scatter exists even
-in $log (CFR_f / CFR_o)$, it is clear that in most instances, slip on the
-Beichuan fault is preferred over slip on an optimal fault, except for high
-values of $\mu$. Because $T$, $\phi$ and $\mu$ can all affect fault
-reactivation [e.g., @sibson1985], we compare the relative contributions of
-each with a simple mutliple linear regression, using $T_{\mathrm{EW}}$ normalized
-to [0,1) (the same range $\phi$ and $\mu$) as a proxy for $T$. The results are
-shown in Table \ref{table:cfr_regress}. It is clear that $\mu$ is most strongly
-correlated with $CFR_o/CFR_f$, followed by $T_{\mathrm{EW}}$ and then $\phi$;
-nonetheless, all significantly affect the relative ease of faulting on the
-Beichuan fault versus optimal faults.
+CFR indicates whether a fault should fail under a given stress state:
+CFR > 1 indicates failure, while a CFR < 1 indicates fault
+stability. We then calculate the CFR on each point in the model of the
+Beichuan fault (594 points describe the fault model of Zhang et al.
+[-@zhang2011]) based on the full stress field $S$ at each point on the
+fault, for each of the 1000 samples of $T$, $\phi$ and $\mu$ drawn
+randomly from the posteriors. We call this CFR$_f$. Then, using the
+same $S$ and $\phi$, we calculate the CFR on an optimally oriented
+fault with $\mu=0.6$ and no cohesion, which we call CFR$_o$. Note this
+$\mu$ is typical for crustal rocks with fault normal stresses above
+200MPa, but lower than $\mu = 0.85$ for smaller $\sigma_n$ [Byerlee,
+1978], and may be appropriate for immature crustal fault [e.g, Townend
+and Zoback, 2004?] **I THINK YOU CAN DELETE THIS LAST CLAUSE IF YOU
+WANT** We then compare CFR$_o$ to CFR$_f$, and when $\mathrm{CFR}_o >
+\mathrm{CFR}_f$, failure on an optimal plane is preferred to failure
+on the Beichuan fault.
+
+Figure \ref{fig:cfr_ratios} shows $log (\mathrm{CFR}_o /
+\mathrm{CFR}_f)$ plotted against $\mu$ on the Beichuan fault for the
+1,000 samples of the posterior. Though considerable scatter exists, it is clear that in most instances
+slip on the Beichuan fault is preferred over slip on an optimal fault. The exception is at 
+high values of $\mu$, in which slip on an optimally oriented fault is preferred. Because $T$, $\phi$ and $\mu$ can all
+affect fault reactivation [e.g., @sibson1985], we compare the relative
+contributions of each using a simple mutliple linear regression, assuming
+$T^\prime_{\mathrm{EW}}$ normalized to [0,1) (the same range $\phi$ and
+$\mu$) as a proxy for $T^\prime$. The results are shown in Table
+\ref{table:cfr_regress}. It is clear that $\mu$ is most strongly
+correlated with $\mathrm{CFR}_o/\mathrm{CFR}_f$, followed by $T^\prime_{\mathrm{EW}}$ and then
+$\phi$; nevertheless, all parameters significantly affect the relative ease of
+failure on the Beichuan fault versus on optimal faults.
 
 ![Comparison of Coulomb failure ratio (CFR) on the Beichuan fault from the
 Zhang et al. [-@zhang2011] model to CFR on an optimally-oriented fault with
@@ -1006,8 +1015,8 @@ $T_{\mathrm{EW}}$     | 0.9138  | 0.0048    | 191.2    | <0.0001
 $\phi$              | 0.5762  | 0.0055    | 105.7    | <0.0001 
 
 Table: Sensitivity of CFR ratios to relevant stress state parameters: Results
-of multivariate linear regression of $CFR_f/ CFR_o)$ against $\mu$, $\phi$ and
-$T_{\mathrm{EW}}$. \label{table:cfr_regress} 
+of multivariate linear regression of $\mathrm{CFR}_f/ \mathrm{CFR}_o)$ against $\mu$, $\phi$ and
+$T^\prime_{\mathrm{EW}}$. \label{table:cfr_regress} 
 
 
 # Conclusions
