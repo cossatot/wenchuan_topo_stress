@@ -148,8 +148,8 @@ earthquake are shown in pink. GPS velocities are relative to the mean velocity
 of sites within Sichuan basin, with 1$\sigma$ uncertainty, from the dataset of
 Liang et al. [-@liang2013]. Beachball is from the Global CMT focal mechanism
 solution for the 2008 Wenchuan earthquake. BF = Beichuan fault. PF = Pengguan
-fault. P = Pengguan massif. Grey box shows the extent of Figures
-\ref{fig:lms_topo_stresses_rot} and \ref{fig:lms_stress_map}.  
+fault. P = Pengguan massif. Grey box shows the extent of Figure
+\ref{fig:lms_stress_map}.  
 \label{fig:lms_map}](../figures/lms_map.pdf)
 
 Coseismic slip on the fault is spatially variable. Surface ruptures on the 
@@ -162,7 +162,7 @@ of coseismic slip is consequently variable as well, from close to pure reverse
 faulting in the southwest to dominantly right-lateral in the northeast. Shorter
 wavelength variations in slip rake and magnitude are apparent, as well.
 Coseismic slip models estimating slip at depth, derived from geodetic and
-seismic data [e.g. @shen2009; @tong2010; @feng2010; @zhang2011; @qi2011;
+seismic data [e.g. @shen2009; @tong2010, @feng2010; @zhang2011; @qi2011;
 @fielding2013] reproduce the surface offsets, but typically show even greater
 displacements at depth.  Additionally, these coseismic slip models show that
 slip at depth is concentrated into a small number of high-slip patches that
@@ -380,7 +380,7 @@ each point in the coseismic slip models.
 # Results of topographic stress calculations on the Wenchuan faults
 
 Topographic stresses on the Wenchuan faults are in the 1--10s of MPa range
-(Figure \ref{fig:lms_topo_stresses_rot}, \ref{fig:fault_stress_3d}. Stresses are highest in the southwest,
+(Figure \ref{fig:lms_topo_stress_rot}, \ref{fig:fault_stress_3d}. Stresses are highest in the southwest,
 beneath the Pengguan massif (the highest topography of the Longmen Shan front),
 and decrease to the northeast. $\sigma_{zz}^M$ is the typically the largest of
 the 'cardinal' compressive stresses ($\sigma^M_{i=j}$), though it is not
@@ -396,7 +396,7 @@ shear stress ($\sigma^M_{xy}$) is on the order of 0.1 MPa.
 ![Topographic horizontal in the Wenchuan rupture region (black and red crosses)
 at 5 km. Other symbology is the same as in Figure \ref{fig:lms_map}. Stresses
 shown are downsampled from grid resolution by a factor of 6.
-\label{fig:lms_topo_stresses_rot}](../figures/lms_topo_stresses_rot.pdf)
+\label{fig:lms_topo_stress_rot}](../figures/lms_topo_stresses_rot.pdf)
 
 Because the compressive stresses are near equal, $M$ contains a large
 isotropic, or pressure, component and a smaller shear component. Consequently,
@@ -506,7 +506,7 @@ values for each element; $L$ has only the principal stresses $L_{xx}$, $L_{yy}$
 and $L_{zz}$, which all equal $\rho g z$ and off-diagonal (shear) stresses are
 zero; and $T$ has only horizontal stresses $T_{xx}$, $T_{yy}$ and $T_{xy}$,
 which are assumed to increase linearly with depth so that the entire upper
-crust is near the critical failure envelope [e.g., @townend2000], and
+crust is near the critical failure envelope [e.g., townend2000], and
 are therefore parameterized as scalars multiplied by lithostatic pressure. 
 
 Therefore, the full stress tensor at a point is
@@ -668,7 +668,7 @@ on the low-$\mu$ side, suggesting that low values for $\mu$ are more robust.
 (A) E-W and N-S components of $T$.
 (B) Scatterplot of $\sigma^T_1$ and $\sigma^T_2$, with marginals.
 (C) Scatterplot of $\mu$ and $\phi$, with marginals. Need color legend.
-\label{fig:joint_posteriors}](../figures/joint_pdfs.pdf)
+\label{fig:joint_posteriors}](../figures/temp_posteriors.pdf)
 
 
 # Discussion
@@ -725,16 +725,15 @@ Beichuan fault in the WFSD-1 borehole of the Wenchuan Earthquake Fault
 Scientific Drilling Project several years after the 2008 earthquake [@cui2014],
 which show $\sigma_{Hmax}$ to be more orthogonal to the fault trace, suggesting
 that much of the right-lateral component of shear stress was released during
-the earthquake.
+the earthquake. *check on this! At this depth, the results may not be that
+different!  Look at magnitudes as well!*
 
 ![Topographic and tectonic horizontal stresses (taken from the most likely
 estimates of $p(T|D)$ in the Wenchuan rupture region (black and red crosses)
 with horizontal maximum stress orientation data taken from before the 2008
-Wenchuan event from the World Stress Map [@heidbach2009] (purple arrows), and
-horizontal maximum stress orientation data from after the earthquake at the
-WFSD-1 drill hole [@cui2014] (blue arrows). Other symbology is the same as in
-Figure \ref{fig:lms_map}. Stresses shown are downsampled from grid resolution
-by a factor of 9.
+Wenchuan event from the World Stress Map [@heidbach2009] (purple arrows).
+Other symbology is the same as in Figure \ref{fig:lms_map}. Stresses shown
+are downsampled from grid resolution by a factor of 9.
 \label{fig:lms_stress_map}](../figures/lms_map_stresses_rot.pdf)
 
 However, the orientation of the tectonic (and total) stresses near the Wenchuan
@@ -822,20 +821,18 @@ lower than laboratory-derived values; using higher values would decrease the
 CFR. We then compare $CFR_o$ to $CFR_f$. When $CFR_o > CFR_f$, failure on an
 optimal plane is preferred to failure on the Beichuan fault.
 
-Figure \ref{fig:cfr_ratios} shows $log (CFR_o / CFR_f)$ plotted against $\mu$,
-$\phi$ and $\sigma_T_xx$ on the Beichuan fault for all samples. Though
-considerable scatter exists even in $log (CFR_f / CFR_o)$, it is clear that in
-most instances, slip on the Beichuan fault is preferred over slip on an optimal
-fault, except for high values of $\mu$. Because $T$, $\phi$ and $\mu$ can all
-affect fault reactivation [e.g., @sibson1985], we compare the relative
-contributions of each with a simple mutliple linear regression, using
-$\sigma^T_{xx}$ normalized to [0,1) (the same range $\phi$ and $\mu$) as
-a proxy for $T$ ($\sigma^T_{xx}$ is essentially $\sigma^T_{max}$ in most of the
-posteriors). The results are shown in Table \ref{table:cfr_regress}. It is
-clear that $\mu$ is most strongly correlated with $CFR_o/CFR_f$, followed
-closely by $\sigma^T_{EW}$ and then $\phi$; nonetheless, all significantly
-affect the relative ease of faulting on the Beichuan fault versus optimal
-faults.
+Figure \ref{fig:cfr_ratios} shows $log (CFR_o / CFR_f)$ plotted against $\mu$
+on the Beichuan fault for all samples. Though considerable scatter exists even
+in $log (CFR_f / CFR_o)$, it is clear that in most instances, slip on the
+Beichuan fault is preferred over slip on an optimal fault, except for high
+values of $\mu$. Because $T$, $\phi$ and $\mu$ can all affect fault
+reactivation [e.g., @sibson1985], we compare the relative contributions of
+each with a simple mutliple linear regression, using $\sigma^T_{EW}$ normalized
+to [0,1) (the same range $\phi$ and $\mu$) as a proxy for $T$. The results are
+shown in Table \ref{table:cfr_regress}. It is clear that $\mu$ is most strongly
+correlated with $CFR_o/CFR_f$, followed by $\sigma^T_{EW}$ and then $\phi$;
+nonetheless, all significantly affect the relative ease of faulting on the
+Beichuan fault versus optimal faults.
 
 ![Comparison of Coulomb failure ratio (CFR) on the Beichuan fault from the
 Zhang et al. [-@zhang2011] model to CFR on an optimally-oriented fault with
@@ -843,8 +840,7 @@ $\mu = 0.6$, versus estimated $\mu$ on the Beichuan fault. Values less than
 0 (1 in linear space) indicate that slip is favored on the Beichuan fault, even
 if it is non- optimally oriented. Values are calculated for each point in the
 slip model for 1000 randomly-drawn samples from $p(T,\mu,\phi |D)$.
-\label{fig:cfr_ratios}](../figures/cfr_plots.pdf)
-
+\label{fig:cfr_ratios}](../figures/cfr_ratios.png)
 
 Parameter           | Coef.   | Std. Err. | t        | $P>|t|$      
 --------------------|---------|-----------|----------|----------
@@ -854,7 +850,7 @@ $\sigma^T_{EW}$     | 0.9138  | 0.0048    | 191.2    | <0.0001
 $\phi$              | 0.5762  | 0.0055    | 105.7    | <0.0001 
 
 Table: Sensitivity of CFR ratios to relevant stress state parameters: Results
-of multivariate linear regression of $CFR_o/ CFR_f)$ against $\mu$, $\phi$ and
+of multivariate linear regression of $CFR_f/ CFR_o)$ against $\mu$, $\phi$ and
 $\sigma^T_{EW}$. \label{table:cfr_regress} 
 
 
