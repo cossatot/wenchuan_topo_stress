@@ -7,16 +7,8 @@ authors: 'Richard H. Styron \altaffilmark{1} and Eric A. Hetland \altaffilmark{1
 altaffilnum: 1
 altaffiltext: 'Department of Earth and Environmental Sciences, University of Michigan, Ann Arbor, Michigan, USA.'
 
-
-
-
 abstract:
-	Though it is widely recognized that large mountain ranges may produce
-significant stresses in the earth's crust, these stresses are not commonly
-quantified. Nonetheless, it is possible that active faults near high topography
-may be affected by topographic stresses. In this work, we calculate the 
-topographic stress field in the Longmen Shan region of eastern Tibet, where
-faulting occurs at the base of ~ 4 km relief. 
+	Though it is widely recognized that large mountain ranges may produce significant stresses in the earth's crust, these stresses are not commonly quantified. Nonetheless, it is possible that active faults near high topography may be affected by topographic stresses. In this work, we calculate the  topographic stress field in the Longmen Shan region of eastern Tibet, where faulting occurs at the base of ~ 4 km relief. 
 
 ...
 
@@ -481,8 +473,8 @@ central Beichuan fault. SW B = Southwestern Beichuan fault. P = Pengguan fault.
 \label{fig:feng_slip_sig_n_scatter}](../figures/feng_slip_sig_n_scatter.pdf)
 
 
-
 # Calculations of tectonic stress, fault friction and pore fluid pressure
+
 Faults fail in earthquakes when the shear stresses on the fault
 overcome the frictional stresses resisting slip on the fault [e.g.,
 REFS]. We assume that the entire fault was at at the point of failure
@@ -493,15 +485,17 @@ criterion
 \label{eqn:amonton_raw} 
 \end{equation} 
 where where $\mu$ is the
-coefficient of static friction on the fault and $\sigma_p$ is the pore fluid pressure [e.g.,
-Sibson, 1990]. We describe the pore fluid pressure using a scalar, $0
-\leq \phi \leq 1$, which is the pore fluid pressure as a fraction of
-total pressure, and so the failure criterion is
+coefficient of static friction on the fault and $\sigma_p$ is the pore 
+fluid pressure [e.g., Sibson, 1990]. We describe the pore fluid pressure 
+using a scalar, $0 \leq \phi \leq 1$, which is the pore fluid pressure as
+a fraction of total pressure, and so the failure criterion is
 \begin{equation} 
 \tau = \mu (1 - \phi) \sigma_n \; 
 \label{eqn:amonton} 
 \end{equation}
-[e.g., Sibson, 1990]. We assume that both $\mu$ and $\phi$ are constant across the Wenchuan faults.
+[e.g., Sibson, 1990]. We assume that both $\mu$ and $\phi$ are constant 
+across the Wenchuan faults.
+
 $\phi$ is the
 
 We estimate the tectonic stress tensor field, $\mu$, and $\phi$
@@ -578,14 +572,16 @@ models. The rake of the maximum shear stress $\lambda^S$ on each point
 of the fault is calculated and compared to the coseismic slip rake
 $\lambda^D$ at that point. A weighted mean misfit is calculated by
 \begin{equation}
-\bar{\lambda}^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) D_i} {\bar{ D}} \; ,
+\bar{\lambda}^m = \sum \nolimits_{i=1}^n \frac{(\lambda^S_i - \lambda^D_i) D_i} 
+{\bar{ D}} \; ,
 \label{eqn:rake_misfit}
 \end{equation}
 where $D$ is the coseismic slip and $\bar{D}$ is the average coseismic
 slip in a given coseismic slip model. Finally, the relative likelihood
 of each model is computed using a Von Mises distribution as
  \begin{equation}
-p (D | T) = \frac{ \exp ( \kappa \cos \bar{\lambda}^m )} {\exp (\kappa \cos \bar{\lambda}^m_{\min})} \;,
+p (D | T) = \frac{ \exp ( \kappa \cos \bar{\lambda}^m )} 
+{\exp (\kappa \cos \bar{\lambda}^m_{\min})} \;,
 \label{eqn:rel_likelihood}
 \end{equation}
 where $\kappa$ = 8.529, which is calculated so that the 68.2%
@@ -636,19 +632,22 @@ $T^\prime =$ 0.5--1 (recall that $T^\prime$ is relative to $\rho g
 z$). The low likelihood  below $T^\prime \approx 0.5$ indicates that lower
 tectonic stresses are unlikely to overcome fault friction and
 topographic shear stresses resisting reverse-dextral slip on the
-Wenchuan faults. $p(T^\prime_{\mathrm{min}} | D)$ for each slip model has a mode close
-to $T^\prime_{\mathrm{min}} = 0$ and decreases rapidly, though all slip models show values for
-$T^\prime_{\mathrm{min}}$ up to 2.5. $T^\prime_{\mathrm{max}}$ and $T^\prime_{\mathrm{min}}$ do not display any
-particular relationship aside from the requirement that $T^\prime_{\mathrm{max}} \ge
+Wenchuan faults. $p(T^\prime_{\mathrm{min}} | D)$ for each slip model 
+has a mode close to $T^\prime_{\mathrm{min}} = 0$ and decreases rapidly,
+though all slip models show values for
+$T^\prime_{\mathrm{min}}$ up to 2.5. $T^\prime_{\mathrm{max}}$ and 
+$T^\prime_{\mathrm{min}}$ do not display any
+particular relationship aside from the requirement
+ that $T^\prime_{\mathrm{max}} \ge
 T^\prime_{\mathrm{min}}$.
 
-![Samples of $p(T^\prime_{\mathrm{max}},T^\prime_{\mathrm{min}} | D)$ associated with each of the coseismic slip models we consider, along with 
-marginals of $T^\prime_{\mathrm{max}}$ and $T^\prime_{\mathrm{min}}$.
- Colors
-in the scatterplot indicate magnitude of $T^\prime_{\mathrm{max}}$. **Need color bar.**
-Contour lines indicate relative density (i.e., likelihood) of posteriors; darker lines mean higher
-densities. Inset rose diagrams are histograms of
-azimuth of $T^\prime_{max}$.  
+![Samples of $p(T^\prime_{\mathrm{max}},T^\prime_{\mathrm{min}} | D)$
+associated with each of the coseismic slip models we consider, along with
+marginals of $T^\prime_{\mathrm{max}}$ and $T^\prime_{\mathrm{min}}$.  Colors
+in the scatterplot indicate magnitude of $T^\prime_{\mathrm{max}}$.  Contour
+lines indicate relative density (i.e., likelihood) of posteriors; darker lines
+mean higher densities. Inset rose diagrams are histograms of azimuth of
+$T^\prime_{max}$.  
 \label{fig:T_scatters} ](../figures/T_scatters.pdf)
 
 All slip models show $p(\phi | D)$ to be uniformly high from $\phi =
@@ -670,10 +669,9 @@ $T^\prime_{\mathrm{max}}$ values can overcome sinistral and
 normal-sense topographic shear stresses to cause the observed
 coseismic slip kinematics.
 
-![Samples of $p(\mu,\phi | D)$ for each coseismic slip model. Colors
- indicate magnitude of $T^\prime_{\mathrm{max}}$. **Need color bar.**
-Contour lines indicate relative density (i.e., likelihood) of posteriors; darker lines mean higher
-densities.
+![Samples of $p(\mu,\phi | D)$ for each coseismic slip model. Colors indicate
+magnitude of $T^\prime_{\mathrm{max}}$.Contour lines indicate relative density
+(i.e., likelihood) of posteriors; darker lines mean higher densities.
 \label{fig:mu_phi_scatters}](../figures/mu_phi_fms.pdf)
 
 ## Joint posteriors
@@ -705,18 +703,17 @@ robust.
 
 ![Joint model results. 
 (A) E-W and N-S components of $T^\prime$.
-(B) Samples of $p_{\mathrm{J}}(T^\prime_{\mathrm{max}},T^\prime_{\mathrm{min}} | D)$, along with 
-marginals of $T^\prime_{\mathrm{max}}$ and $T^\prime_{\mathrm{min}}$.
-(C) Samples of $p_{\mathrm{J}}(\mu, \phi | D)$, with marginals. Colors
-in the scatterplot indicate magnitude of $T^\prime_{\mathrm{max}}$. **Need color bar.**
-Contour lines indicate relative density (i.e., likelihood) of posteriors; darker lines mean higher
-densities.
+(B) Samples of $p_{\mathrm{J}}(T^\prime_{\mathrm{max}},T^\prime_{\mathrm{min}}
+| D)$, along with marginals of $T^\prime_{\mathrm{max}}$ and
+$T^\prime_{\mathrm{min}}$.
+(C) Samples of $p_{\mathrm{J}}(\mu, \phi | D)$, with marginals. Colors in the
+scatterplot indicate magnitude of $T^\prime_{\mathrm{max}}$. Contour lines
+indicate relative density (i.e., likelihood) of posteriors;
+darker lines mean higher densities.
 \label{fig:joint_posteriors}](../figures/joint_pdfs.pdf)
 
 
 # Discussion
-
-
 
 Few studies have performed similar quantification of static stress
 fields on faults (see Section
@@ -737,7 +734,7 @@ bracketed [e.g., @cattin1997; @lamb2006; @luttrell2011].  Each of
 these studies uses somewhat different approaches. Our approach is most
 similar to that of Luttrell et al. [-@luttrell2011], although there
 are significant differences: (1) We use the topographic stresss
-calculations proposed by Liu and Zoback [-@liuzoback92], wheras
+calculations proposed by Liu and Zoback [-@liuzoback1992], wheras
 Luttrell et al. [-@luttrell2011] only uses the vertical loading from
 topography, equivalent to $M^B$ in equation (\ref{eqn:bous}). (2) We
 do not consider bouancy forces due to lateral variations in density,
@@ -860,7 +857,7 @@ likely estimates from these constraints do not neccessarily correspond
 the true tectonic stresses.  The tectonic stresses we estimate here
 represent the accumulated stresses prior to the Wenchuan earthquake,
 and the relation of these stresses to accumulated slip-deficit needs
-to be through a model of strain-accumulation.
+o be through a model of strain-accumulation.
 
 
 The orientation of both the tectonic and total stresses near the
@@ -978,6 +975,10 @@ Table: Sensitivity of CFR ratios to relevant stress state parameters: Results
 of multivariate linear regression of $\mathrm{CFR}_o/ \mathrm{CFR}_f)$ against $\mu$, $\phi$ and
 $T^\prime_{\mathrm{EW}}$. 
 \label{table:cfr_regress} 
+
+
+## The role of topography in orogenic development and strain localization
+blah blah
 
 
 # Conclusions
