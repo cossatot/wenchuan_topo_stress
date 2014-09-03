@@ -5,7 +5,8 @@ import h5py
 
 t0 = time.time()
 
-stress_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
+#stress_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
+stress_dir = '../../stress_files/'
 b_stress_file = stress_dir + 'e_asia_bouss.h5'
 c_stress_file = stress_dir + 'e_asia_cerruti_topo.h5'
 stress_file = stress_dir + 'e_asia_topo_stress.h5'
@@ -21,6 +22,8 @@ conv_mode = 'same'
 
 z_min = 851.
 z_max = 35851.
+lame_1 = 70e9
+shear_mod = 30e9
 z_len = (z_max - z_min) / z_res + 1
 z_vec = np.linspace(z_min, z_max, num=z_len)
 
@@ -75,11 +78,13 @@ for comp in comp_list:
 
     for i, z in enumerate(z_vec):
         cerr_x[comp][:,:,i] = hs.do_c_convo( component=comp, f_dir = 'x', z=z,
+                                       lamb = lame_1, mu = shear_mod,
                                        load = Fh_x, kernel_res = study_res,
                                        kernel_radius = kernel_rad,
                                        conv_mode = conv_mode) * 1e-6
 
         cerr_y[comp][:,:,i] = hs.do_c_convo( component=comp, f_dir = 'y', z=z,
+                                       lamb = lame_1, mu = shear_mod,
                                        load = Fh_y, kernel_res = study_res,
                                        kernel_radius = kernel_rad,
                                        conv_mode = conv_mode) * 1e-6
