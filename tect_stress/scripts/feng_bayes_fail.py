@@ -29,7 +29,7 @@ rho = 2700
 g = 9.81
 
 # priors for pore fluid pressure (phi[da])
-phi_priors = np.random.random(1e5)
+phi_priors = np.random.random(2e5)
 phi_priors = phi_priors[t_prior_df.index]
 
 # make dataframe

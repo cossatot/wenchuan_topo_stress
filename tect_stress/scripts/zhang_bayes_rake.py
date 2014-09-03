@@ -15,7 +15,7 @@ lms.rake_deg = hsp.get_rake_from_shear_components(strike_shear=lms.slp_strk_m,
 np.random.seed(69)
 
 # some inital constants
-n_trials = 1e5
+n_trials = 2e5
 
 n_points = len(lms.index)
 rho = 2700
@@ -25,7 +25,7 @@ g = 9.81
 # These are functions of lithostatic pressure (rho g depth)
 # Priors for each are uniform [-2, 2).
 s1s = np.random.uniform(0,2.5, n_trials)
-s3s = np.random.uniform(0, 1, n_trials) * s1s
+s3s = np.random.uniform(-1, 1, n_trials) * s1s
 thetas = np.random.uniform(0, 2 * np.pi, n_trials)
 
 xxs = scv.xx_stress_from_s1_s3_theta(s1s, s3s, thetas)

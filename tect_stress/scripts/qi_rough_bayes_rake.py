@@ -24,7 +24,7 @@ lms = lms[lms.slip_m>=0.001]
 np.random.seed(69)
 
 # some inital constants
-n_trials = 1e5
+n_trials = 2e5
 
 n_points = len(lms.index)
 rho = 2700
@@ -33,21 +33,21 @@ g = 9.81
 # Priors for tectonic stresses (txx, tyy, txy).
 # These are functions of lithostatic pressure (rho g depth)
 # Priors for each are uniform [-2, 2).
-#s1s = np.random.uniform(1,2.5, n_trials)
-#s3s = np.random.uniform(0, 1, n_trials) * s1s
-#thetas = np.random.uniform(0, 2 * np.pi, n_trials)
-#
-#xxs = scv.xx_stress_from_s1_s3_theta(s1s, s3s, thetas)
-#yys = scv.yy_stress_from_s1_s3_theta(s1s, s3s, thetas)
-#xys = scv.xy_stress_from_s1_s3_theta(s1s, s3s, thetas)
-#
-#del s1s, s3s, thetas
-#
-#xxs = xxs.reshape([n_trials, 1])
-#yys = yys.reshape([n_trials, 1])
-#xys = xys.reshape([n_trials, 1])
-#
-#t_priors = np.concatenate((xxs, yys, xys), axis=1)
+s1s = np.random.uniform(1,2.5, n_trials)
+s3s = np.random.uniform(-1, 1, n_trials) * s1s
+thetas = np.random.uniform(0, 2 * np.pi, n_trials)
+
+xxs = scv.xx_stress_from_s1_s3_theta(s1s, s3s, thetas)
+yys = scv.yy_stress_from_s1_s3_theta(s1s, s3s, thetas)
+xys = scv.xy_stress_from_s1_s3_theta(s1s, s3s, thetas)
+
+del s1s, s3s, thetas
+
+xxs = xxs.reshape([n_trials, 1])
+yys = yys.reshape([n_trials, 1])
+xys = xys.reshape([n_trials, 1])
+
+t_priors = np.concatenate((xxs, yys, xys), axis=1)
 
 # Columns for search dataframe
 search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index', 'depth', 'strike',
@@ -55,27 +55,27 @@ search_df_cols = ['iter','txx', 'tyy', 'txy', 'pt_index', 'depth', 'strike',
 
 
 ## making index list
-#iter_range = np.arange(n_trials, dtype='float')
-#pt_range = np.arange(n_points, dtype='float')
+iter_range = np.arange(n_trials, dtype='float')
+pt_range = np.arange(n_points, dtype='float')
 
-#print('making list of priors')
-#index_list = [[iter_range[i],t_priors[i,0],t_priors[i,1],t_priors[i,2], pi]
-#             for i in iter_range for pi in pt_range]
-#print('done making list.  Moving on...')
-#index_array = np.array(index_list)
-#del index_list
+print('making list of priors')
+index_list = [[iter_range[i],t_priors[i,0],t_priors[i,1],t_priors[i,2], pi]
+             for i in iter_range for pi in pt_range]
+print('done making list.  Moving on...')
+index_array = np.array(index_list)
+del index_list
 
-#print('index_array = {:.2f} MB'.format(index_array.nbytes / 1048576.))
+print('index_array = {:.2f} MB'.format(index_array.nbytes / 1048576.))
 
-#iter_index = np.int_(index_array[:,0].copy() )
-#pt_index = np.int_(index_array[:,4].copy() )
-#prior_array = index_array[:,1:4]
-#del index_array #save some space
+iter_index = np.int_(index_array[:,0].copy() )
+pt_index = np.int_(index_array[:,4].copy() )
+prior_array = index_array[:,1:4]
+del index_array #save some space
 
-print('loading hdf file and filling arrays')
+#print('loading hdf file and filling arrays')
 
-qi_arrays = h5py.File('qi_MC_arrays.hdf5', 'r')
-index_array = qi_arrays['qi_r_index_array']
+#qi_arrays = h5py.File('qi_MC_arrays.hdf5', 'r')
+#index_array = qi_arrays['qi_r_index_array']
 
 iter_index = np.int_(index_array[:,0] )
 pt_index = np.int_(index_array[:,4] )
