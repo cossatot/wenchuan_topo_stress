@@ -17,7 +17,7 @@ lms = pd.concat((fb, fp), axis=0)
 np.random.seed(69)
 
 # some inital constants
-n_trials = 1.5e5
+n_trials = 2e5
 
 n_points = len(lms.index)
 rho = 2700
