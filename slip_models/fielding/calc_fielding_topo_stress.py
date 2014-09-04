@@ -9,7 +9,8 @@ import time
 t0 = time.time()
 print 'setting up and scaling stress arrays...'
 
-stress_f_dir = '/Volumes/cmld/data7/styron/wenchuan_eq/wench_output/'
+#stress_f_dir = '/Volumes/cmld/data7/styron/wenchuan_eq/wench_output/'
+stress_f_dir = '../../../stress_files/'
 
 stress_file = stress_f_dir + 'e_asia_topo_stress.h5'
 
@@ -102,9 +103,9 @@ for i in lms.index:
 
 print 'done!  now making new dataframes.'
 
-lms.to_csv('field_topo_stess.csv')
-lms[lms.segment == 'beichuan'].to_csv('field_beich_topo_stress.csv')
-lms[lms.segment == 'pengguan'].to_csv('field_peng_topo_stress.csv')
+lms.to_csv('field_topo_stress_035_pr.csv')
+#lms[lms.segment == 'beichuan'].to_csv('field_beich_topo_stress.csv')
+#lms[lms.segment == 'pengguan'].to_csv('field_peng_topo_stress.csv')
 
 
 

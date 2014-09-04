@@ -13,8 +13,8 @@ print 'setting up and scaling stress arrays...'
 
 
 wench_slip_dir = 'multi/'
-stress_f_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
-
+stress_f_dir = '../../../stress_files/'
+#stress_f_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
 stress_file = stress_f_dir + 'e_asia_topo_stress.h5'
 
 fs1 = wench_slip_dir + 's1_xyz.csv'
@@ -426,7 +426,7 @@ lms_slip = pd.read_csv('lms_slip.csv', index_col=0)
 
 lms = pd.concat([lms, lms_slip], axis=1)
 
-lms.to_csv('lms_stress_slip.csv')
+lms.to_csv('lms_stress_slip_035_pr.csv')
 
 t5 = time.time()
 print 'done with everything in', t5-t0,'s'
