@@ -6,12 +6,15 @@ import time
 import h5py
 
 stress_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
-stress_file = stress_dir + 'e_asia_bouss.h5'
+stress_file = stress_dir + 'e_asia_bouss_028pr.h5'
 
 print 'setting up problem...'
 rho = 2700  # density in kg m^-3
 g = 9.81    # gravitational force in m s^-2
 Fv =  -rho * g
+lame_param = 38181818181.81819
+shear_modulus = 30e9
+
 study_res = 851 # resolution for topography, filters, etc.
 z_res = 1000
 b_conv_mode = 'valid'
@@ -67,6 +70,7 @@ for comp in comp_list:
 
     for i, z in enumerate(z_vec):
        b_dict[comp][:,:,i] = hs.do_b_convo( component = comp,  z = z, Fv = Fv,
+                                        lamb=lame_param, mu=shear_modulus,
                                         load = topo, load_mode = 'topo',
                                         conv_mode = b_conv_mode,
                                         kernel_radius = kernel_rad,
