@@ -1,25 +1,38 @@
-import numpy as np
 import pandas as pd
 import scipy.ndimage as nd
 import halfspace.projections as hsp
 import halfspace.sandbox as hbx
 import h5py
 import time
+import numpy as np
 
 t0 = time.time()
-print 'setting up and scaling stress arrays...'
 
-stress_f_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
 
-stress_file = stress_f_dir + 'e_asia_topo_stress_028pr.h5'
+print 'setting up script'
 
-sb = pd.read_csv('shen_beich.csv', index_col=0)
-sp = pd.read_csv('shen_peng.csv', index_col=0)
+# import fault patches
 
-sb['segment'] = 'beichuan'
-sp['segment'] = 'pengguan'
+stress_file_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
+stress_file = stress_file_dir + 'e_asia_topo_stress_028pr.h5'
+interp_order = 1
 
-lms = pd.concat([sb, sp], axis=0)
+fs1 = 'qi_beichuan_a_rough.csv'
+fs2 = 'qi_pengguan_a_rough.csv'
+fs3 = 'qi_beichuan_b_smooth.csv'
+fs4 = 'qi_pengguan_b_smooth.csv'
+
+s1 = pd.read_csv(fs1, index_col=0)
+s2 = pd.read_csv(fs2, index_col=0)
+s3 = pd.read_csv(fs3, index_col=0)
+s4 = pd.read_csv(fs4, index_col=0)
+
+s1['fault_seg'] = 'bei_a'
+s2['fault_seg'] = 'peng_a'
+s3['fault_seg'] = 'bei_b'
+s4['fault_seg'] = 'peng_b'
+
+lms = pd.concat([s1, s2, s3, s4], ignore_index=True)
 
 # get coordinate data info (manually input)
 topo_x0 = -1919052.3800296092
@@ -34,9 +47,8 @@ clip_len = 1500
 clip_dist = clip_len * 2
 
 
-lms_xyz = hbx.coord_map_inverse_3d([lms['easting_utm48'].values, 
-                                    lms['northing_utm48'].values, 
-                                    lms['depth_km'].values ],
+lms_xyz = hbx.coord_map_inverse_3d([lms['easting_utm48'], 
+                                    lms['northing_utm48'], lms['z_center']],
                                    x_step = x_res_deg, x_shift = x0_conv,
                                    y_step = y_res_deg, y_shift = y0_conv,
                                    z_step = 1, z_shift = 1.851)
@@ -58,7 +70,6 @@ fs.close()
 
 print 'calculating stresses at points'
 lms_d = {}
-interp_order = 1
 
 for cc in comp_list:
     print 'doing', cc
@@ -79,8 +90,9 @@ lms['tau_dd'] = 0.
 lms['tau_ss'] = 0.
 lms['tau_cs'] = 0.
 
-lms['strike'] += 360.
-
+#lms['strike'] = lms['azimuth'] + 180.  # converting to right hand rule
+#lms['dip'] = np.abs( lms['dip'] )
+ 
 for i in lms.index:
     lms_tens_xyz[i] =hsp.make_xyz_stress_tensor(sig_xx = lms['xx_stress'].ix[i],
             sig_yy = lms['yy_stress'].ix[i], sig_zz = lms['zz_stress'].ix[i],
@@ -100,9 +112,12 @@ for i in lms.index:
                                                  lms.dip.ix[i], lms_tens_xyz[i])
 
 print 'done!  now making new dataframes.'
+f1 = lms[lms.fault_seg == 'bei_a'].reset_index()
+f2 = lms[lms.fault_seg == 'peng_a'].reset_index()
+f3 = lms[lms.fault_seg == 'bei_b'].reset_index()
+f4 = lms[lms.fault_seg == 'peng_b'].reset_index()
 
-lms.to_csv('shen_topo_stess.csv')
-lms[lms.segment == 'beichuan'].to_csv('shen_beich_topo_stress.csv')
-lms[lms.segment == 'pengguan'].to_csv('shen_peng_topo_stress.csv')
-
-
+f1.to_csv('qi_bei_rough_stress.csv')
+f2.to_csv('qi_peng_rough_stress.csv')
+f3.to_csv('qi_bei_smooth_stress.csv')
+f4.to_csv('qi_peng_smooth_stress.csv')

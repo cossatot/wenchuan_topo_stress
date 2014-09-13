@@ -11,17 +11,14 @@ print 'setting up and scaling stress arrays...'
 
 # import fault patches
 
-
-wench_slip_dir = 'multi/'
 stress_f_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
+stress_file = stress_f_dir + 'e_asia_topo_stress_028pr.h5'
 
-stress_file = stress_f_dir + 'e_asia_topo_stress.h5'
-
-fs1 = wench_slip_dir + 's1_xyz.csv'
-fs2 = wench_slip_dir + 's2_xyz.csv'
-fs3 = wench_slip_dir + 's3_xyz.csv'
-fs4 = wench_slip_dir + 's4_xyz.csv'
-fs5 = wench_slip_dir + 's5_xyz.csv'
+fs1 = 's1_xyz.csv'
+fs2 = 's2_xyz.csv'
+fs3 = 's3_xyz.csv'
+fs4 = 's4_xyz.csv'
+fs5 = 's5_xyz.csv'
 
 s1 = pd.read_csv(fs1, index_col=0)
 s2 = pd.read_csv(fs2, index_col=0)
@@ -408,25 +405,17 @@ print 'done in', t4-t3, 's'
 
 print 'saving dataframes'
 
-df1 = wench_slip_dir + 's1_stress_4km.csv'
-df2 = wench_slip_dir + 's2_stress_4km.csv'
-df3 = wench_slip_dir + 's3_stress_4km.csv'
-df4 = wench_slip_dir + 's4_stress_4km.csv'
-df5 = wench_slip_dir + 's5_stress_4km.csv'
+df1 = 's1_stress_4km.csv'
+df2 = 's2_stress_4km.csv'
+df3 = 's3_stress_4km.csv'
+df4 = 's4_stress_4km.csv'
+df5 = 's5_stress_4km.csv'
 
 s1.to_csv(df1)
 s2.to_csv(df2)
 s3.to_csv(df3)
 s4.to_csv(df4)
 s5.to_csv(df5)
-
-lms = pd.concat( [s1, s2, s3, s4, s5], axis=0, ignore_index=True)
-
-lms_slip = pd.read_csv('lms_slip.csv', index_col=0)
-
-lms = pd.concat([lms, lms_slip], axis=1)
-
-lms.to_csv('lms_stress_slip.csv')
 
 t5 = time.time()
 print 'done with everything in', t5-t0,'s'

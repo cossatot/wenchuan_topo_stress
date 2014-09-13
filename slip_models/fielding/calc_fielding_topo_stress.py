@@ -9,9 +9,9 @@ import time
 t0 = time.time()
 print 'setting up and scaling stress arrays...'
 
-stress_f_dir = '/Volumes/cmld/data7/styron/wenchuan_eq/wench_output/'
+stress_f_dir = '/cmld/data7/styron/wenchuan_eq/wench_output/'
 
-stress_file = stress_f_dir + 'e_asia_topo_stress.h5'
+stress_file = stress_f_dir + 'e_asia_topo_stress_028pr.h5'
 
 fb = pd.read_csv('field_beich.csv', index_col=0)
 fp = pd.read_csv('field_peng.csv', index_col=0)
