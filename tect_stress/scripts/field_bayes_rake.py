@@ -163,8 +163,8 @@ tect_posteriors = pd.concat([txx_keep, tyy_keep, txy_keep, fishtrap], axis=1)
 
 
 print('Done!  saving posteriors')
-tect_posteriors.to_csv(out_name, index=True)
 tect_posteriors.columns = ['txx', 'tyy', 'txy', 'likelihood']
+tect_posteriors.to_csv(out_name, index=True)
 
 t1 = time.time()
 t_done = t1 - t0
