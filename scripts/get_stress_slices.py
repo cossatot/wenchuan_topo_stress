@@ -84,26 +84,43 @@ xy_stress_vec_12 = pd.Series(xy_sparse_12km_la.x)
 
 del xy_la
 
+print 'doing zz stresses'
+zz_la = la.larry(stress_db['zz_MPa'][:,:,:], stress_labels)
+
+zz_sparse_5km_la = zz_la[::10, ::10, 4].flatten()
+zz_stress_vec_5 = pd.Series(zz_sparse_5km_la.x)
+
+zz_sparse_20km_la = zz_la[::10, ::10, 20].flatten()
+zz_stress_vec_20 = pd.Series(zz_sparse_20km_la.x)
+
+zz_sparse_12km_la = zz_la[::10, ::10, 12].flatten()
+zz_stress_vec_12 = pd.Series(zz_sparse_12km_la.x)
+
+del zz_la
+
 stress_db.close()
 
 print 'making dataframes'
 topo_stress_5km = pd.concat([east, north, xx_stress_vec_5, yy_stress_vec_5,
-                             xy_stress_vec_5], axis=1)
-topo_stress_5km.columns=['easting', 'northing', 'xx_MPa', 'yy_MPa', 'xy_MPa']
+                             xy_stress_vec_5, zz_stress_vec_5], axis=1)
+topo_stress_5km.columns=['easting', 'northing', 'xx_MPa', 'yy_MPa', 'xy_MPa',
+                         'zz_MPa']
 
 topo_stress_5km.to_csv('e_asia_horiz_stress_5km.csv', index=False)
 
 
 topo_stress_12km = pd.concat([east, north, xx_stress_vec_12, yy_stress_vec_12,
-                             xy_stress_vec_12], axis=1)
-topo_stress_12km.columns=['easting', 'northing', 'xx_MPa', 'yy_MPa', 'xy_MPa']
+                             xy_stress_vec_12, zz_stress_vec_12], axis=1)
+topo_stress_12km.columns=['easting', 'northing', 'xx_MPa', 'yy_MPa', 'xy_MPa',
+                          'zz_MPa']
 
 topo_stress_12km.to_csv('e_asia_horiz_stress_12km.csv', index=False)
 
 
 topo_stress_20km = pd.concat([east, north, xx_stress_vec_20, yy_stress_vec_20,
-                             xy_stress_vec_20], axis=1)
-topo_stress_20km.columns=['easting', 'northing', 'xx_MPa', 'yy_MPa', 'xy_MPa']
+                             xy_stress_vec_20, zz_stress_vec_20], axis=1)
+topo_stress_20km.columns=['easting', 'northing', 'xx_MPa', 'yy_MPa', 'xy_MPa',
+                          'zz_MPa']
 
 topo_stress_20km.to_csv('e_asia_horiz_stress_20km.csv', index=False)
 
