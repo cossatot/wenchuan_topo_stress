@@ -27,9 +27,11 @@ $T'$ is simply $T / \rho g z$ (line 275 of original manuscript).
 
 We have not double-counted lithostatic stress, we have simply been unclear in
 our description of the stress state. Lithostatic stress is an isotropic tensor,
-so (as described) it is only the diagonals of the tensor. Tectonic stress is
+so (as described) it has non-zero terms only the diagonals of the tensor. 
+Tectonic stress is
 only horizontal, $T'$ is scaled by $\rho g z$ (not by the tensor $L$, as we had
-previously, and erroneously stated). So $T$ and $L$ do not occupy the all same
+previously, and erroneously stated). So non-zero values of $T$ and $L$ are not 
+the same
 components of the stress tensor. 
 
 We amend the submitted description:
@@ -77,7 +79,7 @@ to
 > \end{equation}
 
 > We further assume that $T$ increases linearly with depth so
-> that the entire upper crust is near the critical failure envelope
+> that the entire upper crust is near the critical failure envelope at an unspecified coefficient of friction
 > [e.g., *Townend and Zoback, 2000*], and thus we parameterize the components 
 > of $T$ as scalars multiplied by $\rho g z$, denoted as $T^\prime$. Therefore, 
 > if $T'_{xx} = 0.1$, at some point just below 1 km, $L=27$ MPa, so
@@ -92,9 +94,8 @@ which hopefully clarifies this.
 > would be more appropriate to assume that the total stress S increases 
 > linearly with depth in this manner. 
 
-We agree that $S$ increasing linearly with depth would be more analogous to
-*Townend and Zoback 2000*, but our model does not allow for this, because we
-would have to vary $T$ spatially to exactly counterbalance variations in $M$
+To increase $S$ linearly with depth,
+we would need to vary $T$ spatially to exactly counterbalance variations in $M$
 that deviate from linearity. Instead, we find it much simpler to approximate
 $T$ as increasing linearly with depth, because then we can quantify it with
 three numbers ($T'_{xx}$, $T'_{xy}$, and $T'_{yy}$, or equivalently $T'_{max}$,
@@ -158,14 +159,17 @@ to
 > back in linearly during the analysis of section 4? I expect this has some
 > ramifications. 
 
-This was something we puzzled over for a while. Ultimately, we chose our
-approach because it is less than obvious how to incorporate a depth-dependent
-tectonic stress into the calculations. The horizontal loading functions specify
+This was something we puzzled over for a while.
+However, the horizontal loading functions specify
 horizontal surface loads that are then propagated into the subsurface using
 Cerruti's solutions [Appendix A2]. The Liu and Zoback formulations of the
-loading functions require a fixed tectonic stress, or the tectonic stress at
-zero depth. Because we assume that tectonic stress increases linearly from zero
-with depth, the tectonic stress at the surface is zero.
+loading functions require a fixed tectonic stress at
+depths above zero (i.e., in the topography that is imposed on the surface of 
+the elastic half-space). Because we assume that tectonic stress increases 
+linearly
+with depth, with zero contribution of tectonic stress at the surface of the 
+half-space, tectonic stress does not need to be included in the horizontal 
+loading function of the second order terms of the topographic stresses.
 
 An additional complication is that the calculation of topographic stresses in
 the region (not their interpolation onto the fault) takes about 9 hours, and
@@ -173,7 +177,13 @@ so devising some iterative scheme where we could calculate topographic
 stresses, then find tectonic stress and then add that back into the topographic
 stress calculations and repeat until some criteria is reached, is really out
 of the question with the Bayesian inversion scheme we've chosen (there are
-about 18,000 models in the joint posterior).
+about 18,000 models in the joint posterior). While the assumption that the 
+tectonic component of stress vanishes in the upper few kilometers of the the 
+Earth (i.e., above the reference depth which is taken to be the top of the 
+elastic half-space), we feel we adaquately described this choice in our 
+construction of the model and with this choice are horizontal loading 
+functions in the calculation of topographic stresses is entirely 
+self-consistent.
 
 ## R4
 > Line 193 assumes a "Poisson halfspace", presumably meaning an elastic
@@ -186,7 +196,7 @@ about 18,000 models in the joint posterior).
 > Poisson ratio. 
 
 We had chosen our the value of 0.25 for the Poisson ratio not only because of
-the calculational convenience (the shear modulus and Lame's parameters drop out
+ convenience (the shear modulus and Lame's parameters drop out
 of the equations) but because this is the most likely value for the rather
 felsic Tibetan crust based on seismic studies.  But in light of these comments,
 we have recalculated the fault stresses using a Poisson ratio of 0.28, as a
@@ -219,23 +229,26 @@ show that the topographic stresses are mostly stronger (more compressive) in
 the vertical direction than in the horizontal directions.
 
 Additionally, from a tectonic standpoint, there is no real reason to consider
-N-S tectonic tension (the direction of $T_{min}$ in our results) in the Sichuan Basin;
+N-S tectonic tension (the direction of $T_{min}$ in our results) at the western 
+margin of the Sichuan Basin;
 this is a region surrounded by thrust and strike-slip faults of various
 orientations (e.g. Figure 1). If there was tectonic tension in the region, then
 the patterns of deformation would be different in the interior of the Sichuan
-Basin away from topography; currently faulting there is thrusting, which
+Basin away from topography; currently here is thrust faulting in that region,
+which
 indicates a vertical $\sigma^3$. There is no evidence of N-S extension anywhere
 in the Himalayan-Tibetan orogen except for in the Miocene in the Himalaya,
 which is synchronous with parallel thrusting (the famed Himalayan extrusion). 
 
-The purpose of Bayesian priors is to keep likely values in as much as to keep
-unlikely values out. Because we adopt a relatively simple scheme of uniform
-probabilities over some interval, we can't add unlikely values at the same
-rate as more likely values, without either strongly diluting the number of
-acceptable models in the posterior (and therefore needing to run many more
-models, and we are already at the limit of what can be done with 128 GB RAM),
-and/or introducing a lot of unlikely models into the posterior, depending on
-how sensitive the results are to the priors. 
+The purpose of Bayesian priors is to not only keep potentially likely models 
+in, but also as importantly to keep
+unlikely models out. Because we adopt a relatively simple scheme of uniform
+probabilities over some interval, adding unlikely models to the prior at the same
+rate as more likely models, will decrease the acceptance rate of models tested
+that are retained in the posterior,
+and therefore we would need to test many more models to obtain the same level 
+of sampling of the posterior as we do
+(we note that we are already at the limit of what can be done with 128 GB RAM).
 
 
 ## R6
@@ -258,7 +271,10 @@ likelihood of $T'_{max}=2.5$ is about 60% of the likelihood of $T'_{max}=0.8$.
 Additionally, this is assuming that $T'_{max}$ is *a priori* equal at 0.8 and
 2.5 (which is our simple model); personally, I find it rather unlikely that
 tectonic stresses would be so high, although we chose the model prior to be
-a bit different than our personal prior beliefs.
+a bit different than our personal, unquantified prior beliefs. So in short,
+while we do not find a hard upper-bound, the posterior does not indicate that
+the likelihood of models at the upper bound is equal to the likelihood of 
+models at lower $T'_{max}$.
 
 The lines 373 and 379, chosen by the reviewer, are in a discussion of
 methodological differences between this study and another that only attempts to
@@ -275,7 +291,7 @@ here are in approach more than results.
 > estimated are independent? 
 
 The requirement that $T_{min} < T_{max}$ is not simply an attribute of our
-priors or Bayesian estimation scheme, but basic math and logic. Minimum is
+priors or Bayesian estimation scheme, but minimum is
 defined to be less than maximum, so the half of the parameter space where this
 would occur is off limits by definition.
 
@@ -296,9 +312,9 @@ $T_{max}$. This gives a uniform prior PDF for $T_{max}$, a similar prior for
 $T_{min}$ as the first option, and a higher joint probability density towards
 the low $T_{max}$ end of the $T_{max}$ vs $T_{min}$ space.
 
-So, although the joint probability density is higher towards the low $T_{max}$
-end (visible in Figures 6 and 8a) in our approach, the marginal priors for
-$T_{max}$ would be much more strongly biased in the first approach, but
+The marginal priors for
+$T_{max}$ would be much more strongly biased in the first sampling approach,
+while the marginals for
 $T_{min}$ is less affected by the sampling strategy. Overall, we feel that our
 approach is less biased, because it results in a uniform $T_{max}$, which is
 the more important value.
@@ -368,20 +384,20 @@ slip distributions, to Section 2.3:
 
 >We use six models,
 those of *Shen, et al.* [*2009*], *Feng, et al.* [*2010*], *Zhang, et al.*
-[*2011*], *Fielding, et al.,* [*2013*] and two from *Qi, et al.* [*2011*] (these two models share a
-fault geometry but use different smoothing functions for the slip
-distribution). These vary somewhat in the fault geometry and specifics of the
-slip distribution, but nonetheless are of high resolution, are properly
-georeferenced. By using a suite of models in our calculations instead of a
-single model, we evaluate results that are persistent in most or all of the
-models to be more robust, and other results can be more confidently linked to
-specifics of the model geometry or slip distribution. 
+[*2011*], *Fielding, et al.,* [*2013*] and two from *Qi, et al.* [*2011*]. 
+DELETED LINE
+All of these models rely on geodetic data to some degree, but they do not all use the same data in their inversion (e.g., *Feng, et al.* [*2010*] uses a different InSAR catalogue as the others), all use differnet inversion stratagies, and different fault geometries (the two models of *Qi et al.* [*2011*] share a common fault geometry but use different regularization in the inferrence of the slip distribution).
+DELETED LINE
+By using a suite of models in our calculations,
+we can infer that results that are persistent in most or all of the
+models are more robust, while other results specific to only one of the coseismic slip models can be more confidently linked to
+specifics of the model geometry or inferred slip distribution in those models. 
 
->In general, the models share a common geometry and pattern of slip distribution
-above 10 km or so; i.e. the locations of high and low slip patches and the slip
-rake are similar in all of the models. Though some of models use discrete fault
-segments for the Beichuan fault, whereas others use a single continuous fault,
-the fault planes are essentially collocated. However, there is significant
+>In general, the fault geometries in all of the coseismic slip models are simmilar, as well as the inferred pattern of slip distribution
+above 10 km or so (i.e., the locations of high and low slip patches and the slip
+rake are similar in all of the models).  Although some of models use discrete, planar fault
+segments, whereas others use a single continuous, non-planar fault,
+the fault geometry models are essentially collocated. However, there is significant
 variability in the magnitude of slip in the different models; for example, the
 maximum slip magnitude in the Qi 'rough' model is about twice that of the
 Feng model. Large differences also exist in the deeper geometries of the
@@ -413,7 +429,7 @@ individual aspects of these implications.
 > influencing rupture process should be removed from the abstract and
 > introduction. 
 
-There is nothing in the abstract that references a topographic influence on
+There is nothing in the abstract that references a topographic influence on the
 rupture processes. In one sentence in the introduction (lines 41-45), we write
 that topographic stresses *may* influence rupture propagation. We do not
 'focus' on this. Additionally, as promised in the two quoted passages (from
@@ -445,16 +461,16 @@ dynamic rupture modeling), and we should not inhibit them.
 > overall the results should be more fully described and the discussion more
 > fully developed. 
 
-This is definitely a 'methods' paper, and this work was performed with the
-broader goal of working to quantify tectonic stresses in a larger sense. We
-chose this earthquake to start with because it's well-documented and has a
+We feel that it is crucially important to fully describe the methods of our calculations and estimation stratagy,
+We
+chose this earthquake because it's well-documented and has a
 complex coseismic slip distribution, and because it lies at the base of a very
 large plateau that has been suggested to be expanding outward due to
 topographic stresses. We looked into these effects, framed the investigation in
 terms of questions (e.g., do topographic stresses promote or inhibit the
 observed slip on the faults), and answered them.
 
-Nonetheless, the results and the discussion make up the bulk of the paper. The
+Nevertheless, the results and the discussion make up the bulk of the paper. The
 methods sections (2 and 4) are 6.5 'manuscript' pages in sum, which includes
 many equations that take up a lot of space. The results sections (3 and 5) are
 about 2 pages, and 6 of the 10 figures. The discussion is 8 pages, by far the
@@ -474,9 +490,7 @@ Kanamori (2005 GJI), Ghosh et al (2006 Geology), Flesch et al (2007 GJI)
 We have added a reference to the Fialko paper. The Flesch and Ghosh papers
 mentioned here are 'thin viscous sheet' type papers, similar to those already
 mentioned in the review (including a later paper by Flesch); those types of
-studies are of a much larger (orogen to global) scale than our study, and
-both a longer list of studies and a more detailed discussion of the studies
-is a bit out of the scope of the current paper.
+studies are of a much larger (orogen to global) scale than our study.
 
 ## R15
 > Lines 224-230 describe the magnitudes of stress tensor components, but this
@@ -497,8 +511,9 @@ as constraints.
 Actually, we feel that our manuscript is more similar to the Luttrell et al.
 2011 paper because that paper uses a coseismic slip model in the stress
 inversion, and because it involves a single event. The Luttrell and Sandwell
-paper uses focal mechanisms, which are basically point sources, and considers
+paper uses focal mechanisms, which are considered to represent constant coseismic slip over a planar fault plane corresponding to one of the nodal planes of the focal mechanism, and considers
 multiple earthquakes. This is a bit more different with respect to our paper.
+
 ## R17
 > The introduction lists 7 coseismic slip models of the Wenchuan earthquake (line 124), and then the analysis refers to 5 of them (line 213). As the authors noticed, all these models essentially draw from the same set of geodetic data, and all have essentially the same result, and thus all give this study essentially the same result (line 343). Is there a reason these particular models were chosen for analysis? Why not just choose one, or if they truly are different enough to influence these results, why not use them all? Some justification of this choice is warranted. 
 
@@ -507,12 +522,15 @@ model files themselves were published), had proper georeferencing, and seemed
 to be of sufficiently high quality. There are many models that did not attempt
 a good geometric fit to the available data--e.g. they consist of a single,
 planar fault segment--or models with very poor coseismic slip resolution. We
-did not feel it wise to include these (garbage in equals garbage out, as they
-say). Additionally, we did not feel it wise to list models that we thought
-were of too low quality.
+did not feel it wise to include these.
 
 We have added some discussion of the models used, and the criteria for
-including them, to Section 2.3, as described in R10.
+including them, to Section 2.3, as described in R10. We also reiterate here
+that not all of these coseismic slip models relied on the same data,
+approximated the fault geometry the same, or used the same inversion strategy
+to infer the coseismic slip. As any of these coseismis slip models are just 
+*models*, we do feel that basing our conclusions on just one particular model
+makes for the most robust study. 
 
 
 ## R18
@@ -530,4 +548,4 @@ including them, to Section 2.3, as described in R10.
 
 > Fig 3 and 9 need 33ºN label correction
 
-Corrected. 
+All listed typos corrected. 
