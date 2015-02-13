@@ -107,9 +107,9 @@ this is quite clear in the text.
 > Do they mean the whole fault was verging on failure at the time of the
 earthquake, or only part of it?
 
-We have changed the relevant sentence to 'We further estimate the static
+We have changed the relevant sentence to "We further estimate the static
 friction and pore fluid pressure assuming that the fault was*, on average,* at
-Mohr-Coulomb failure at the time of the Wenchuan earthquake.
+Mohr-Coulomb failure at the time of the Wenchuan earthquake."
 
 **CA.2**
 
@@ -827,12 +827,12 @@ We have also added some discussion of how the calculated ratios relate to the
 parameters:  
 
 "It is clear that both $T^\prime_{xx}$ and $\mu$ are strongly correlated with
-$\mathrm{CFR}_o/\mathrm{CFR}_f$, and $\phi$ is to a lesser degree; nonetheless,
+$\mathrm{CFR}_o / \mathrm{CFR}_f$, and $\phi$ is to a lesser degree; nonetheless,
 all significantly affect the relative ease of faulting on the Wenchuan faults
 versus optimal faults. In particular, lower values for any of them favor slip
-on the Wenchuan faults. The lowest $\mathrm{CFR}_o/\mathrm{CFR}_f$ value
-($\sim$0.057, $\sim$ -2.9 in log space) corresponds to the lowest value of
-$\mu$ ($\sim$0.038), and is approximately the ratio of $\mu$ in the model to
+on the Wenchuan faults. The lowest $\mathrm{CFR}_o / \mathrm{CFR}_f$ value
+($\sim$ 0.057, $\sim$ -2.9 in log space ) corresponds to the lowest value of
+$\mu$ ($\sim$ 0.038), and is approximately the ratio of $\mu$ in the model to
 0.6."
 
 
@@ -1054,7 +1054,7 @@ dh/dy in the second row of the equation? Analogous comments apply to equation
 
 Liu and Zoback [1992] devote some attention to the horizontal loading
 function (primarily, see the "Effect of Topography on Tectonic Stress"
-Section in their paper). While we do state in the beginnign of the
+Section in their paper). While we do state in the beginning of the
 section that we use methods derived by Liu and Zoback [1992], we
 realized that we should also cite their paper where we give the
 horizontal loading function, and we have edited the sentence equation
@@ -1063,7 +1063,7 @@ Zoback [1992].
 
 Yes, Mxx, Txx, Mxy, and Txy act horizontally, but they represent
 normal tractions in horizontal directions on vertical planes, and not
-tractions on the free surface. Mxx, etc, aboce the reference level,
+tractions on the free surface. Mxx, etc, above the reference level,
 here taken to be mean sea level, only excite shear traction on the
 free surface (warranting their inclusion into the horizontal loading
 function) if topography varies. We think of this as due to the fact
