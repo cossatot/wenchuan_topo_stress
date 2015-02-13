@@ -22,11 +22,16 @@ Earth science community. It might be useful in an introductory section to state
 that tractions are vectors that act on a particular plane, where as the stress
 at a point is a tensor quantity.
 
-We believe that most or all of our readers will know the difference between
-tractions and stresses.  However, it is conventional (if slightly improper)
-to refer to tractions as stresses, as in 'shear stress' and 'normal stress',
-instead of 'shear traction' and 'normal traction'. Whether we are referring
-to tensors, vectors, or scalars should be apparent and cause no confusion.
+We believe that most or all of our readers will know the difference
+between tractions and stresses.  Stresses on faults are commonly
+referred to as 'shear stress' and 'normal stress', instead of 'shear
+traction' and 'normal traction'. One of us (EAH) has used both
+terminologies in past papers. We also note that the influential paper
+by Jim Rice ("Spatio-temporal complexities of slip on a fault", 1993,
+JGR) uses "shear stress" for the stress acting on the fault, a
+terminology that has become common in the "Rice school" of earthquake
+dynamics.  Whether we are referring to tensors, vectors, or scalars
+should be apparent and cause no confusion.
 
 > 4 In several places I had difficulty telling whether the manuscript was
 referring to points on the faults or to the fault as a whole. The manuscript
@@ -47,23 +52,42 @@ discussion of this in the manuscript.
 as posterior distributions or posterior functions rather than as “posteriors”
 to avoid unintended reactions from some readers.
 
-The term 'posteriors' has been well established in the literature for decades
-and is unlikely to cause offense.
+The term 'posteriors' has been well established in the literature for
+decades and is unlikely to cause offense. Furthermore, the posteriors
+we present in this paper are not function or distributions, but samples
+of an unknown posterior PDF. We believe that our description of the
+sampling methodology in section 4.2 makes this clear. We also note
+that one of us was quite confused as what the the unintended reaction
+from the term "posterior" might be.
 
 > 7 The figures and the text need to be better coordinated so that readers can
 easily verify points made in the text when the figures are referred to. Several
 of the figures can be modified to make them more useful to the reader. These
 modifications should not be time-consuming to make.
 
-We have made some minor modifications to figures.
+We have made some minor modifications to figures to address this issue.
 
 > 8 A key modeling assumption seems to be that fault slip is not affected by
 stress changes accompanying the fault rupture, but this assumption is not
 stated. I think it should be.
 
-We clearly state that our results are predicated upon the Wallace-Bott
-assumption that fault slip occurs in the direction of maximum shear stress.
+We agree that this is important to state and did not realize we had
+not in this manuscript. As stated, our model is  predicated
+upon the Wallace-Bott assumption that fault slip occurs in the
+direction of maximum shear stress, implicitly in that assumption is
+that coseismic slip rake reflects accumulated shear stress on the
+fault prior to earthquake nucleation, and that dynamic stresses do not
+result in a significant re-orientation of coseismic slip. To make this
+more clear, we have slightly modified the relevant sentence in the
+abstract to:
 
+"We estimate the tectonic stress needed to overcome topographic and
+lithostatic stresses by assuming that the direction of maximum shear
+accumulated on the faults is roughly collinear with the inferred
+coseismic slip."
+
+And in section 4.2, where we state the Wallace-Bott assumption, we
+added "prior to the initiation of the earthquake" to make this clear.
 
 > 9 The comparison of the Beichuan fault to an optimally oriented fault needs
 to be clarified. This seems to be a key point, but the discussion of this point
@@ -111,11 +135,12 @@ McGovern on topographic stresses associated with volcanoes. I think some of
 McGovern’s papers from the 1990’s should be cited.
 
 We have looked over these references, which are largely about volcanic
-deformation on other planets, and have not found a good place to cite them,
-without making a separate paragraph for discussions of topographic stresses in
-volcanoes. This is far from our topic (the interaction of topographic stresses
-and tectonics), and we did not read these papers during the work presented in
-this paper, so we don't feel it appropriate to cite them.
+deformation on other planets, and have not found a good place to cite
+them, without making a separate paragraph for discussions of
+topographic stresses in volcanoes. This is far from our topic (the
+interaction of topographic stresses and tectonics), and we did not
+rely on these papers while developing the work presented in this
+paper, so we don't feel it necessary to cite them.
 
 **C1.2**
 
@@ -131,10 +156,16 @@ introduction in the previous round of revisions.
 refer to a peer- reviewed scientific article is highly inappropriate. This
 reference must be eliminated.
 
-This reference has been eliminated, with the note that it is unfortunate that
-we put up these sorts of walls in scholarship. The history of ideas shouldn't
-be segregated so, and we did not refer to it 'as one might a peer-reviewed
-scientific article'.
+This reference has been eliminated, although we note that we feel it
+ is unfortunate that these sorts of walls exist in scholarship. The
+ history of ideas shouldn't be segregated so. We felt that the
+ quotation was appropriate for the topic of this manuscript, and we
+ did refer back to it later in the text. We are not sure that if we
+ had chosen an opening quotation from a non-religious text, say James
+ Joyce's Finnegans Wake, whether there would have been such a visceral
+ reaction.  Finally, we did not refer to it 'as one might a
+ peer-reviewed scientific article'. That all being said, we have
+ removed the quotation.
 
 ### 2. Topographic stresses on the Longmen Shan faults 
 
@@ -153,12 +184,16 @@ but the method is not exact, and it does have its limitations. Those
 limitations should be pointed out.
 
 We change the sentence introducing the methods to "They show that the
-topographic stress tensor field *beneath (but not within) topography* can be
-determined by a convolution of topographic loading functions with Green's
-functions describing the stresses in an elastic halfspace due to a point load
-at the surface." (changes in italics). Additionally, in Section 2.2 on the
-numerical implementation of the methods, we mention that our calculations only
-apply to depths below 851 m.
+topographic stress tensor field *beneath (but not within) topography*
+can be determined by a convolution of topographic loading functions
+with Green's functions describing the stresses in an elastic halfspace
+due to a point load at the surface." (changes in
+italics). Additionally, in Section 2.2 on the numerical implementation
+of the methods, we mention that our calculations only apply to depths
+below 851 m below sea level, which we take as our reference surface of
+the half-space. We also now specifically state that z=0 corresponds to
+mean sea level in our description of these calculations in Section
+2.1.
 
 **C2.3**
 
@@ -300,15 +335,19 @@ evident in Figure 4, which shows some of the fault models. We think that giving
 'x,y,z' or other spatial coordinates would be quite unhelpful (particularly for
 curved surfaces tens of kilometers in breadth), so we will not do this.  If
 readers need to know this information, they can look at the .csv files on
-GitHub or consult the sources for the slip models.
+GitHub or consult the sources for these published slip models.
 
 **C3.9a**
 
 > (243) What is the dip of the fault in question?
 
-This varies in the different fault models considered. If the reader wants to
-know these specifics, he or she is welcome to read the papers that have
-produced the fault models used.
+This varies in the different fault models considered. All of the
+coseismic slip models we consider in this paper were developed by
+other researchers (with the exception of Feng et al. (2010), of while
+one of use is a co-author) and have been fully described in
+peer-reviewed published papers. If the reader wants to know these
+specifics, he or she is welcome to read the papers that have produced
+the fault models we use.
 
 **C3.9b**
 
@@ -330,13 +369,15 @@ convention like so:
 >This is much more in keeping with standard usage and would be easier for
 (most) readers to follow I think.
 
-I do not think I have ever seen $\tau_n$ to refer to normal stress/traction;
-we use $\tau$ for shear stress (tractions), which is quite standard.  We also
-use $\sigma_n$ as normal stress (traction) which is standard. We use *M* to
-denote the topographic stress tensor or tensor field, and it is clearly defined
-as such. Capital letters are extremely commonly used to denote arrays,
-matrices, tensors and tensor fields; this is not only a structural geology
-convention but spans the science, mathematics and engineering disciplines.
+
+We use $\tau$ for shear stress (tractions), which is quite standard
+and we define our usage in the paper.  We also use $\sigma_n$ as
+normal stress (traction) which is also standard and defined in the
+paper. We use *M* to denote the topographic stress tensor or tensor
+field, and it is clearly defined as such. Capital letters are
+commonly, although not exclusively, used to denote tensors and tensor
+fields, in a variety of sources, spanning structural geology, fluid
+dynamics, mathematics, and engineering disciplines.
 
 We considered adopting the reviewer's suggestions (outside of using $\tau_n$
 for normal stress) but in the end we do not use $\sigma$ to represent a stress
@@ -380,13 +421,14 @@ stress plot in the upper right the red background color is very uniform, so
 I can't tell where the normal traction is high (and the contour lines are not
 labeled). This means I don't know how to compare the plots.
 
-The colors shown are not simple 'background colors' but correspond to the
-magnitudes of the stress component in question. Where they are uniform,
-stresses are uniform. Labeling the contours would add unneccesary clutter to
-the figures, making them harder to read. Nonetheless, the relevant comparisons
-(for example, between high normal stress and low slip) are still quite evident
-to us, both on the screen and in print, and other viewers have not had problems
-with this. Maybe the reviewer has a monitor or printer calibration issue.
+The colors shown are not simple 'background colors' but correspond to
+the magnitudes of the stress component in question, this is stated in
+the figure caption and the associated color bars in the figure. Where
+they are uniform, stresses are uniform. Labeling the contours would
+add unnecessary	 clutter to the figures, making them harder to
+read. The relevant comparisons (for example, between high normal
+stress and low slip) are still quite evident to us, both on the screen
+and in print, and other viewers have not had problems with this.
 
 **C3.12**
 
@@ -406,25 +448,25 @@ it is not.
 > This section reads fairly well, although a fuller description of the Bayesian
 statistics would have helped me.
 
-We believe that we have explained the mathematics involved in our calculations
-(Bayes' rule, the misfit equation, and the likelihood equation, which are
-equations 10-12 in the original submission and equations 11-13 in the revised
-submission). These are uncomplicated expressions. Unfortunately, though
-Bayesian statistics are intuitive in practice and a formalized version of our
-thought processes in many instances (revising ideas or beliefs based on
-evidence), there is some sort of barrier for many people in grasping it
-initially. For the first author, this was due to jargon, so we have tried to
-define and explain each of the terms. We have also cited two excellent texts
-[Tarantola, 2005; Mosegaard and Tarantola, 1995] that explain Bayesian
-statistics in more detail.
+We believe that we have explained the mathematics involved in our
+calculations (Bayes' rule, the misfit equation, and the likelihood
+equation, which are equations 10-12 in the original submission and
+equations 11-13 in the revised submission). These are uncomplicated
+expressions, and we believe that they fully describe our estimation
+strategy within a Bayesian sampling methodology.  We have tried to
+define and explain each of the terms, but we do not feel that a more
+basic and general introduction to Bayesian methods is appropriate in
+this paper. We cited two excellent texts [Tarantola, 2005; Mosegaard
+and Tarantola, 1995] that explain Bayesian estimation in more detail.
 
 **C4.2**
 
 > (256-257) The statement here should also account for cohesion, although the
 frictional resistance could be much larger than any intrinsic cohesion
 
-This is true; we have added "and assuming that rock strength (cohesion) is
-negligible" to the sentence describing the Mohr-Coulomb failure envelope.
+This is true; we have added "and assuming that cohesion is negligible"
+to the sentence describing the Mohr-Coulomb failure envelope.
+***NOTE: I will remove "rock strength" from the main text, since you are talking about a failure on a pre-existing fault, it is misleading, let's just leave as "cohesion".***
 
 **C4.3**
 
@@ -440,10 +482,15 @@ sentence.
 reactions from some readers. I suggest using the alternative phrase "these
 functions". 
 
-The use of the word 'posterior' in statistics is well-established, and surely
-won't incite any more unintended reactions or schoolboy jokes than 'thrusting'.
-We advise readers who blush at the term 'posterior' to avoid television and
-the internet at all costs.
+The use of the word 'posterior' in statistics is well-established and
+is fairly commonly used in geophysical research papers that utilize
+Bayesian estimation or inferrence. Additionally, as described in
+section 4.2, our sampling estimation strategy results in samples of
+some unknown posterior probability density function, this is the
+solution to the inverse problem in a Bayesian sense, and so refering
+to these collections of posterior samples as "functions" would be
+misleading.
+
 
 **C4.4b**
 
@@ -465,10 +512,13 @@ point.  The authors should clarify whether the are evaluating the direction of
 slip based on the conditions before the fault has begun to slip or as the fault
 slips and the stress field around the slipped patch is evolving.
 
-The direction of slip is given by the coseismic slip models, which are the net
-slip from the earthquake; this is described in Section 4.2.  A consideration
-of rake variability during the rupture would be excellent but unfortunately
-we do not have the data to do this.
+The direction of slip is given by the coseismic slip models, which are
+the net slip from the earthquake; this is described in Section 4.2.
+We think the reviewer is addressing whether under the Wallace-Bott
+assumption the final coseismic slip rake is parallel to the direction
+of maximum shear stress accumulated on the fault prior to slip
+initiation, and that dynamic stresses do not affect the coseismic slip
+rake. We address this point in comment 8 above.
 
 **C4.7**
 
@@ -531,10 +581,11 @@ the results. The important results are discussed as such.
 > (328-330) After this sentence, say what the significance of the peak in
 T'(min) at 0.2 is, as was done in lines 326-328 for T'(max).
 
-We don't view the value of the minimum tectonic stress to be as significant
-as the value of the maximum stress, and there is simple statement that can
-summarize the importance of this value (i.e. it does not directly affect much).
-We do however discuss the results more in the discussion.
+We don't view the value of the minimum tectonic stress to be as
+significant as the value of the maximum stress, and there is no simple
+statement that can summarize the importance of this value (i.e. it
+does not directly affect much).  We do however discuss the results
+more in the discussion.
 
 **C5.4**
 
@@ -562,14 +613,15 @@ were not well represented in the posteriors.
 > (341-345) I can't see a peak in T'(Max) at ~0.6 in any of the plots on Fig.
 8. Some additional explanation is needed, at least for me.
 
-The highest values of the $T'_{\max}$ marginal histograms at around 0.6 are
-evident. This 'peak' (not our wording) is not particularly sharp, but it is
-clearly there; there is a steep decrease in probability to the left of the
-mode and a more gradual decrease to the right of the mode. As stated in the
-response letter to the previous revision, the probability at 2.5 (the upper
-boundary of $T'$ is 60% of the mode at 0.6.  We have amended this sentence
-to read '0.6-0.8' so it is clear that we do not mean a narrow range of high
-likelihoods around a single value.
+The highest values of the $T'_{\max}$ marginal histograms at around
+0.6 are evident. This 'peak' (not our wording) is not particularly
+sharp, but it is clearly there; there is a steep decrease in
+probability to the left of the mode and a more gradual decrease to the
+right of the mode. As stated in the response letter to the previous
+revision, the likelihood at 2.5 (the upper boundary of $T'$ is 60% of
+the mode at 0.6.  We have amended this sentence to read '0.6-0.8' so
+it is clear that we do not mean a narrow range of high likelihoods
+around a single value.
 
 **C5.7**
 
@@ -596,8 +648,10 @@ on the low-μ side, suggesting that low values for μ are more robust.”
 
 > <u>How low is "low"? Can the authors be quantitative here?</u>
 
-We added a reference to the figure (mentioned in the last response).  We would
-rather readers look at the distribution itself than a number we throw out.
+We added a reference to the figure (mentioned in the last response).
+We would prefer that readers look at the distribution itself, as this
+is the quantitative solution of the inverse problem in a Bayesian
+sense, rather than a number we throw out.
 
 
 ### 6. Discussion
@@ -741,35 +795,33 @@ optimally-oriented fault? I think the answer lies in the definition of what
 constitutes the optimally-oriented fault. This needs to be more clearly and
 completely explained to avoid confusing readers.
 
-We believe most readers will not view slip on the Beichuan fault as impossible,
-because it is believed by all researchers we know of to have happened in the
-Wenchuan event.
-
-The reviewer may be missing a key point, which is that the 'optimally-oriented
-fault' has a canonical value of friction of 0.6 (lines 466-469 of the
-submitted manuscript). In contrast, our model results indicate that the faults
-that are thought to have ruptured in this event have a much lower coefficient
-of static friction.  As is shown in Table 2, the coefficient of friction on the
-fault has a strong influence on the favorability of slip on the Wenchuan
-faults vs. optimally oriented faults of the stress parameters studied.
-This is stated repeatedly throughout this section, so we do not believe that
-we are unclear about this point.
+As described in the manuscript, the 'optimally-oriented fault' has a
+canonical value of friction of 0.6 (lines 466-469 of the submitted
+manuscript). In contrast, our model results indicate that the faults
+that are thought to have ruptured in this event have a much lower
+coefficient of static friction.  As is shown in Table 2, the
+coefficient of friction on the fault has a strong influence on the
+favorability of slip on the Wenchuan faults vs. optimally oriented
+faults of the stress parameters studied.  This is stated repeatedly
+throughout this section, so we do not believe that we are unclear
+about this point.
 
 Additionally, when we did the log transformation of the y-axis of Figure 10,
 we used the base-*e* log, not base-10; the anti-log of 3 in this case is ~20,
 which is far more reasonable value than 1000. We have updated the text and
 figure captions so that 'log' now reads 'ln' to avoid this confusion.
 
-Nonetheless, we have reviewed our code and an error in how the optimal
-slip plane is found; essentially, we the algorithm worked assuming that dip
-slip faulting would be favored (where the optimal plane strikes perpendicular
-to the trend of $\sigma_1$) but produces an incorrect orientation otherwise.
-We have fixed the bug, which has changed these results slightly (the bug only
-affected these calculations; that particular function was not used in the rest
-of the study). The new Figure 10 shows that more of the data plot in the
-favorability region for optimal faulting than previously; however, most of the
-data (with low friction values) still plot in the favorability region for the
-Wenchuan faults.
+Nonetheless, we have reviewed our code and found a slight error in how
+the optimal slip plane was calculated; essentially, the algorithm
+assumed that dip slip faulting would be favored (where the optimal
+plane strikes perpendicular to the trend of $\sigma_1$) but produces
+an incorrect orientation otherwise.  We have fixed the bug, which has
+changed these results slightly (the bug only affected these
+calculations; that particular function was not used in the rest of the
+study). The new Figure 10 shows that more of the data plot in the
+favorability region for optimal faulting than previously; however,
+most of the data (with low friction values) still plot in the
+favorability region for the Wenchuan faults.
 
 We have also added some discussion of how the calculated ratios relate to the
 parameters:  
@@ -974,14 +1026,14 @@ equations, they could simply cite a reference and they would not need to
 include an Appendix, although they should check to make sure the errors in
 equations (A1) and (A2) did not spill over to their codes.
 
-The equations have been amended (a *z* was missing in the numerator of the
-first term in the brackets). The mistake is not found in the code.  This fixes
-the unit problem mentioned.  Although we reproduce the equations from Liu and
-Zoback [1992], we reproduce them here for reference, and because we actually
-only reproduce the right-hand sides of the equations from that reference, but
-we use different terms on the left-hand sides.  (These equations are
-essentially definitions, so there is no algebra or other operators on the
-left-hand sides).  The elastic coefficients 
+The equations have been amended (a *z* was missing in the numerator of
+the first term in the brackets). The mistake is not found in the code.
+This fixes the unit problem mentioned.  We reproduce the equations
+from Liu and Zoback [1992] here for completeness. Since we define
+these equations using different notation, we beleive that if we just
+referred to Liu and Zoback [1992] there might be some confusion for
+readers trying to reproduce our results. We thank the reviewer for
+catching the typo in equations (A1) and (A2).
 
 **CAp3**
 
@@ -999,6 +1051,27 @@ I don’t understand why Mxx and Txx are multiplied by dh/dx though, because Mxx
 and Txx already act horizontally. Similarly, why are Mxy and Txy multiplied by
 dh/dy in the second row of the equation? Analogous comments apply to equation
 (6). An explanation of this would be helpful.
+
+Liu and Zoback [1992] devote some attention to the horizontal loading
+function (primarily, see the "Effect of Topography on Tectonic Stress"
+Section in their paper). While we do state in the beginnign of the
+section that we use methods derived by Liu and Zoback [1992], we
+realized that we should also cite their paper where we give the
+horizontal loading function, and we have edited the sentence equation
+(5) to state that these loading functions are derived by Liu and
+Zoback [1992].
+
+Yes, Mxx, Txx, Mxy, and Txy act horizontally, but they represent
+normal tractions in horizontal directions on vertical planes, and not
+tractions on the free surface. Mxx, etc, aboce the reference level,
+here taken to be mean sea level, only excite shear traction on the
+free surface (warranting their inclusion into the horizontal loading
+function) if topography varies. We think of this as due to the fact
+that you are changing the total size of the vertical planes that
+tractions resulting from Mxx, etc, are acting upon. This change in
+horizontal normal tration results in a shear stress on the reference
+surface and stresses are propagated into the half-space via the
+Cerruti solutions.
 
 ### References
 

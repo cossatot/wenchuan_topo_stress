@@ -333,7 +333,7 @@ value for $T_{max}$. This point was mentioned in passing in section 5.1 (line
 Figure 8.1. Therefore, we add to Section 5.2:
 
 >It is also apparent in Figure 8b that regardless of the magnitude of
-$T^\_{\mathrm{max}$, $p_{J}(T^\prime_{\mathrm{min}} | D)$ is
+$T^\_{\mathrm{max}}$, $p_{J}(T^\prime_{\mathrm{min}} | D)$ is
 consistently 0--0.6 $p_{J}(T^\prime_{\mathrm{max}} | D)$, with a mode
 of about 0.3; this indicates that the relative magnitude of the
 tectonic stresses has a substantial influence on the rake of the maximum
