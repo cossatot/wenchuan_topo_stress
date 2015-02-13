@@ -1,3 +1,4 @@
+This document contains the comments from the reviewer, as well as our changes to them.
 
 ## General criticisms
 >1 The grammar and spelling of the manuscript needs to be carefully checked.
@@ -157,15 +158,12 @@ refer to a peer- reviewed scientific article is highly inappropriate. This
 reference must be eliminated.
 
 This reference has been eliminated, although we note that we feel it
- is unfortunate that these sorts of walls exist in scholarship. The
- history of ideas shouldn't be segregated so. We felt that the
- quotation was appropriate for the topic of this manuscript, and we
- did refer back to it later in the text. We are not sure that if we
- had chosen an opening quotation from a non-religious text, say James
- Joyce's Finnegans Wake, whether there would have been such a visceral
- reaction.  Finally, we did not refer to it 'as one might a
- peer-reviewed scientific article'. That all being said, we have
- removed the quotation.
+is unfortunate that these sorts of walls exist in scholarship. The
+history of ideas shouldn't be segregated so. We felt that the
+quotation was appropriate for the topic of this manuscript, and we
+did refer back to it later in the text. Finally, we did not refer to it 'as
+one might a peer-reviewed scientific article'. That all being said, we have
+removed the quotation.
 
 ### 2. Topographic stresses on the Longmen Shan faults 
 
@@ -425,7 +423,7 @@ The colors shown are not simple 'background colors' but correspond to
 the magnitudes of the stress component in question, this is stated in
 the figure caption and the associated color bars in the figure. Where
 they are uniform, stresses are uniform. Labeling the contours would
-add unnecessary	 clutter to the figures, making them harder to
+add unnecessary clutter to the figures, making them harder to
 read. The relevant comparisons (for example, between high normal
 stress and low slip) are still quite evident to us, both on the screen
 and in print, and other viewers have not had problems with this.
@@ -466,7 +464,6 @@ frictional resistance could be much larger than any intrinsic cohesion
 
 This is true; we have added "and assuming that cohesion is negligible"
 to the sentence describing the Mohr-Coulomb failure envelope.
-***NOTE: I will remove "rock strength" from the main text, since you are talking about a failure on a pre-existing fault, it is misleading, let's just leave as "cohesion".***
 
 **C4.3**
 
@@ -484,10 +481,10 @@ functions".
 
 The use of the word 'posterior' in statistics is well-established and
 is fairly commonly used in geophysical research papers that utilize
-Bayesian estimation or inferrence. Additionally, as described in
+Bayesian estimation or inference. Additionally, as described in
 section 4.2, our sampling estimation strategy results in samples of
 some unknown posterior probability density function, this is the
-solution to the inverse problem in a Bayesian sense, and so refering
+solution to the inverse problem in a Bayesian sense, and so referring
 to these collections of posterior samples as "functions" would be
 misleading.
 
